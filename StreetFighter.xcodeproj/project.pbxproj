@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* StreetFighterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* StreetFighterAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* StreetFighterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* StreetFighterViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* StreetFighterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */; };
+		CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */; };
+		CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066A12EBA91D0037EFDA /* RyuFireball.mov */; };
+		CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */; };
+		CD85066F12EBA91D0037EFDA /* RyuStance.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066C12EBA91D0037EFDA /* RyuStance.mov */; };
+		CD85069912EBA9810037EFDA /* AutoPropertyRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */; };
+		CD85069A12EBA9810037EFDA /* AVAnimatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */; };
+		CD85069B12EBA9810037EFDA /* AVAppResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */; };
+		CD85069C12EBA9810037EFDA /* AVFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068212EBA9810037EFDA /* AVFrameDecoder.m */; };
+		CD85069D12EBA9810037EFDA /* AVPNGFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */; };
+		CD85069E12EBA9810037EFDA /* AVQTAnimationFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */; };
+		CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068812EBA9810037EFDA /* AVResourceLoader.m */; };
+		CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */; };
+		CD8506A112EBA9810037EFDA /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = CD85068B12EBA9810037EFDA /* movdata.c */; };
+		CD8506F312EBAB7B0037EFDA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8506F212EBAB7B0037EFDA /* AVFoundation.framework */; };
+		CD8506F712EBAB820037EFDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8506F612EBAB820037EFDA /* AudioToolbox.framework */; };
+		CD85070512EBAB890037EFDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85070412EBAB890037EFDA /* QuartzCore.framework */; };
+		CD85071D12EBAB910037EFDA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85071C12EBAB910037EFDA /* MediaPlayer.framework */; };
+		CDD2640712EBDB9D000BF04E /* RyuStance.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD2640612EBDB9D000BF04E /* RyuStance.png */; };
+		CDE10D7D12EE2A50002F071D /* RedButtonDownAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */; };
+		CDE10D7E12EE2A50002F071D /* RedButtonUpAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* StreetFighterAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetFighterAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* StreetFighterAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetFighterAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* StreetFighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* StreetFighterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StreetFighterViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetFighterViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreetFighterViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* StreetFighter_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetFighter_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* StreetFighter-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StreetFighter-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SF2BlankaBackground.gif; sourceTree = "<group>"; };
+		CD85066A12EBA91D0037EFDA /* RyuFireball.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuFireball.mov; sourceTree = "<group>"; };
+		CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuHighKick.mov; sourceTree = "<group>"; };
+		CD85066C12EBA91D0037EFDA /* RyuStance.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuStance.mov; sourceTree = "<group>"; };
+		CD85067912EBA9810037EFDA /* AutoPropertyRelease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoPropertyRelease.h; sourceTree = "<group>"; };
+		CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoPropertyRelease.m; sourceTree = "<group>"; };
+		CD85067C12EBA9810037EFDA /* AVAnimatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorView.h; sourceTree = "<group>"; };
+		CD85067D12EBA9810037EFDA /* AVAnimatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAnimatorView.m; sourceTree = "<group>"; };
+		CD85067E12EBA9810037EFDA /* AVAnimatorViewPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorViewPrivate.h; sourceTree = "<group>"; };
+		CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAppResourceLoader.h; sourceTree = "<group>"; };
+		CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAppResourceLoader.m; sourceTree = "<group>"; };
+		CD85068112EBA9810037EFDA /* AVFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVFrameDecoder.h; sourceTree = "<group>"; };
+		CD85068212EBA9810037EFDA /* AVFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVFrameDecoder.m; sourceTree = "<group>"; };
+		CD85068312EBA9810037EFDA /* AVPNGFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPNGFrameDecoder.h; sourceTree = "<group>"; };
+		CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPNGFrameDecoder.m; sourceTree = "<group>"; };
+		CD85068512EBA9810037EFDA /* AVQTAnimationFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVQTAnimationFrameDecoder.h; sourceTree = "<group>"; };
+		CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVQTAnimationFrameDecoder.m; sourceTree = "<group>"; };
+		CD85068712EBA9810037EFDA /* AVResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVResourceLoader.h; sourceTree = "<group>"; };
+		CD85068812EBA9810037EFDA /* AVResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVResourceLoader.m; sourceTree = "<group>"; };
+		CD85068912EBA9810037EFDA /* CGFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGFrameBuffer.h; sourceTree = "<group>"; };
+		CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGFrameBuffer.m; sourceTree = "<group>"; };
+		CD85068B12EBA9810037EFDA /* movdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = movdata.c; path = ../movdata.c; sourceTree = "<group>"; };
+		CD85068C12EBA9810037EFDA /* movdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = movdata.h; path = ../movdata.h; sourceTree = "<group>"; };
+		CD8506F212EBAB7B0037EFDA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CD8506F612EBAB820037EFDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CD85070412EBAB890037EFDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CD85071C12EBAB910037EFDA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CDD2640612EBDB9D000BF04E /* RyuStance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RyuStance.png; sourceTree = "<group>"; };
+		CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButtonDownAlpha.png; sourceTree = "<group>"; };
+		CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButtonUpAlpha.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				CD8506F312EBAB7B0037EFDA /* AVFoundation.framework in Frameworks */,
+				CD8506F712EBAB820037EFDA /* AudioToolbox.framework in Frameworks */,
+				CD85070512EBAB890037EFDA /* QuartzCore.framework in Frameworks */,
+				CD85071D12EBAB910037EFDA /* MediaPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CD85067912EBA9810037EFDA /* AutoPropertyRelease.h */,
+				CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */,
+				CD85067B12EBA9810037EFDA /* AVAnimator */,
+				1D3623240D0F684500981E51 /* StreetFighterAppDelegate.h */,
+				1D3623250D0F684500981E51 /* StreetFighterAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* StreetFighter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* StreetFighter_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */,
+				CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */,
+				CDD2640612EBDB9D000BF04E /* RyuStance.png */,
+				CD85066A12EBA91D0037EFDA /* RyuFireball.mov */,
+				CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */,
+				CD85066C12EBA91D0037EFDA /* RyuStance.mov */,
+				CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */,
+				2899E5210DE3E06400AC0155 /* StreetFighterViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* StreetFighter-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD85071C12EBAB910037EFDA /* MediaPlayer.framework */,
+				CD85070412EBAB890037EFDA /* QuartzCore.framework */,
+				CD8506F612EBAB820037EFDA /* AudioToolbox.framework */,
+				CD8506F212EBAB7B0037EFDA /* AVFoundation.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD85067B12EBA9810037EFDA /* AVAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				CD85068B12EBA9810037EFDA /* movdata.c */,
+				CD85068C12EBA9810037EFDA /* movdata.h */,
+				CD85067C12EBA9810037EFDA /* AVAnimatorView.h */,
+				CD85067D12EBA9810037EFDA /* AVAnimatorView.m */,
+				CD85067E12EBA9810037EFDA /* AVAnimatorViewPrivate.h */,
+				CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */,
+				CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */,
+				CD85068112EBA9810037EFDA /* AVFrameDecoder.h */,
+				CD85068212EBA9810037EFDA /* AVFrameDecoder.m */,
+				CD85068312EBA9810037EFDA /* AVPNGFrameDecoder.h */,
+				CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */,
+				CD85068512EBA9810037EFDA /* AVQTAnimationFrameDecoder.h */,
+				CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */,
+				CD85068712EBA9810037EFDA /* AVResourceLoader.h */,
+				CD85068812EBA9810037EFDA /* AVResourceLoader.m */,
+				CD85068912EBA9810037EFDA /* CGFrameBuffer.h */,
+				CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */,
+			);
+			path = AVAnimator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* StreetFighter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "StreetFighter" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StreetFighter;
+			productName = StreetFighter;
+			productReference = 1D6058910D05DD3D006BFB54 /* StreetFighter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "StreetFighter" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* StreetFighter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* StreetFighterViewController.xib in Resources */,
+				CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */,
+				CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */,
+				CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */,
+				CD85066F12EBA91D0037EFDA /* RyuStance.mov in Resources */,
+				CDD2640712EBDB9D000BF04E /* RyuStance.png in Resources */,
+				CDE10D7D12EE2A50002F071D /* RedButtonDownAlpha.png in Resources */,
+				CDE10D7E12EE2A50002F071D /* RedButtonUpAlpha.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* StreetFighterAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* StreetFighterViewController.m in Sources */,
+				CD85069912EBA9810037EFDA /* AutoPropertyRelease.m in Sources */,
+				CD85069A12EBA9810037EFDA /* AVAnimatorView.m in Sources */,
+				CD85069B12EBA9810037EFDA /* AVAppResourceLoader.m in Sources */,
+				CD85069C12EBA9810037EFDA /* AVFrameDecoder.m in Sources */,
+				CD85069D12EBA9810037EFDA /* AVPNGFrameDecoder.m in Sources */,
+				CD85069E12EBA9810037EFDA /* AVQTAnimationFrameDecoder.m in Sources */,
+				CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */,
+				CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */,
+				CD8506A112EBA9810037EFDA /* movdata.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = StreetFighter_Prefix.pch;
+				INFOPLIST_FILE = "StreetFighter-Info.plist";
+				PRODUCT_NAME = StreetFighter;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = StreetFighter_Prefix.pch;
+				INFOPLIST_FILE = "StreetFighter-Info.plist";
+				PRODUCT_NAME = StreetFighter;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "StreetFighter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "StreetFighter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

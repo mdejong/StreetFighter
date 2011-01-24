@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* StreetFighterAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {593, 400}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 515}";
+		};
+	};
+	1D3623250D0F684500981E51 /* StreetFighterAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1424}}";
+			sepNavSelRange = "{2316, 0}";
+			sepNavVisRange = "{1748, 991}";
+			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* StreetFighter */ = {
+		activeExec = 0;
+		executables = (
+			CD85065212EB8C0A0037EFDA /* StreetFighter */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 602}}";
+			sepNavSelRange = "{579, 0}";
+			sepNavVisRange = "{0, 706}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {633, 3632}}";
+			sepNavSelRange = "{1797, 0}";
+			sepNavVisRange = "{1645, 346}";
+			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = CD85065212EB8C0A0037EFDA /* StreetFighter */;
+		activeSDKPreference = iphonesimulator4.2;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* StreetFighter */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* StreetFighter */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = CD85066212EB8C110037EFDA /* Code sense */;
+		executables = (
+			CD85065212EB8C0A0037EFDA /* StreetFighter */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					597,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 317522320;
+			PBXWorkspaceStateSaveDate = 317522320;
+		};
+		perUserProjectItems = {
+			CD85079512EBAFF00037EFDA /* PlistBookmark */ = CD85079512EBAFF00037EFDA /* PlistBookmark */;
+			CD85079612EBAFF00037EFDA /* PBXBookmark */ = CD85079612EBAFF00037EFDA /* PBXBookmark */;
+			CD85079712EBAFF00037EFDA /* PBXTextBookmark */ = CD85079712EBAFF00037EFDA /* PBXTextBookmark */;
+			CD85079812EBAFF00037EFDA /* PBXTextBookmark */ = CD85079812EBAFF00037EFDA /* PBXTextBookmark */;
+			CD85079912EBAFF00037EFDA /* PBXTextBookmark */ = CD85079912EBAFF00037EFDA /* PBXTextBookmark */;
+			CD85079A12EBAFF00037EFDA /* PBXTextBookmark */ = CD85079A12EBAFF00037EFDA /* PBXTextBookmark */;
+			CDE10D5E12EDEEF5002F071D /* PBXBookmark */ = CDE10D5E12EDEEF5002F071D /* PBXBookmark */;
+			CDE10DC612EE36DC002F071D /* PBXTextBookmark */ = CDE10DC612EE36DC002F071D /* PBXTextBookmark */;
+			CDE10DC712EE36DC002F071D /* PBXBookmark */ = CDE10DC712EE36DC002F071D /* PBXBookmark */;
+			CDE10DD012EE36DC002F071D /* PBXTextBookmark */ = CDE10DD012EE36DC002F071D /* PBXTextBookmark */;
+			CDE10DD112EE36DC002F071D /* PBXTextBookmark */ = CDE10DD112EE36DC002F071D /* PBXTextBookmark */;
+			CDE10E1012EE382E002F071D /* PBXBookmark */ = CDE10E1012EE382E002F071D /* PBXBookmark */;
+			CDE10E1112EE382E002F071D /* PBXTextBookmark */ = CDE10E1112EE382E002F071D /* PBXTextBookmark */;
+		};
+		sourceControlManager = CD85066112EB8C110037EFDA /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1107310486CEB800E47090 /* StreetFighter-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
+		};
+	};
+	CD85065212EB8C0A0037EFDA /* StreetFighter */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = StreetFighter;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	CD85066112EB8C110037EFDA /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CD85066212EB8C110037EFDA /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {530, 3104}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 557}";
+		};
+	};
+	CD85067C12EBA9810037EFDA /* AVAnimatorView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 2512}}";
+			sepNavSelRange = "{4475, 17}";
+			sepNavVisRange = "{3470, 1379}";
+		};
+	};
+	CD85067D12EBA9810037EFDA /* AVAnimatorView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1167, 23328}}";
+			sepNavSelRange = "{549, 0}";
+			sepNavVisRange = "{24407, 1107}";
+		};
+	};
+	CD85068B12EBA9810037EFDA /* movdata.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {775, 47184}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 793}";
+		};
+	};
+	CD85079512EBAFF00037EFDA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* StreetFighter-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/mo/Development/QTAnimationiPhone/StreetFighter/StreetFighter-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	CD85079612EBAFF00037EFDA /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */;
+	};
+	CD85079712EBAFF00037EFDA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* StreetFighterAppDelegate.h */;
+		name = "StreetFighterAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 515;
+		vrLoc = 0;
+	};
+	CD85079812EBAFF00037EFDA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */;
+		name = "AutoPropertyRelease.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 557;
+		vrLoc = 0;
+	};
+	CD85079912EBAFF00037EFDA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85068B12EBA9810037EFDA /* movdata.c */;
+		name = "movdata.c: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 793;
+		vrLoc = 0;
+	};
+	CD85079A12EBAFF00037EFDA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */;
+		name = "StreetFighterViewController.h: 12";
+		rLen = 0;
+		rLoc = 272;
+		rType = 0;
+		vrLen = 344;
+		vrLoc = 0;
+	};
+	CDE10D5E12EDEEF5002F071D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDD2640612EBDB9D000BF04E /* RyuStance.png */;
+	};
+	CDE10DC612EE36DC002F071D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
+		name = "StreetFighterViewController.m: 111";
+		rLen = 0;
+		rLoc = 2822;
+		rType = 0;
+		vrLen = 1166;
+		vrLoc = 2634;
+	};
+	CDE10DC712EE36DC002F071D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */;
+	};
+	CDE10DD012EE36DC002F071D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85067C12EBA9810037EFDA /* AVAnimatorView.h */;
+		name = "AVAnimatorView.h: 140";
+		rLen = 17;
+		rLoc = 4475;
+		rType = 0;
+		vrLen = 1379;
+		vrLoc = 3470;
+	};
+	CDE10DD112EE36DC002F071D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
+		name = "AVAnimatorView.m: 26";
+		rLen = 0;
+		rLoc = 549;
+		rType = 0;
+		vrLen = 1141;
+		vrLoc = 634;
+	};
+	CDE10E1012EE382E002F071D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */;
+	};
+	CDE10E1112EE382E002F071D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
+		name = "AVAnimatorView.m: 26";
+		rLen = 0;
+		rLoc = 549;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 24407;
+	};
+}
