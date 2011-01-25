@@ -16,11 +16,14 @@
 
 #import "AVAppResourceLoader.h"
 
+#import <AVFoundation/AVAudioPlayer.h>
+
 @implementation StreetFighterViewController
 
 @synthesize stanceView = m_stanceView;
 @synthesize kickView = m_kickView;
 @synthesize fireballView = m_fireballView;
+@synthesize bgAudioPlayer = m_bgAudioPlayer;
 
 - (void)makeIndexedAnimationView:(int)index
 {
@@ -72,20 +75,22 @@
   
   AVAnimatorView *animatorView = [AVAnimatorView aVAnimatorViewWithFrame:frame];
   
+  AVAppResourceLoader *resLoader = [AVAppResourceLoader aVAppResourceLoader];
+  resLoader.movieFilename = resourceName;
+
   if (index == 0) {
     self.stanceView = animatorView;
   } else if (index == 1) {
     self.kickView = animatorView;
   } else if (index == 2) {
     self.fireballView = animatorView;
+    resLoader.audioFilename = @"Hadoken.caf";
   } else {
     assert(0);
   }  
   
-  AVAppResourceLoader *resLoader = [AVAppResourceLoader aVAppResourceLoader];
-  resLoader.movieFilename = resourceName;
 	animatorView.resourceLoader = resLoader;
-  
+
   // Create decoder that will generate frames from Quicktime Animation encoded data
   
   AVQTAnimationFrameDecoder *frameDecoder = [AVQTAnimationFrameDecoder aVQTAnimationFrameDecoder];
@@ -129,6 +134,17 @@
                                              object:self.fireballView];  
 
   [self animatorAction:0];
+  
+  // Load background audio clip that plays all the time in a loop
+
+  NSString *resFilename = @"sf2_blanka_theme_mono_qlow_22k.caf";
+	NSString* resPath = [[NSBundle mainBundle] pathForResource:resFilename ofType:nil];
+  NSAssert(resPath, @"resPath is nil");
+  NSURL *url = [NSURL fileURLWithPath:resPath];
+  self.bgAudioPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil] autorelease];
+  [self.bgAudioPlayer prepareToPlay];
+  self.bgAudioPlayer.numberOfLoops = 1000;
+  [self.bgAudioPlayer play];
 }
 
 - (void)animatorAction:(int)action {
