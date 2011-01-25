@@ -11,7 +11,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1965, 1424}}";
 			sepNavSelRange = "{2316, 0}";
-			sepNavVisRange = "{1748, 991}";
+			sepNavVisRange = "{1748, 986}";
 			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
 		};
 	};
@@ -23,23 +23,23 @@
 	};
 	28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 627}}";
-			sepNavSelRange = "{599, 59}";
-			sepNavVisRange = "{0, 823}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 608}}";
+			sepNavSelRange = "{453, 31}";
+			sepNavVisRange = "{0, 995}";
 		};
 	};
 	28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 3984}}";
-			sepNavSelRange = "{2242, 0}";
-			sepNavVisRange = "{1644, 1168}";
+			sepNavIntBoundsRect = "{{0, 0}, {775, 4608}}";
+			sepNavSelRange = "{6998, 0}";
+			sepNavVisRange = "{6793, 420}";
 			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = CD85065212EB8C0A0037EFDA /* StreetFighter */;
-		activeSDKPreference = iphonesimulator4.2;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* StreetFighter */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* StreetFighter */,
@@ -73,12 +73,16 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 317607307;
-			PBXWorkspaceStateSaveDate = 317607307;
+			PBXPerProjectTemplateStateSaveDate = 317632343;
+			PBXWorkspaceStateSaveDate = 317632343;
 		};
 		perUserProjectItems = {
+			CD1BB26E12EEA67500A237B7 /* PBXBookmark */ = CD1BB26E12EEA67500A237B7 /* PBXBookmark */;
+			CD1BB29712EEA8D200A237B7 /* PBXBookmark */ = CD1BB29712EEA8D200A237B7 /* PBXBookmark */;
+			CD44510412EEAF970061F7CB /* PBXBookmark */ = CD44510412EEAF970061F7CB /* PBXBookmark */;
+			CD44510512EEAF970061F7CB /* PBXTextBookmark */ = CD44510512EEAF970061F7CB /* PBXTextBookmark */;
+			CD44513512EEB3650061F7CB /* PBXTextBookmark */ = CD44513512EEB3650061F7CB /* PBXTextBookmark */;
 			CD85079512EBAFF00037EFDA /* PlistBookmark */ = CD85079512EBAFF00037EFDA /* PlistBookmark */;
-			CD85079612EBAFF00037EFDA /* PBXBookmark */ = CD85079612EBAFF00037EFDA /* PBXBookmark */;
 			CD85079712EBAFF00037EFDA /* PBXTextBookmark */ = CD85079712EBAFF00037EFDA /* PBXTextBookmark */;
 			CD85079812EBAFF00037EFDA /* PBXTextBookmark */ = CD85079812EBAFF00037EFDA /* PBXTextBookmark */;
 			CD85079912EBAFF00037EFDA /* PBXTextBookmark */ = CD85079912EBAFF00037EFDA /* PBXTextBookmark */;
@@ -86,15 +90,7 @@
 			CDC21FDE12EE4C05005D648A /* PBXBookmark */ = CDC21FDE12EE4C05005D648A /* PBXBookmark */;
 			CDC21FDF12EE4C05005D648A /* PBXBookmark */ = CDC21FDF12EE4C05005D648A /* PBXBookmark */;
 			CDC21FE012EE4C05005D648A /* PBXTextBookmark */ = CDC21FE012EE4C05005D648A /* PBXTextBookmark */;
-			CDC2202912EE4D66005D648A /* PBXTextBookmark */ = CDC2202912EE4D66005D648A /* PBXTextBookmark */;
-			CDC2202A12EE4D66005D648A /* PBXTextBookmark */ = CDC2202A12EE4D66005D648A /* PBXTextBookmark */;
 			CDC2203312EE4D96005D648A /* PBXTextBookmark */ = CDC2203312EE4D96005D648A /* PBXTextBookmark */;
-			CDC2203412EE4D96005D648A /* PBXBookmark */ = CDC2203412EE4D96005D648A /* PBXBookmark */;
-			CDC2204412EE4DA2005D648A /* PBXBookmark */ = CDC2204412EE4DA2005D648A /* PBXBookmark */;
-			CDC2204512EE4DA2005D648A /* PBXTextBookmark */ = CDC2204512EE4DA2005D648A /* PBXTextBookmark */;
-			CDC2204612EE4DA2005D648A /* PBXTextBookmark */ = CDC2204612EE4DA2005D648A /* PBXTextBookmark */;
-			CDE10DC612EE36DC002F071D /* PBXTextBookmark */ = CDE10DC612EE36DC002F071D /* PBXTextBookmark */;
-			CDE10DD012EE36DC002F071D /* PBXTextBookmark */ = CDE10DD012EE36DC002F071D /* PBXTextBookmark */;
 		};
 		sourceControlManager = CD85066112EB8C110037EFDA /* Source Control */;
 		userBuildSettings = {
@@ -104,6 +100,35 @@
 		uiCtxt = {
 			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
 		};
+	};
+	CD1BB26E12EEA67500A237B7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDC21F9E12EE4A19005D648A /* Icon.png */;
+	};
+	CD1BB29712EEA8D200A237B7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */;
+	};
+	CD44510412EEAF970061F7CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */;
+	};
+	CD44510512EEAF970061F7CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
+		rLen = 0;
+		rLoc = 207;
+		rType = 1;
+	};
+	CD44513512EEB3650061F7CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
+		name = "StreetFighterViewController.m: 231";
+		rLen = 0;
+		rLoc = 6998;
+		rType = 0;
+		vrLen = 420;
+		vrLoc = 6793;
 	};
 	CD85065212EB8C0A0037EFDA /* StreetFighter */ = {
 		isa = PBXExecutable;
@@ -160,23 +185,24 @@
 	};
 	CD85067C12EBA9810037EFDA /* AVAnimatorView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 2512}}";
-			sepNavSelRange = "{4475, 17}";
-			sepNavVisRange = "{3470, 1379}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 2656}}";
+			sepNavSelRange = "{3261, 17}";
+			sepNavVisRange = "{2929, 1206}";
 		};
 	};
 	CD85067D12EBA9810037EFDA /* AVAnimatorView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1167, 23248}}";
-			sepNavSelRange = "{549, 0}";
-			sepNavVisRange = "{24407, 1147}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 22736}}";
+			sepNavSelRange = "{35433, 115}";
+			sepNavVisRange = "{34350, 1473}";
+			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
 		};
 	};
 	CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 1632}}";
-			sepNavSelRange = "{646, 202}";
-			sepNavVisRange = "{375, 984}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 1664}}";
+			sepNavSelRange = "{972, 0}";
+			sepNavVisRange = "{591, 1022}";
 			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
 		};
 	};
@@ -197,10 +223,6 @@
 		name = "/Users/mo/Development/QTAnimationiPhone/StreetFighter/StreetFighter-Info.plist";
 		rLen = 0;
 		rLoc = 9223372036854775808;
-	};
-	CD85079612EBAFF00037EFDA /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */;
 	};
 	CD85079712EBAFF00037EFDA /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -260,26 +282,6 @@
 		vrLen = 880;
 		vrLoc = 1755;
 	};
-	CDC2202912EE4D66005D648A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */;
-		name = "AVAppResourceLoader.m: 34";
-		rLen = 202;
-		rLoc = 646;
-		rType = 0;
-		vrLen = 944;
-		vrLoc = 376;
-	};
-	CDC2202A12EE4D66005D648A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
-		name = "AVAnimatorView.m: 26";
-		rLen = 0;
-		rLoc = 549;
-		rType = 0;
-		vrLen = 1147;
-		vrLoc = 24407;
-	};
 	CDC2203312EE4D96005D648A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
@@ -289,53 +291,5 @@
 		rType = 0;
 		vrLen = 550;
 		vrLoc = 0;
-	};
-	CDC2203412EE4D96005D648A /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CDC21F9E12EE4A19005D648A /* Icon.png */;
-	};
-	CDC2204412EE4DA2005D648A /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = CDC21F9E12EE4A19005D648A /* Icon.png */;
-	};
-	CDC2204512EE4DA2005D648A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */;
-		name = "AVAppResourceLoader.m: 34";
-		rLen = 202;
-		rLoc = 646;
-		rType = 0;
-		vrLen = 984;
-		vrLoc = 375;
-	};
-	CDC2204612EE4DA2005D648A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
-		name = "AVAnimatorView.m: 26";
-		rLen = 0;
-		rLoc = 549;
-		rType = 0;
-		vrLen = 1147;
-		vrLoc = 24407;
-	};
-	CDE10DC612EE36DC002F071D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
-		name = "StreetFighterViewController.m: 111";
-		rLen = 0;
-		rLoc = 2952;
-		rType = 0;
-		vrLen = 1166;
-		vrLoc = 2634;
-	};
-	CDE10DD012EE36DC002F071D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CD85067C12EBA9810037EFDA /* AVAnimatorView.h */;
-		name = "AVAnimatorView.h: 140";
-		rLen = 17;
-		rLoc = 4475;
-		rType = 0;
-		vrLen = 1379;
-		vrLoc = 3470;
 	};
 }

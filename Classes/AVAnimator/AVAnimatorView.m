@@ -18,7 +18,7 @@
 #import "AVResourceLoader.h"
 #import "AVFrameDecoder.h"
 
-//#define DEBUG_OUTPUT
+#define DEBUG_OUTPUT
 
 // util class AVAnimatorViewAudioPlayerDelegate declaration
 
@@ -625,6 +625,14 @@
     [self.avAudioPlayer prepareToPlay];
     [self.avAudioPlayer play];
     [self _setAudioSessionCategory];
+    
+    // In the case where the audio is shorter in duration than the movie frames,
+    // the audio player clock could start to report a zero time after normal
+    // decoding has begun. Switch over to the simulated clock until the
+    // video frames are done playing.
+
+    self.audioSimulatedStartTime = [NSDate date];
+    self.audioSimulatedNowTime = nil;    
   } else {
     self.audioSimulatedStartTime = [NSDate date];
     self.audioSimulatedNowTime = nil;
@@ -919,7 +927,11 @@
       currentTime = [self.audioSimulatedStartTime timeIntervalSinceDate:self.audioSimulatedNowTime] * -1.0;
     }
   } else {
-    currentTime = self->m_avAudioPlayer.currentTime;
+    if (useSimulatedClock) {
+      currentTime = [self->m_audioSimulatedStartTime timeIntervalSinceNow] * -1.0;      
+    } else {
+      currentTime = self->m_avAudioPlayer.currentTime;
+    }
   }
   
 	// Calculate the frame to the left of the time interval
@@ -1049,7 +1061,7 @@
 	NSTimeInterval currentTime;
 	NSUInteger frameNow;
   
-	[self _queryCurrentClockTimeAndCalcFrameNow:&currentTime frameNowPtr:&frameNow];	
+	[self _queryCurrentClockTimeAndCalcFrameNow:&currentTime frameNowPtr:&frameNow];
 	
 #ifdef DEBUG_OUTPUT
 	if (TRUE) {
@@ -1075,8 +1087,8 @@
   // to be invoked.
   
 	if (frameNow < self.currentFrame) {
-    NSUInteger secondToLastFrameIndex = self.animatorNumFrames - 1 - 1;    
-		frameNow = secondToLastFrameIndex;
+    useSimulatedClock = TRUE;
+    [self _queryCurrentClockTimeAndCalcFrameNow:&currentTime frameNowPtr:&frameNow];
 	}
   
 	NSUInteger nextFrameIndex = frameNow + 1;

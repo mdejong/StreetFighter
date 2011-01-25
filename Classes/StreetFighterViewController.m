@@ -21,9 +21,11 @@
 @implementation StreetFighterViewController
 
 @synthesize stanceView = m_stanceView;
+@synthesize punchView = m_punchView;
 @synthesize kickView = m_kickView;
 @synthesize fireballView = m_fireballView;
 @synthesize bgAudioPlayer = m_bgAudioPlayer;
+@synthesize fightPlayer = m_fightPlayer;
 
 - (void)makeIndexedAnimationView:(int)index
 {
@@ -46,12 +48,18 @@
     movieCenterX = 23;
     resourceName = @"RyuStance.mov";
   } else if (index == 1) {
+    // punch
+    movieWidth = 126;
+    movieHeight = 115;
+    movieCenterX = 25;
+    resourceName = @"RyuStrongPunch.mov";    
+  } else if (index == 2) {
     // kick
     movieWidth = 116;
     movieHeight = 115;
     movieCenterX = 50;
-    resourceName = @"RyuHighKick.mov";    
-  } else if (index == 2) {
+    resourceName = @"RyuHighKick.mov";
+  } else if (index == 3) {
     // Fireball
     movieWidth = 194;
     movieHeight = 119;
@@ -81,12 +89,14 @@
   if (index == 0) {
     self.stanceView = animatorView;
   } else if (index == 1) {
-    self.kickView = animatorView;
+    self.punchView = animatorView;
+    resLoader.audioFilename = @"Punch-fierce.wav";
   } else if (index == 2) {
-    self.fireballView = animatorView;
-    resLoader.audioFilename = @"Hadoken.caf";
+    self.kickView = animatorView;
+    resLoader.audioFilename = @"Kick.wav";
   } else {
-    assert(0);
+    self.fireballView = animatorView;
+    resLoader.audioFilename = @"Hadoken.wav";
   }  
   
 	animatorView.resourceLoader = resLoader;
@@ -113,16 +123,24 @@
   self.stanceView.hidden = TRUE;
 
   [self makeIndexedAnimationView:1];
-//  self.kickView.hidden = TRUE;
-
+  self.punchView.hidden = TRUE;
+  
   [self makeIndexedAnimationView:2];
-//  self.fireballView.hidden = TRUE;
+  self.kickView.hidden = TRUE;
+
+  [self makeIndexedAnimationView:3];
+  self.fireballView.hidden = TRUE;
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(animatorDoneNotification:) 
                                                name:AVAnimatorDoneNotification
                                              object:self.stanceView];    
 
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(animatorDoneNotification:) 
+                                               name:AVAnimatorDoneNotification
+                                             object:self.punchView];  
+  
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(animatorDoneNotification:) 
                                                name:AVAnimatorDoneNotification
@@ -136,6 +154,8 @@
   [self animatorAction:0];
   
   // Load background audio clip that plays all the time in a loop
+  
+  {
 
   NSString *resFilename = @"sf2_blanka_theme_mono_qlow_22k.caf";
 	NSString* resPath = [[NSBundle mainBundle] pathForResource:resFilename ofType:nil];
@@ -145,17 +165,34 @@
   [self.bgAudioPlayer prepareToPlay];
   self.bgAudioPlayer.numberOfLoops = 1000;
   [self.bgAudioPlayer play];
+    
+  }
+  
+  // Play "fight" clip once
+  
+  {
+
+  NSString *resFilename = @"Fight.wav";
+	NSString* resPath = [[NSBundle mainBundle] pathForResource:resFilename ofType:nil];
+  NSAssert(resPath, @"resPath is nil");
+  NSURL *url = [NSURL fileURLWithPath:resPath];
+  self.fightPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil] autorelease];
+  [self.fightPlayer prepareToPlay];
+  [self.fightPlayer play];
+    
+  }
 }
 
 - (void)animatorAction:(int)action {
-  // Stance, Kick, Fireball
+  // Stance, Punch, Kick, Fireball
   // Note that an action is ignored if an animation other than
   // the stance animation is currently running.
 
+  BOOL isPunchAnimating = [self.punchView isAnimatorRunning];
   BOOL isKickAnimating = [self.kickView isAnimatorRunning];
   BOOL isFireballAnimating = [self.fireballView isAnimatorRunning];
   
-  if (isKickAnimating || isFireballAnimating) {
+  if (isPunchAnimating || isKickAnimating || isFireballAnimating) {
     return;
   }
 
@@ -164,6 +201,7 @@
   }
   
   self.stanceView.hidden = TRUE;
+  self.punchView.hidden = TRUE;
   self.kickView.hidden = TRUE;
   self.fireballView.hidden = TRUE;
   
@@ -174,14 +212,18 @@
     [self.stanceView startAnimator];
   } else if (action == 1) {
     // Run kick animation
+    self.punchView.hidden = FALSE;
+    [self.punchView startAnimator];    
+  } else if (action == 2) {
+    // Run kick animation
     self.kickView.hidden = FALSE;
     [self.kickView startAnimator];
-  } else if (action == 2) {
+  } else if (action == 3) {
     // Run fireball animation
     self.fireballView.hidden = FALSE;
     [self.fireballView startAnimator];
   } else {
-//    assert(0);
+    assert(0);
   }
 }
 
@@ -190,17 +232,17 @@
   [self animatorAction:0];
 }
 
-- (IBAction) kickAction:(id)sender
+- (IBAction) punchAction:(id)sender
 {
   [self animatorAction:1];
 }
 
-- (IBAction) fireballAction:(id)sender
+- (IBAction) kickAction:(id)sender
 {
   [self animatorAction:2];
 }
 
-- (IBAction) dragonPunchAction:(id)sender
+- (IBAction) fireballAction:(id)sender
 {
   [self animatorAction:3];
 }

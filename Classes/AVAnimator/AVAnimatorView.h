@@ -107,6 +107,8 @@ typedef enum AVAnimatorPlayerState {
 	// Set to TRUE once the last frame has been decoded
   
 	BOOL m_decodedLastFrame;
+  
+	BOOL useSimulatedClock;
 }
 
 // public properties

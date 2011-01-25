@@ -15,6 +15,11 @@
 		2899E5220DE3E06400AC0155 /* StreetFighterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* StreetFighterViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* StreetFighterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */; };
+		CD1BB22E12EEA02600A237B7 /* Hadoken.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB22D12EEA02600A237B7 /* Hadoken.wav */; };
+		CD1BB23012EEA03400A237B7 /* Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB22F12EEA03400A237B7 /* Kick.wav */; };
+		CD1BB25A12EEA60C00A237B7 /* RyuStrongPunch.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */; };
+		CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */; };
+		CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB29312EEA88100A237B7 /* Fight.wav */; };
 		CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */; };
 		CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066A12EBA91D0037EFDA /* RyuFireball.mov */; };
 		CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */; };
@@ -34,7 +39,6 @@
 		CD85071D12EBAB910037EFDA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85071C12EBAB910037EFDA /* MediaPlayer.framework */; };
 		CDC21F9F12EE4A19005D648A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC21F9E12EE4A19005D648A /* Icon.png */; };
 		CDC21FA112EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf in Resources */ = {isa = PBXBuildFile; fileRef = CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */; };
-		CDC2200612EE4CAA005D648A /* Hadoken.caf in Resources */ = {isa = PBXBuildFile; fileRef = CDC2200512EE4CAA005D648A /* Hadoken.caf */; };
 		CDD2640712EBDB9D000BF04E /* RyuStance.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD2640612EBDB9D000BF04E /* RyuStance.png */; };
 		CDE10D7D12EE2A50002F071D /* RedButtonDownAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */; };
 		CDE10D7E12EE2A50002F071D /* RedButtonUpAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */; };
@@ -54,6 +58,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* StreetFighter_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreetFighter_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* StreetFighter-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StreetFighter-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		CD1BB22D12EEA02600A237B7 /* Hadoken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hadoken.wav; sourceTree = "<group>"; };
+		CD1BB22F12EEA03400A237B7 /* Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Kick.wav; sourceTree = "<group>"; };
+		CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuStrongPunch.mov; sourceTree = "<group>"; };
+		CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Punch-fierce.wav"; sourceTree = "<group>"; };
+		CD1BB29312EEA88100A237B7 /* Fight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fight.wav; sourceTree = "<group>"; };
 		CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SF2BlankaBackground.gif; sourceTree = "<group>"; };
 		CD85066A12EBA91D0037EFDA /* RyuFireball.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuFireball.mov; sourceTree = "<group>"; };
 		CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuHighKick.mov; sourceTree = "<group>"; };
@@ -83,7 +92,6 @@
 		CD85071C12EBAB910037EFDA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CDC21F9E12EE4A19005D648A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sf2_blanka_theme_mono_qlow_22k.caf; sourceTree = "<group>"; };
-		CDC2200512EE4CAA005D648A /* Hadoken.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hadoken.caf; sourceTree = "<group>"; };
 		CDD2640612EBDB9D000BF04E /* RyuStance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RyuStance.png; sourceTree = "<group>"; };
 		CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButtonDownAlpha.png; sourceTree = "<group>"; };
 		CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButtonUpAlpha.png; sourceTree = "<group>"; };
@@ -153,16 +161,20 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CDC2200512EE4CAA005D648A /* Hadoken.caf */,
 				CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */,
 				CDC21F9E12EE4A19005D648A /* Icon.png */,
 				CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */,
 				CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */,
 				CDD2640612EBDB9D000BF04E /* RyuStance.png */,
 				CD85066A12EBA91D0037EFDA /* RyuFireball.mov */,
+				CD1BB22D12EEA02600A237B7 /* Hadoken.wav */,
+				CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */,
+				CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */,
 				CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */,
+				CD1BB22F12EEA03400A237B7 /* Kick.wav */,
 				CD85066C12EBA91D0037EFDA /* RyuStance.mov */,
 				CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */,
+				CD1BB29312EEA88100A237B7 /* Fight.wav */,
 				2899E5210DE3E06400AC0155 /* StreetFighterViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* StreetFighter-Info.plist */,
@@ -268,7 +280,11 @@
 				CDE10D7E12EE2A50002F071D /* RedButtonUpAlpha.png in Resources */,
 				CDC21F9F12EE4A19005D648A /* Icon.png in Resources */,
 				CDC21FA112EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf in Resources */,
-				CDC2200612EE4CAA005D648A /* Hadoken.caf in Resources */,
+				CD1BB22E12EEA02600A237B7 /* Hadoken.wav in Resources */,
+				CD1BB23012EEA03400A237B7 /* Kick.wav in Resources */,
+				CD1BB25A12EEA60C00A237B7 /* RyuStrongPunch.mov in Resources */,
+				CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */,
+				CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +363,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};

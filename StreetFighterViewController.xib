@@ -65,7 +65,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Kick</string>
+						<string key="IBUIText">Punch</string>
 						<object class="NSFont" key="IBUIFont" id="757843182">
 							<string key="NSName">CourierNewPS-BoldMT</string>
 							<double key="NSSize">30</double>
@@ -89,7 +89,7 @@
 					</object>
 					<object class="IBUIButton" id="315400714">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">301</int>
 						<string key="NSFrame">{{235, 60}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -127,14 +127,14 @@
 					<object class="IBUILabel" id="767094569">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{313, 105}, {173, 57}}</string>
+						<string key="NSFrame">{{313, 110}, {173, 57}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Hadouken</string>
+						<string key="IBUIText">Kick</string>
 						<reference key="IBUIFont" ref="757843182"/>
 						<reference key="IBUITextColor" ref="617729072"/>
 						<reference key="IBUIHighlightedColor" ref="998593464"/>
@@ -144,8 +144,8 @@
 					</object>
 					<object class="IBUIButton" id="49754303">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{235, 115}, {72, 37}}</string>
+						<int key="NSvFlags">301</int>
+						<string key="NSFrame">{{235, 120}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -165,14 +165,14 @@
 					<object class="IBUILabel" id="401773636">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{314, 164}, {195, 57}}</string>
+						<string key="NSFrame">{{314, 171}, {195, 57}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Shoryuken</string>
+						<string key="IBUIText">Hadouken</string>
 						<reference key="IBUIFont" ref="757843182"/>
 						<reference key="IBUITextColor" ref="617729072"/>
 						<reference key="IBUIHighlightedColor" ref="998593464"/>
@@ -182,8 +182,8 @@
 					</object>
 					<object class="IBUIButton" id="972899819">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{235, 174}, {72, 37}}</string>
+						<int key="NSvFlags">301</int>
+						<string key="NSFrame">{{235, 181}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -231,29 +231,29 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">kickAction:</string>
-						<reference key="source" ref="315400714"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">1</int>
-					</object>
-					<int key="connectionID">18</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">fireballAction:</string>
 						<reference key="source" ref="49754303"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">1</int>
 					</object>
-					<int key="connectionID">19</int>
+					<int key="connectionID">23</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">dragonPunchAction:</string>
+						<string key="label">fireballAction:</string>
 						<reference key="source" ref="972899819"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">1</int>
 					</object>
-					<int key="connectionID">20</int>
+					<int key="connectionID">24</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">punchAction:</string>
+						<reference key="source" ref="315400714"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">25</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -403,7 +403,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">25</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -415,9 +415,9 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>dragonPunchAction:</string>
 							<string>fireballAction:</string>
 							<string>kickAction:</string>
+							<string>punchAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -430,22 +430,22 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>dragonPunchAction:</string>
 							<string>fireballAction:</string>
 							<string>kickAction:</string>
+							<string>punchAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">dragonPunchAction:</string>
-								<string key="candidateClassName">id</string>
-							</object>
 							<object class="IBActionInfo">
 								<string key="name">fireballAction:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">kickAction:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">punchAction:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -706,8 +706,8 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{206, 174}</string>
-				<string>{206, 174}</string>
+				<string>{72, 61}</string>
+				<string>{72, 61}</string>
 				<string>{520, 187}</string>
 			</object>
 		</object>
