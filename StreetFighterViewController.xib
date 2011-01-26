@@ -66,22 +66,22 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Punch</string>
-						<object class="NSFont" key="IBUIFont" id="757843182">
+						<object class="NSFont" key="IBUIFont" id="246843194">
 							<string key="NSName">CourierNewPS-BoldMT</string>
-							<double key="NSSize">30</double>
+							<double key="NSSize">33</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUITextColor" id="617729072">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
+						<object class="NSColor" key="IBUITextColor" id="926996951">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<object class="NSColor" key="IBUIHighlightedColor" id="998593464">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
-						<object class="NSColor" key="IBUIShadowColor" id="28085031">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+						<object class="NSColor" key="IBUIShadowColor" id="617729072">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
 						<string key="IBUIShadowOffset">{1, -1}</string>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -102,10 +102,7 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="926996951">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
+						<reference key="IBUIHighlightedTitleColor" ref="926996951"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
@@ -135,10 +132,10 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Kick</string>
-						<reference key="IBUIFont" ref="757843182"/>
-						<reference key="IBUITextColor" ref="617729072"/>
+						<reference key="IBUIFont" ref="246843194"/>
+						<reference key="IBUITextColor" ref="926996951"/>
 						<reference key="IBUIHighlightedColor" ref="998593464"/>
-						<reference key="IBUIShadowColor" ref="28085031"/>
+						<reference key="IBUIShadowColor" ref="617729072"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
 					</object>
@@ -159,7 +156,8 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="512011748"/>
-						<reference key="IBUISelectedImage" ref="58356183"/>
+						<reference key="IBUIHighlightedImage" ref="58356183"/>
+						<reference key="IBUISelectedImage" ref="876704048"/>
 						<reference key="IBUINormalImage" ref="876704048"/>
 					</object>
 					<object class="IBUILabel" id="401773636">
@@ -173,10 +171,10 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Hadouken</string>
-						<reference key="IBUIFont" ref="757843182"/>
-						<reference key="IBUITextColor" ref="617729072"/>
+						<reference key="IBUIFont" ref="246843194"/>
+						<reference key="IBUITextColor" ref="926996951"/>
 						<reference key="IBUIHighlightedColor" ref="998593464"/>
-						<reference key="IBUIShadowColor" ref="28085031"/>
+						<reference key="IBUIShadowColor" ref="617729072"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
 					</object>
@@ -197,7 +195,8 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="512011748"/>
-						<reference key="IBUISelectedImage" ref="58356183"/>
+						<reference key="IBUIHighlightedImage" ref="58356183"/>
+						<reference key="IBUISelectedImage" ref="876704048"/>
 						<reference key="IBUINormalImage" ref="876704048"/>
 					</object>
 				</object>

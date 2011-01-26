@@ -18,7 +18,10 @@
 #import "AVResourceLoader.h"
 #import "AVFrameDecoder.h"
 
-#define DEBUG_OUTPUT
+//#define DEBUG_OUTPUT
+
+#define REPEATED_FRAME_WARN_COUNT 10
+#define REPEATED_FRAME_DONE_COUNT 20
 
 // util class AVAnimatorViewAudioPlayerDelegate declaration
 
@@ -111,14 +114,19 @@
 @synthesize avAudioPlayer = m_avAudioPlayer;
 @synthesize audioSimulatedStartTime = m_audioSimulatedStartTime;
 @synthesize audioSimulatedNowTime = m_audioSimulatedNowTime;
+@synthesize audioPlayerFallbackStartTime = m_audioPlayerFallbackStartTime;
+@synthesize audioPlayerFallbackNowTime = m_audioPlayerFallbackNowTime;
 @synthesize state = m_state;
+@synthesize pauseTimeInterval = m_pauseTimeInterval;
 @synthesize animatorMaxClockTime = m_animatorMaxClockTime;
 @synthesize animatorDecodeTimerInterval = m_animatorDecodeTimerInterval;
 @synthesize renderSize = m_renderSize;
 @synthesize isReadyToAnimate = m_isReadyToAnimate;
 @synthesize startAnimatorWhenReady = m_startAnimatorWhenReady;
 @synthesize decodedSecondFrame = m_decodedSecondFrame;
+@synthesize ignoreRepeatedFirstFrameReport = m_ignoreRepeatedFirstFrameReport;
 @synthesize decodedLastFrame = m_decodedLastFrame;
+@synthesize reportTimeFromFallbackClock;
 
 - (void) dealloc {
 	// This object can't be deallocated while animating, this could
@@ -173,6 +181,8 @@
   }
   self.audioSimulatedStartTime = nil;
   self.audioSimulatedNowTime = nil;
+  self.audioPlayerFallbackStartTime = nil;
+  self.audioPlayerFallbackNowTime = nil;
   
   [super dealloc];
 }
@@ -482,6 +492,11 @@
 	self.animatorNumFrames = [self.frameDecoder numFrames];
 	assert(self.animatorNumFrames >= 2);
   
+  // FIXME: is it possible for the UIView to be created but not yet added to the
+  // containing window when this method is invoked?
+  
+  NSAssert(self.renderSize.width > 0, @"animator view not added to containing view");
+  
 	self.state = READY;
 	self.isReadyToAnimate = TRUE;
   
@@ -626,16 +641,21 @@
     [self.avAudioPlayer play];
     [self _setAudioSessionCategory];
     
-    // In the case where the audio is shorter in duration than the movie frames,
-    // the audio player clock could start to report a zero time after normal
-    // decoding has begun. Switch over to the simulated clock until the
-    // video frames are done playing.
+    // Fallback start time is saved in case avAudioPlayer runs short
+    // and begins to report a zero time while there are still
+    // animation frames that need to be displayed.
 
-    self.audioSimulatedStartTime = [NSDate date];
-    self.audioSimulatedNowTime = nil;    
-  } else {
-    self.audioSimulatedStartTime = [NSDate date];
+    NSDate *startTimeRightNow = [NSDate date];
+    self.audioPlayerFallbackStartTime = startTimeRightNow;
+    self.audioSimulatedStartTime = nil;
     self.audioSimulatedNowTime = nil;
+//    NSLog(@"assigned start time : %@" , [startTimeRightNow description]);
+  } else {
+    NSDate *startTimeRightNow = [NSDate date];
+    self.audioPlayerFallbackStartTime = startTimeRightNow;
+    self.audioSimulatedStartTime = startTimeRightNow;
+    self.audioSimulatedNowTime = nil;
+//    NSLog(@"assigned start time : %@" , [startTimeRightNow description]);
   }
 
   // Turn off the event idle timer so that the screen is not dimmed while playing
@@ -691,6 +711,7 @@
   
   self.decodedSecondFrame = FALSE;
   self.decodedLastFrame = FALSE;
+  self.reportTimeFromFallbackClock = FALSE;
   
 	// Amount of time that will elapse between the expected time that a frame
 	// will be displayed and the time when the next frame decode operation
@@ -817,32 +838,34 @@
 
 - (void) pause
 {
-  // FIXME: What state could this be in other than animating? Could be some tricky race conditions
-  // here related to where the event comes from. Also note that an interruption can cause a pause
-  // action, it can't be ignored from an interruption since that has to work!
-  
-  //	NSAssert(state == ANIMATING, @"pause only valid while animating");
-  
   if (self.state != ANIMATING) {
     // Ignore since an odd race condition could happen when window is put away or when
     // incoming call triggers this method.
     return;
   }
+
+  // The next decode and display operations need to be canceled so that no additional
+  // screen updates happen once pause has been invoked. This is important when the
+  // system audio interrupt is the source of the pause action.
   
 	[self.animatorDecodeTimer invalidate];
 	self.animatorDecodeTimer = nil;
   
-  // Let diplay callback fire, since we don't want to drop a frame
-	//[self.animatorDisplayTimer invalidate];
-	//self.animatorDisplayTimer = nil;
+	[self.animatorDisplayTimer invalidate];
+	self.animatorDisplayTimer = nil;
   
   if (self.avAudioPlayer) {
     [self.avAudioPlayer pause];
   } else {
-    // Save "now" as audioSimulatedNowTime so that new start
-    // time can be computed when unpaused.
-    self.audioSimulatedNowTime = [NSDate date];
-  }  
+    // Save the simulated clock time interval when paused
+    NSTimeInterval offset;
+    if (self.audioSimulatedNowTime == nil) {
+      offset = [self.audioSimulatedStartTime timeIntervalSinceNow] * -1.0;
+    } else {
+      offset = [self.audioSimulatedStartTime timeIntervalSinceDate:self.audioSimulatedNowTime] * -1.0;
+    }
+    self.pauseTimeInterval = offset;    
+  }
   
 	self.repeatedFrameCount = 0;
   
@@ -862,30 +885,66 @@
   
 	self.state = ANIMATING;
   
+  // Reset the start time so that simulated start time = (now - pauseTimeInterval)
+  
   if (self.avAudioPlayer) {
-    [self.avAudioPlayer prepareToPlay];
-    [self.avAudioPlayer play];
+    NSTimeInterval offset = self.avAudioPlayer.currentTime;
+    self.audioPlayerFallbackStartTime = [NSDate dateWithTimeIntervalSinceNow:-offset];
   } else {
-    NSAssert(self.audioSimulatedNowTime != nil, @"audioSimulatedNowTime is nil");
-    NSTimeInterval offset = [self.audioSimulatedStartTime timeIntervalSinceDate:self.audioSimulatedNowTime] * -1.0;
-    self.audioSimulatedStartTime = [NSDate dateWithTimeIntervalSinceNow:-offset];
-    self.audioSimulatedNowTime = nil;
+    NSTimeInterval offset = self.pauseTimeInterval;
+    NSDate *startBefore = [NSDate dateWithTimeIntervalSinceNow:-offset];
+    self.audioPlayerFallbackStartTime = startBefore;
+    self.audioSimulatedStartTime = startBefore;
+    self.pauseTimeInterval = 0.0;
   }
   
-  NSAssert(self.animatorDecodeTimer == nil, @"animatorDecodeTimer not nil");
-  
-	self.animatorDecodeTimer = [NSTimer timerWithTimeInterval: self.animatorDecodeTimerInterval
-                                                      target: self
-                                                    selector: @selector(_animatorDecodeFrameCallback:)
-                                                    userInfo: NULL
-                                                     repeats: FALSE];
-  
-	[[NSRunLoop currentRunLoop] addTimer: self.animatorDecodeTimer forMode: NSDefaultRunLoopMode];
-  
-	// Send notification to object(s) that regestered interest in the unpause action
-  
-	[[NSNotificationCenter defaultCenter] postNotificationName:AVAnimatorDidUnpauseNotification
-                                                      object:self];	
+  if (self.decodedSecondFrame == FALSE) {
+    // Pause was invoked before the clock started reporting valid times. Unpause and then start over.
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AVAnimatorDidUnpauseNotification
+                                                        object:self];
+
+    [self stopAnimator];
+    [self startAnimator];
+  } else {
+    // Schedule a display callback right away, the pause could have have been delivered between a decode
+    // and a display operation, so a pending display needs to be done ASAP. If there was no pending
+    // display, then the display operation will do nothing.
+    
+    NSAssert(self.animatorDisplayTimer == nil, @"animatorDecodeTimer not nil");
+    
+    NSTimeInterval displayDelta = 0.001;
+    
+    self.animatorDisplayTimer = [NSTimer timerWithTimeInterval: displayDelta
+                                                        target: self
+                                                      selector: @selector(_animatorDisplayFrameCallback:)
+                                                      userInfo: NULL
+                                                       repeats: FALSE];
+    
+    [[NSRunLoop currentRunLoop] addTimer: self.animatorDisplayTimer forMode: NSDefaultRunLoopMode];  
+    
+    // Schedule a decode operation
+    
+    NSAssert(self.animatorDecodeTimer == nil, @"animatorDecodeTimer not nil");
+    
+    self.animatorDecodeTimer = [NSTimer timerWithTimeInterval: self.animatorDecodeTimerInterval
+                                                       target: self
+                                                     selector: @selector(_animatorDecodeFrameCallback:)
+                                                     userInfo: NULL
+                                                      repeats: FALSE];
+    
+    [[NSRunLoop currentRunLoop] addTimer: self.animatorDecodeTimer forMode: NSDefaultRunLoopMode];
+    
+    // Kick off the audio clock
+    
+    if (self.avAudioPlayer) {
+      [self.avAudioPlayer prepareToPlay];
+      [self.avAudioPlayer play];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AVAnimatorDidUnpauseNotification
+                                                        object:self];
+  }
 }
 
 - (void) rewind
@@ -921,16 +980,25 @@
     // method is invoked to display the initial keyframe. In this case, it is fine to
     // just report 0.0 as the current time.
 
-    if (self->m_audioSimulatedNowTime == nil) {
-      currentTime = [self->m_audioSimulatedStartTime timeIntervalSinceNow] * -1.0;
+    if (reportTimeFromFallbackClock) {
+      NSAssert(self.audioPlayerFallbackStartTime, @"audioPlayerFallbackStartTime");
+      if (self.audioPlayerFallbackNowTime == nil) {
+        currentTime = [self.audioPlayerFallbackStartTime timeIntervalSinceNow] * -1.0;
+      } else {
+        currentTime = [self.audioPlayerFallbackStartTime timeIntervalSinceDate:self.audioPlayerFallbackNowTime] * -1.0;
+      }
+    } else if (self.audioSimulatedNowTime == nil) {
+      currentTime = [self.audioSimulatedStartTime timeIntervalSinceNow] * -1.0;
     } else {
+      NSAssert(self.audioSimulatedStartTime, @"audioSimulatedStartTime");
       currentTime = [self.audioSimulatedStartTime timeIntervalSinceDate:self.audioSimulatedNowTime] * -1.0;
     }
   } else {
-    if (useSimulatedClock) {
-      currentTime = [self->m_audioSimulatedStartTime timeIntervalSinceNow] * -1.0;      
+    if (reportTimeFromFallbackClock) {
+      NSAssert(self.audioPlayerFallbackStartTime, @"audioPlayerFallbackStartTime");
+      currentTime = [self.audioPlayerFallbackStartTime timeIntervalSinceNow] * -1.0;
     } else {
-      currentTime = self->m_avAudioPlayer.currentTime;
+      currentTime = self.avAudioPlayer.currentTime;
     }
   }
   
@@ -945,6 +1013,10 @@
 	// it must always be one less than the largest frame.
   
 	NSUInteger frameNow;
+  
+  if (isnan(currentTime)) {
+    assert(0);
+  }
   
 	if (currentTime <= 0.0) {
 		currentTime = 0.0;
@@ -1008,12 +1080,12 @@
     
     self.repeatedFrameCount = self.repeatedFrameCount + 1;
     
-    if (self.repeatedFrameCount > 20) {
+    if (self.repeatedFrameCount >= REPEATED_FRAME_DONE_COUNT) {
       NSLog(@"%@", [NSString stringWithFormat:@"doneAnimator because audio time not progressing in initial frame"]);
       
       [self doneAnimator];
       return;
-    } else if (self.repeatedFrameCount > 10) {
+    } else if (self.repeatedFrameCount >= REPEATED_FRAME_WARN_COUNT) {
       // Audio clock has stopped reporting progression of time
       NSLog(@"%@", [NSString stringWithFormat:@"audio time not progressing: %f", currentTime]);
     }
@@ -1037,8 +1109,17 @@
 		// schedule the callbacks.
     
     self.decodedSecondFrame = TRUE;
-    
+    self.ignoreRepeatedFirstFrameReport = TRUE;    
     self.repeatedFrameCount = 0;
+    
+    // Sync the fallback clock time to the audio clock time.
+    
+    if (self.avAudioPlayer != nil) {
+      NSTimeInterval offset = currentTime * -1.0;
+      NSDate *adjStartTime = [NSDate dateWithTimeIntervalSinceNow:offset];
+      self.audioPlayerFallbackStartTime = adjStartTime;
+//      NSTimeInterval estTime = [self->m_audioSimulatedStartTime timeIntervalSinceNow] * -1.0;
+    }
     
 		[self _animatorDecodeFrameCallback:nil];
     
@@ -1061,7 +1142,7 @@
 	NSTimeInterval currentTime;
 	NSUInteger frameNow;
   
-	[self _queryCurrentClockTimeAndCalcFrameNow:&currentTime frameNowPtr:&frameNow];
+	[self _queryCurrentClockTimeAndCalcFrameNow:&currentTime frameNowPtr:&frameNow];	
 	
 #ifdef DEBUG_OUTPUT
 	if (TRUE) {
@@ -1081,13 +1162,20 @@
 		NSLog(@"%@", formatted);
 	}
 #endif
- 
+
+  // Check that initial time report check has passed by the time we get into decode callbacks.
+  
+  BOOL decodedSecondFrame = self.decodedSecondFrame;
+  NSAssert(decodedSecondFrame, @"decodedSecondFrame");
+  
 	// If the audio clock is reporting nonsense results, like a
-  // zero time after the decode callback has started
-  // to be invoked.
+  // zero time after the decode callback has started,
+  // then switch over to the fallback clock.
+  // This can happen when the recorded audio clip is shorter
+  // than the time it takes to display all the frames.
   
 	if (frameNow < self.currentFrame) {
-    useSimulatedClock = TRUE;
+    reportTimeFromFallbackClock = TRUE;
     [self _queryCurrentClockTimeAndCalcFrameNow:&currentTime frameNowPtr:&frameNow];
 	}
   
@@ -1098,32 +1186,39 @@
 	BOOL isAudioClockStuck = FALSE;
 	BOOL shouldScheduleDisplayCallback = TRUE;
 	BOOL shouldScheduleDecodeCallback = TRUE;
-	BOOL shouldScheduleLastFrameCallback = FALSE;  
+	BOOL shouldScheduleLastFrameCallback = FALSE;
   
-  if ((frameNow > 0) && (frameNow == self.currentFrame)) {
+  if ((self.ignoreRepeatedFirstFrameReport == FALSE) && (frameNow == self.currentFrame)) {
     // The audio clock must be stuck, because there is no change in
 		// the frame to display. This is basically a no-op, schedule
 		// another frame decode operation but don't schedule a
 		// frame display operation. Because the clock is stuck, we
 		// don't know exactly when to schedule the callback for
 		// based on frameNow, so schedule it one frame duration from now.
+    // In the case where this is the first decode callback after the
+    // initial frame was shown, record one repeat but don't consider
+    // the clock stuck. This repeatedFrameCount will be reset to
+    // zero in the next decode callback if time is progressing normally.
     
-		isAudioClockStuck = TRUE;
-		shouldScheduleDisplayCallback = FALSE;
-    
+    isAudioClockStuck = TRUE;
+    shouldScheduleDisplayCallback = FALSE;
     self.repeatedFrameCount = self.repeatedFrameCount + 1;
   } else {
     self.repeatedFrameCount = 0;
   }
   
+  // The decode callback should ignore the repeated initial frame once.
+  
+  self.ignoreRepeatedFirstFrameReport = FALSE;    
+  
   self.currentFrame = frameNow;
   
-  if (self.repeatedFrameCount > 20) {
+  if (self.repeatedFrameCount >= REPEATED_FRAME_DONE_COUNT) {
     NSLog(@"%@", [NSString stringWithFormat:@"doneAnimator because audio time not progressing"]);
     
     [self doneAnimator];
     return;
-  } else if (self.repeatedFrameCount > 10) {
+  } else if (self.repeatedFrameCount >= REPEATED_FRAME_WARN_COUNT) {
     // Audio clock has stopped reporting progression of time
     NSLog(@"%@", [NSString stringWithFormat:@"audio time not progressing: %f", currentTime]);
   }
@@ -1315,17 +1410,16 @@
 	// the minimium amount of work to paint the display
 	// with the contents of a UIImage. No objects are
 	// allocated in this callback and no objects
-	// are released. In the case of a duplicate
-	// frame, where the next frame is the exact same
-	// data as the previous frame, the render callback
-	// will not change the value of nextFrame so
-	// this method can just avoid updating the display.
+	// are released. In the case of a duplicate frame
+	// where the next frame is the exact same data as
+	// the current frame, don't change self.image
+	// so that no repaint is done.
   
 	UIImage *currentImage = self.image;
-	self.prevFrame = currentImage;
-  
-	if (currentImage != self->m_nextFrame) {
-		self.image = self->m_nextFrame;
+	UIImage *nextImage = self->m_nextFrame;
+	if ((nextImage != nil) && (currentImage != nextImage)) {
+		self.prevFrame = currentImage;
+		self.image = nextImage;
 	}
   
   // Test release of frame now, instead of in next decode callback. Seems
@@ -1348,7 +1442,12 @@
 		return;
 	
 	self.currentFrame = frame - 1;
-	[self _animatorDecodeNextFrame];
+	BOOL decodedFrame = [self _animatorDecodeNextFrame];
+	// The first frame is always a keyframe, so assume that the
+	// decode always works for the first frame.
+	if (frame == 0) {
+	  NSAssert(decodedFrame == TRUE, @"_animatorDecodeNextFrame did not decode initial frame");
+	}
   // _animatorDisplayFrameCallback expects currentFrame
   // to be set to the frame index just before the one
   // to be displayed, so invoke and then set currentFrame.

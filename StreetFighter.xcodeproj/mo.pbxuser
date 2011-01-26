@@ -73,24 +73,24 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 317632343;
-			PBXWorkspaceStateSaveDate = 317632343;
+			PBXPerProjectTemplateStateSaveDate = 317763849;
+			PBXWorkspaceStateSaveDate = 317763849;
 		};
 		perUserProjectItems = {
+			CD1680A912EFC5D900875035 /* PBXTextBookmark */ = CD1680A912EFC5D900875035 /* PBXTextBookmark */;
 			CD1BB26E12EEA67500A237B7 /* PBXBookmark */ = CD1BB26E12EEA67500A237B7 /* PBXBookmark */;
 			CD1BB29712EEA8D200A237B7 /* PBXBookmark */ = CD1BB29712EEA8D200A237B7 /* PBXBookmark */;
 			CD44510412EEAF970061F7CB /* PBXBookmark */ = CD44510412EEAF970061F7CB /* PBXBookmark */;
-			CD44510512EEAF970061F7CB /* PBXTextBookmark */ = CD44510512EEAF970061F7CB /* PBXTextBookmark */;
-			CD44513512EEB3650061F7CB /* PBXTextBookmark */ = CD44513512EEB3650061F7CB /* PBXTextBookmark */;
 			CD85079512EBAFF00037EFDA /* PlistBookmark */ = CD85079512EBAFF00037EFDA /* PlistBookmark */;
 			CD85079712EBAFF00037EFDA /* PBXTextBookmark */ = CD85079712EBAFF00037EFDA /* PBXTextBookmark */;
 			CD85079812EBAFF00037EFDA /* PBXTextBookmark */ = CD85079812EBAFF00037EFDA /* PBXTextBookmark */;
 			CD85079912EBAFF00037EFDA /* PBXTextBookmark */ = CD85079912EBAFF00037EFDA /* PBXTextBookmark */;
 			CD85079A12EBAFF00037EFDA /* PBXTextBookmark */ = CD85079A12EBAFF00037EFDA /* PBXTextBookmark */;
+			CDA2BBA212F0B06B00F299B4 /* PBXTextBookmark */ = CDA2BBA212F0B06B00F299B4 /* PBXTextBookmark */;
+			CDA2BBC712F0B16600F299B4 /* PBXTextBookmark */ = CDA2BBC712F0B16600F299B4 /* PBXTextBookmark */;
 			CDC21FDE12EE4C05005D648A /* PBXBookmark */ = CDC21FDE12EE4C05005D648A /* PBXBookmark */;
 			CDC21FDF12EE4C05005D648A /* PBXBookmark */ = CDC21FDF12EE4C05005D648A /* PBXBookmark */;
 			CDC21FE012EE4C05005D648A /* PBXTextBookmark */ = CDC21FE012EE4C05005D648A /* PBXTextBookmark */;
-			CDC2203312EE4D96005D648A /* PBXTextBookmark */ = CDC2203312EE4D96005D648A /* PBXTextBookmark */;
 		};
 		sourceControlManager = CD85066112EB8C110037EFDA /* Source Control */;
 		userBuildSettings = {
@@ -100,6 +100,16 @@
 		uiCtxt = {
 			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
 		};
+	};
+	CD1680A912EFC5D900875035 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
+		name = "StreetFighterViewController.m: 231";
+		rLen = 0;
+		rLoc = 6998;
+		rType = 0;
+		vrLen = 420;
+		vrLoc = 6793;
 	};
 	CD1BB26E12EEA67500A237B7 /* PBXBookmark */ = {
 		isa = PBXBookmark;
@@ -112,23 +122,6 @@
 	CD44510412EEAF970061F7CB /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */;
-	};
-	CD44510512EEAF970061F7CB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
-		rLen = 0;
-		rLoc = 207;
-		rType = 1;
-	};
-	CD44513512EEB3650061F7CB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */;
-		name = "StreetFighterViewController.m: 231";
-		rLen = 0;
-		rLoc = 6998;
-		rType = 0;
-		vrLen = 420;
-		vrLoc = 6793;
 	};
 	CD85065212EB8C0A0037EFDA /* StreetFighter */ = {
 		isa = PBXExecutable;
@@ -185,17 +178,18 @@
 	};
 	CD85067C12EBA9810037EFDA /* AVAnimatorView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 2656}}";
-			sepNavSelRange = "{3261, 17}";
-			sepNavVisRange = "{2929, 1206}";
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 2496}}";
+			sepNavSelRange = "{2487, 0}";
+			sepNavVisRange = "{1957, 1091}";
+			sepNavWindowFrame = "{{16, 17}, {1212, 755}}";
 		};
 	};
 	CD85067D12EBA9810037EFDA /* AVAnimatorView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1153, 22736}}";
-			sepNavSelRange = "{35433, 115}";
-			sepNavVisRange = "{34350, 1473}";
-			sepNavWindowFrame = "{{15, 18}, {1212, 755}}";
+			sepNavIntBoundsRect = "{{0, 0}, {775, 24864}}";
+			sepNavSelRange = "{345, 0}";
+			sepNavVisRange = "{141, 511}";
+			sepNavWindowFrame = "{{15, 17}, {1212, 755}}";
 		};
 	};
 	CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */ = {
@@ -264,6 +258,26 @@
 		vrLen = 344;
 		vrLoc = 0;
 	};
+	CDA2BBA212F0B06B00F299B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
+		name = "AVAnimatorView.m: 18";
+		rLen = 0;
+		rLoc = 341;
+		rType = 0;
+		vrLen = 511;
+		vrLoc = 141;
+	};
+	CDA2BBC712F0B16600F299B4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
+		name = "AVAnimatorView.m: 18";
+		rLen = 0;
+		rLoc = 345;
+		rType = 0;
+		vrLen = 511;
+		vrLoc = 141;
+	};
 	CDC21FDE12EE4C05005D648A /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */;
@@ -281,15 +295,5 @@
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 1755;
-	};
-	CDC2203312EE4D96005D648A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */;
-		name = "AVAnimatorView.m: 5";
-		rLen = 0;
-		rLoc = 69;
-		rType = 0;
-		vrLen = 550;
-		vrLoc = 0;
 	};
 }
