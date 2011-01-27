@@ -20,6 +20,7 @@
 		CD1BB25A12EEA60C00A237B7 /* RyuStrongPunch.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */; };
 		CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */; };
 		CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB29312EEA88100A237B7 /* Fight.wav */; };
+		CD6EF42912F0EDF20045659F /* AVAnimatorMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */; };
 		CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */; };
 		CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066A12EBA91D0037EFDA /* RyuFireball.mov */; };
 		CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */; };
@@ -63,6 +64,10 @@
 		CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuStrongPunch.mov; sourceTree = "<group>"; };
 		CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Punch-fierce.wav"; sourceTree = "<group>"; };
 		CD1BB29312EEA88100A237B7 /* Fight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fight.wav; sourceTree = "<group>"; };
+		CD6EF42512F0EDF20045659F /* AVAnimatorMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMedia.h; sourceTree = "<group>"; };
+		CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAnimatorMedia.m; sourceTree = "<group>"; };
+		CD6EF42712F0EDF20045659F /* AVAnimatorMediaPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMediaPrivate.h; sourceTree = "<group>"; };
+		CD6EF42812F0EDF20045659F /* AVAnimatorMediaRendererProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMediaRendererProtocol.h; sourceTree = "<group>"; };
 		CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SF2BlankaBackground.gif; sourceTree = "<group>"; };
 		CD85066A12EBA91D0037EFDA /* RyuFireball.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuFireball.mov; sourceTree = "<group>"; };
 		CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuHighKick.mov; sourceTree = "<group>"; };
@@ -202,8 +207,12 @@
 				CD85068B12EBA9810037EFDA /* movdata.c */,
 				CD85068C12EBA9810037EFDA /* movdata.h */,
 				CD85067C12EBA9810037EFDA /* AVAnimatorView.h */,
-				CD85067D12EBA9810037EFDA /* AVAnimatorView.m */,
 				CD85067E12EBA9810037EFDA /* AVAnimatorViewPrivate.h */,
+				CD85067D12EBA9810037EFDA /* AVAnimatorView.m */,
+				CD6EF42512F0EDF20045659F /* AVAnimatorMedia.h */,
+				CD6EF42712F0EDF20045659F /* AVAnimatorMediaPrivate.h */,
+				CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */,
+				CD6EF42812F0EDF20045659F /* AVAnimatorMediaRendererProtocol.h */,
 				CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */,
 				CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */,
 				CD85068112EBA9810037EFDA /* AVFrameDecoder.h */,
@@ -307,6 +316,7 @@
 				CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */,
 				CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */,
 				CD8506A112EBA9810037EFDA /* movdata.c in Sources */,
+				CD6EF42912F0EDF20045659F /* AVAnimatorMedia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

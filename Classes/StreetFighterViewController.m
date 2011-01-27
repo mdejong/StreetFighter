@@ -12,6 +12,8 @@
 
 #import "AVAnimatorView.h"
 
+#import "AVAnimatorMedia.h"
+
 #import "AVQTAnimationFrameDecoder.h"
 
 #import "AVAppResourceLoader.h"
@@ -20,14 +22,15 @@
 
 @implementation StreetFighterViewController
 
-@synthesize stanceView = m_stanceView;
-@synthesize punchView = m_punchView;
-@synthesize kickView = m_kickView;
-@synthesize fireballView = m_fireballView;
+@synthesize renderView = m_renderView;
+@synthesize stanceMedia = m_stanceMedia;
+@synthesize punchMedia = m_punchMedia;
+@synthesize kickMedia = m_kickMedia;
+@synthesize fireballMedia = m_fireballMedia;
 @synthesize bgAudioPlayer = m_bgAudioPlayer;
 @synthesize fightPlayer = m_fightPlayer;
 
-- (void)makeIndexedAnimationView:(int)index
+- (void)makeIndexedAnimationMedia:(int)index
 {
   // The animator view is placed inside the containerView so that the
   // bottom is aligned.
@@ -81,77 +84,63 @@
   
   CGRect frame = CGRectMake(viewX, viewY, viewWidth, viewHeight);
   
-  AVAnimatorView *animatorView = [AVAnimatorView aVAnimatorViewWithFrame:frame];
+  AVAnimatorMedia *media = [AVAnimatorMedia aVAnimatorMedia];
   
   AVAppResourceLoader *resLoader = [AVAppResourceLoader aVAppResourceLoader];
   resLoader.movieFilename = resourceName;
 
   if (index == 0) {
-    self.stanceView = animatorView;
+    self->stanceFrame = frame;
+    self.stanceMedia = media;
   } else if (index == 1) {
-    self.punchView = animatorView;
+    self->punchFrame = frame;
+    self.punchMedia = media;
     resLoader.audioFilename = @"Punch-fierce.wav";
   } else if (index == 2) {
-    self.kickView = animatorView;
+    self->kickFrame = frame;
+    self.kickMedia = media;
     resLoader.audioFilename = @"Kick.wav";
   } else {
-    self.fireballView = animatorView;
+    self->fireballFrame = frame;
+    self.fireballMedia = media;
     resLoader.audioFilename = @"Hadoken.wav";
   }  
   
-	animatorView.resourceLoader = resLoader;
+	media.resourceLoader = resLoader;
 
   // Create decoder that will generate frames from Quicktime Animation encoded data
   
   AVQTAnimationFrameDecoder *frameDecoder = [AVQTAnimationFrameDecoder aVQTAnimationFrameDecoder];
-	animatorView.frameDecoder = frameDecoder;
+	media.frameDecoder = frameDecoder;
   
-  //	animatorView.animatorFrameDuration = 1.0;
-  animatorView.animatorFrameDuration = 1.0 / 10.0;
+  //	media.animatorFrameDuration = 1.0;
+  media.animatorFrameDuration = AVAnimator10FPS;
   
-//	animatorView.animatorRepeatCount = 3;
-  
-  [self.view addSubview:animatorView];
-  
-  [animatorView prepareToAnimate];
+  [media prepareToAnimate];
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  [self makeIndexedAnimationView:0];
-  self.stanceView.hidden = TRUE;
+  [self makeIndexedAnimationMedia:0];
 
-  [self makeIndexedAnimationView:1];
-  self.punchView.hidden = TRUE;
+  [self makeIndexedAnimationMedia:1];
   
-  [self makeIndexedAnimationView:2];
-  self.kickView.hidden = TRUE;
+  [self makeIndexedAnimationMedia:2];
 
-  [self makeIndexedAnimationView:3];
-  self.fireballView.hidden = TRUE;
+  [self makeIndexedAnimationMedia:3];
+
+  self.renderView = [AVAnimatorView aVAnimatorViewWithFrame:stanceFrame];
+  [self.view addSubview:self.renderView];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(animatorDoneNotification:) 
-                                               name:AVAnimatorDoneNotification
-                                             object:self.stanceView];    
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(animatorDoneNotification:) 
-                                               name:AVAnimatorDoneNotification
-                                             object:self.punchView];  
+  NSArray *array = [NSArray arrayWithObjects:self.stanceMedia, self.punchMedia, self.kickMedia, self.fireballMedia, nil];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(animatorDoneNotification:) 
-                                               name:AVAnimatorDoneNotification
-                                             object:self.kickView];    
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(animatorDoneNotification:) 
-                                               name:AVAnimatorDoneNotification
-                                             object:self.fireballView];  
-
-  [self animatorAction:0];
+  for (AVAnimatorMedia *media in array) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(animatorDoneNotification:) 
+                                                 name:AVAnimatorDoneNotification
+                                               object:media];
+  }
   
   // Load background audio clip that plays all the time in a loop
   
@@ -178,9 +167,28 @@
   NSURL *url = [NSURL fileURLWithPath:resPath];
   self.fightPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil] autorelease];
   [self.fightPlayer prepareToPlay];
-  [self.fightPlayer play];
-    
+  
   }
+  
+  // Setup a callback that will do the initial animation
+  // once the view has been loaded. Media can't be attached
+  // to a view while it is under construction, so we
+  // want to wait until this view is finished loading.
+  
+  NSTimer *timer = [NSTimer timerWithTimeInterval: 0.1
+                                                      target: self
+                                                    selector: @selector(readyCallback:)
+                                                    userInfo: NULL
+                                                     repeats: FALSE];
+  
+  [[NSRunLoop currentRunLoop] addTimer:timer forMode: NSDefaultRunLoopMode];  
+}
+
+- (void) readyCallback:(NSTimer*)timer
+{
+  [self.fightPlayer play];
+  
+  [self animatorAction:0];
 }
 
 - (void)animatorAction:(int)action {
@@ -188,47 +196,47 @@
   // Note that an action is ignored if an animation other than
   // the stance animation is currently running.
 
-  BOOL isPunchAnimating = [self.punchView isAnimatorRunning];
-  BOOL isKickAnimating = [self.kickView isAnimatorRunning];
-  BOOL isFireballAnimating = [self.fireballView isAnimatorRunning];
+  BOOL isPunchAnimating = [self.punchMedia isAnimatorRunning];
+  BOOL isKickAnimating = [self.kickMedia isAnimatorRunning];
+  BOOL isFireballAnimating = [self.fireballMedia isAnimatorRunning];
   
   if (isPunchAnimating || isKickAnimating || isFireballAnimating) {
     return;
   }
 
-  if ([self.stanceView isAnimatorRunning]) {
-    [self.stanceView stopAnimator];
+  if ([self.stanceMedia isAnimatorRunning]) {
+    [self.stanceMedia stopAnimator];
   }
-  
-  self.stanceView.hidden = TRUE;
-  self.punchView.hidden = TRUE;
-  self.kickView.hidden = TRUE;
-  self.fireballView.hidden = TRUE;
   
   if (action == 0) {
     // Loop stance animation
-    self.stanceView.hidden = FALSE;
-    self.stanceView.animatorRepeatCount = 10000;
-    [self.stanceView startAnimator];
+    self.renderView.frame = stanceFrame;
+    [self.renderView attachMedia:self.stanceMedia];
+    self.stanceMedia.animatorRepeatCount = 5;    
+    [self.stanceMedia startAnimator];
   } else if (action == 1) {
-    // Run kick animation
-    self.punchView.hidden = FALSE;
-    [self.punchView startAnimator];    
+    // Run punch animation
+    self.renderView.frame = punchFrame;
+    [self.renderView attachMedia:self.punchMedia];
+    [self.punchMedia startAnimator];
   } else if (action == 2) {
     // Run kick animation
-    self.kickView.hidden = FALSE;
-    [self.kickView startAnimator];
+    self.renderView.frame = kickFrame;
+    [self.renderView attachMedia:self.kickMedia];
+    [self.kickMedia startAnimator];
   } else if (action == 3) {
     // Run fireball animation
-    self.fireballView.hidden = FALSE;
-    [self.fireballView startAnimator];
+    self.renderView.frame = fireballFrame;
+    [self.renderView attachMedia:self.fireballMedia];
+    [self.fireballMedia startAnimator];
   } else {
     assert(0);
   }
+  
 }
 
 - (void)animatorDoneNotification:(NSNotification*)notification {
-	NSLog( @"animatorDoneNotification" );
+	//NSLog( @"animatorDoneNotification" );
   [self animatorAction:0];
 }
 
