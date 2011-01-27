@@ -204,8 +204,6 @@
 		CD85067B12EBA9810037EFDA /* AVAnimator */ = {
 			isa = PBXGroup;
 			children = (
-				CD85068B12EBA9810037EFDA /* movdata.c */,
-				CD85068C12EBA9810037EFDA /* movdata.h */,
 				CD85067C12EBA9810037EFDA /* AVAnimatorView.h */,
 				CD85067E12EBA9810037EFDA /* AVAnimatorViewPrivate.h */,
 				CD85067D12EBA9810037EFDA /* AVAnimatorView.m */,
@@ -213,16 +211,18 @@
 				CD6EF42712F0EDF20045659F /* AVAnimatorMediaPrivate.h */,
 				CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */,
 				CD6EF42812F0EDF20045659F /* AVAnimatorMediaRendererProtocol.h */,
-				CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */,
-				CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */,
 				CD85068112EBA9810037EFDA /* AVFrameDecoder.h */,
 				CD85068212EBA9810037EFDA /* AVFrameDecoder.m */,
 				CD85068312EBA9810037EFDA /* AVPNGFrameDecoder.h */,
 				CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */,
 				CD85068512EBA9810037EFDA /* AVQTAnimationFrameDecoder.h */,
 				CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */,
+				CD85068B12EBA9810037EFDA /* movdata.c */,
+				CD85068C12EBA9810037EFDA /* movdata.h */,
 				CD85068712EBA9810037EFDA /* AVResourceLoader.h */,
 				CD85068812EBA9810037EFDA /* AVResourceLoader.m */,
+				CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */,
+				CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */,
 				CD85068912EBA9810037EFDA /* CGFrameBuffer.h */,
 				CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */,
 			);

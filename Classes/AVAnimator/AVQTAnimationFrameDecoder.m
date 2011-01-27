@@ -155,13 +155,23 @@ int num_words(uint32_t numBytes)
   }
 }
 
+- (void) _freeFrameBuffers
+{
+  self.cgFrameBuffers = nil;
+}
+
 - (CGFrameBuffer*) _getNextFramebuffer
 {
+	[self _allocFrameBuffers];
+  
 	CGFrameBuffer *cgFrameBuffer = nil;
 	for (CGFrameBuffer *aBuffer in self.cgFrameBuffers) {
     if (aBuffer == self.currentFrameBuffer) {
+      // When a framebuffer is the "current" one, it contains
+      // the decoded output from a previous frame. Need to
+      // ignore it and select the next available one.
       continue;
-    }
+    }    
 		if (!aBuffer.isLockedByDataProvider) {
 			cgFrameBuffer = aBuffer;
 			break;
@@ -244,10 +254,6 @@ int num_words(uint32_t numBytes)
 		[self close];
 		return FALSE;
 	}
-
-  // Frame buffers need to be allocated after the movie headers have been read, so we know the width and height
-  
-	[self _allocFrameBuffers];  
   
 	self->m_isOpen = TRUE;
 	return TRUE;
@@ -284,11 +290,20 @@ int num_words(uint32_t numBytes)
   // Get from queue of frame buffers!
   
   CGFrameBuffer *nextFrameBuffer = [self _getNextFramebuffer];
+  
+#ifdef USE_MMAP
+  // No-op
+#else
+  if (self->inputBuffer == NULL) {
+    int maxNumWords = num_words(movData->maxSampleSize);    
+    [self _allocateInputBuffer:maxNumWords];
+  }
+#endif
 
   // Double check that the current frame is not the exact same object as the one we pass as
   // the next frame buffer. This should not happen, and we can't copy the buffer into itself.
   
-  NSAssert(nextFrameBuffer != self.currentFrameBuffer, @"current and next frame buffers can't be the same object");
+  NSAssert(nextFrameBuffer != self.currentFrameBuffer, @"current and next frame buffers can't be the same object");  
 
   // Advance to same frame is a no-op
 
@@ -398,6 +413,27 @@ int num_words(uint32_t numBytes)
     NSAssert(uiImage, @"uiImage is nil");
     return uiImage;    
   }
+}
+
+// Limit resouce usage by letting go of framebuffers and an optional input buffer.
+// Note that we keep the file open and the parsed data in memory, because reloading
+// that data would be expensive.
+
+- (void) resourceUsageLimit:(BOOL)enabled
+{
+  if (enabled) {
+    [self _freeFrameBuffers];
+  } else {
+  }
+  
+#ifdef USE_MMAP
+  // No-op
+#else
+  if (enabled) {    
+    [self _freeInputBuffer];
+  } else {
+  }  
+#endif
 }
 
 // Return the current frame buffer, this is the buffer that was most recently written to via

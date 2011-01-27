@@ -20,6 +20,8 @@
 
 #import <AVFoundation/AVAudioPlayer.h>
 
+#define ENABLE_SOUND
+
 @implementation StreetFighterViewController
 
 @synthesize renderView = m_renderView;
@@ -95,15 +97,21 @@
   } else if (index == 1) {
     self->punchFrame = frame;
     self.punchMedia = media;
+#ifdef ENABLE_SOUND
     resLoader.audioFilename = @"Punch-fierce.wav";
+#endif
   } else if (index == 2) {
     self->kickFrame = frame;
     self.kickMedia = media;
+#ifdef ENABLE_SOUND
     resLoader.audioFilename = @"Kick.wav";
+#endif
   } else {
     self->fireballFrame = frame;
     self.fireballMedia = media;
+#ifdef ENABLE_SOUND
     resLoader.audioFilename = @"Hadoken.wav";
+#endif
   }  
   
 	media.resourceLoader = resLoader;
@@ -144,6 +152,11 @@
   
   // Load background audio clip that plays all the time in a loop
   
+#ifdef ENABLE_SOUND
+  if (1)
+#else
+  if (0)
+#endif
   {
 
   NSString *resFilename = @"sf2_blanka_theme_mono_qlow_22k.caf";
@@ -158,7 +171,12 @@
   }
   
   // Play "fight" clip once
-  
+
+#ifdef ENABLE_SOUND
+  if (1)
+#else
+  if (0)
+#endif      
   {
 
   NSString *resFilename = @"Fight.wav";
@@ -186,7 +204,9 @@
 
 - (void) readyCallback:(NSTimer*)timer
 {
+#ifdef ENABLE_SOUND
   [self.fightPlayer play];
+#endif
   
   [self animatorAction:0];
 }
