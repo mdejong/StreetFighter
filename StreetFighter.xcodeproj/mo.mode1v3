@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>CD3745C712F167A300726980</string>
+						<string>CD83055612F210390070F85B</string>
 						<key>history</key>
 						<array>
-							<string>CDA5AD8D12F1611C006566AB</string>
+							<string>CD3745C712F167A300726980</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -314,13 +314,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>22</integer>
-									<integer>4</integer>
-									<integer>1</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>23</integer>
+									<integer>21</integer>
 									<integer>4</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -364,7 +358,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AVAppResourceLoader.h</string>
+								<string>movdata.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -372,11 +366,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AVAppResourceLoader.h</string>
+										<string>movdata.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CD3745C612F167A300726980</string>
+										<string>CD83055312F210390070F85B</string>
 										<key>history</key>
 										<array>
 											<string>CD85079512EBAFF00037EFDA</string>
@@ -399,10 +393,12 @@
 											<string>CDA363C312F14C6900B0741D</string>
 											<string>CDA363D812F14CC100B0741D</string>
 											<string>CD2357FD12F15E2100627021</string>
-											<string>CDA5AD8312F16112006566AB</string>
 											<string>CD3745C412F167A300726980</string>
-											<string>CD3745C512F167A300726980</string>
-											<string>CD2B92B012F0B778001DB172</string>
+											<string>CD83054E12F210390070F85B</string>
+											<string>CD83054F12F210390070F85B</string>
+											<string>CD83055012F210390070F85B</string>
+											<string>CD83055112F210390070F85B</string>
+											<string>CD83055212F210390070F85B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -414,14 +410,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {836, 529}}</string>
+								<string>{{0, 0}, {836, 525}}</string>
 								<key>RubberWindowFrame</key>
 								<string>13 67 1126 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>529pt</string>
+							<string>525pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -434,14 +430,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 534}, {836, 136}}</string>
+								<string>{{0, 530}, {836, 140}}</string>
 								<key>RubberWindowFrame</key>
 								<string>13 67 1126 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>136pt</string>
+							<string>140pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -460,9 +456,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CD37457A12F1615700726980</string>
+				<string>CD83055412F210390070F85B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CD37457B12F1615700726980</string>
+				<string>CD83055512F210390070F85B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -600,8 +596,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>CD37458512F1615700726980</string>
-		<string>CD37458612F1615700726980</string>
+		<string>CD83055F12F210390070F85B</string>
+		<string>CD83056012F210390070F85B</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>CD85065F12EB8C110037EFDA</string>
@@ -686,7 +682,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CD85065F12EB8C110037EFDA</string>
-				<string>CD37457D12F1615700726980</string>
+				<string>CD83055712F210390070F85B</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -808,13 +804,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>CD37457E12F1615700726980</string>
+				<string>CD83055812F210390070F85B</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>CD37457F12F1615700726980</string>
-				<string>CD37458012F1615700726980</string>
-				<string>CD37458112F1615700726980</string>
-				<string>CD37458212F1615700726980</string>
-				<string>CD37458312F1615700726980</string>
+				<string>CD83055912F210390070F85B</string>
+				<string>CD83055A12F210390070F85B</string>
+				<string>CD83055B12F210390070F85B</string>
+				<string>CD83055C12F210390070F85B</string>
+				<string>CD83055D12F210390070F85B</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -968,7 +964,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>CD37458412F1615700726980</string>
+				<string>CD83055E12F210390070F85B</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

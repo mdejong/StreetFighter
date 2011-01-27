@@ -21,6 +21,8 @@
 		CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */; };
 		CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB29312EEA88100A237B7 /* Fight.wav */; };
 		CD6EF42912F0EDF20045659F /* AVAnimatorMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */; };
+		CD83054012F20F990070F85B /* AVAnimatorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD83053C12F20F990070F85B /* AVAnimatorLayer.m */; };
+		CD83054112F20F990070F85B /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = CD83053E12F20F990070F85B /* movdata.c */; };
 		CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */; };
 		CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066A12EBA91D0037EFDA /* RyuFireball.mov */; };
 		CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */; };
@@ -33,7 +35,6 @@
 		CD85069E12EBA9810037EFDA /* AVQTAnimationFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */; };
 		CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068812EBA9810037EFDA /* AVResourceLoader.m */; };
 		CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */; };
-		CD8506A112EBA9810037EFDA /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = CD85068B12EBA9810037EFDA /* movdata.c */; };
 		CD8506F312EBAB7B0037EFDA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8506F212EBAB7B0037EFDA /* AVFoundation.framework */; };
 		CD8506F712EBAB820037EFDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8506F612EBAB820037EFDA /* AudioToolbox.framework */; };
 		CD85070512EBAB890037EFDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85070412EBAB890037EFDA /* QuartzCore.framework */; };
@@ -68,6 +69,11 @@
 		CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAnimatorMedia.m; sourceTree = "<group>"; };
 		CD6EF42712F0EDF20045659F /* AVAnimatorMediaPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMediaPrivate.h; sourceTree = "<group>"; };
 		CD6EF42812F0EDF20045659F /* AVAnimatorMediaRendererProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMediaRendererProtocol.h; sourceTree = "<group>"; };
+		CD83053B12F20F990070F85B /* AVAnimatorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorLayer.h; sourceTree = "<group>"; };
+		CD83053C12F20F990070F85B /* AVAnimatorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAnimatorLayer.m; sourceTree = "<group>"; };
+		CD83053D12F20F990070F85B /* AVAnimatorLayerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorLayerPrivate.h; sourceTree = "<group>"; };
+		CD83053E12F20F990070F85B /* movdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = movdata.c; sourceTree = "<group>"; };
+		CD83053F12F20F990070F85B /* movdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movdata.h; sourceTree = "<group>"; };
 		CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SF2BlankaBackground.gif; sourceTree = "<group>"; };
 		CD85066A12EBA91D0037EFDA /* RyuFireball.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuFireball.mov; sourceTree = "<group>"; };
 		CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuHighKick.mov; sourceTree = "<group>"; };
@@ -89,8 +95,6 @@
 		CD85068812EBA9810037EFDA /* AVResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVResourceLoader.m; sourceTree = "<group>"; };
 		CD85068912EBA9810037EFDA /* CGFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGFrameBuffer.h; sourceTree = "<group>"; };
 		CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGFrameBuffer.m; sourceTree = "<group>"; };
-		CD85068B12EBA9810037EFDA /* movdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = movdata.c; path = ../movdata.c; sourceTree = "<group>"; };
-		CD85068C12EBA9810037EFDA /* movdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = movdata.h; path = ../movdata.h; sourceTree = "<group>"; };
 		CD8506F212EBAB7B0037EFDA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CD8506F612EBAB820037EFDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CD85070412EBAB890037EFDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -207,6 +211,9 @@
 				CD85067C12EBA9810037EFDA /* AVAnimatorView.h */,
 				CD85067E12EBA9810037EFDA /* AVAnimatorViewPrivate.h */,
 				CD85067D12EBA9810037EFDA /* AVAnimatorView.m */,
+				CD83053B12F20F990070F85B /* AVAnimatorLayer.h */,
+				CD83053C12F20F990070F85B /* AVAnimatorLayer.m */,
+				CD83053D12F20F990070F85B /* AVAnimatorLayerPrivate.h */,
 				CD6EF42512F0EDF20045659F /* AVAnimatorMedia.h */,
 				CD6EF42712F0EDF20045659F /* AVAnimatorMediaPrivate.h */,
 				CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */,
@@ -217,8 +224,8 @@
 				CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */,
 				CD85068512EBA9810037EFDA /* AVQTAnimationFrameDecoder.h */,
 				CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */,
-				CD85068B12EBA9810037EFDA /* movdata.c */,
-				CD85068C12EBA9810037EFDA /* movdata.h */,
+				CD83053F12F20F990070F85B /* movdata.h */,
+				CD83053E12F20F990070F85B /* movdata.c */,
 				CD85068712EBA9810037EFDA /* AVResourceLoader.h */,
 				CD85068812EBA9810037EFDA /* AVResourceLoader.m */,
 				CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */,
@@ -315,8 +322,9 @@
 				CD85069E12EBA9810037EFDA /* AVQTAnimationFrameDecoder.m in Sources */,
 				CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */,
 				CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */,
-				CD8506A112EBA9810037EFDA /* movdata.c in Sources */,
 				CD6EF42912F0EDF20045659F /* AVAnimatorMedia.m in Sources */,
+				CD83054012F20F990070F85B /* AVAnimatorLayer.m in Sources */,
+				CD83054112F20F990070F85B /* movdata.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
