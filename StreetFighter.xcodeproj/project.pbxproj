@@ -41,6 +41,7 @@
 		CD85071D12EBAB910037EFDA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85071C12EBAB910037EFDA /* MediaPlayer.framework */; };
 		CDC21F9F12EE4A19005D648A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC21F9E12EE4A19005D648A /* Icon.png */; };
 		CDC21FA112EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf in Resources */ = {isa = PBXBuildFile; fileRef = CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */; };
+		CDD0B21212F4DFDF00412982 /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDD0B21112F4DFDF00412982 /* License.txt */; };
 		CDD2640712EBDB9D000BF04E /* RyuStance.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD2640612EBDB9D000BF04E /* RyuStance.png */; };
 		CDE10D7D12EE2A50002F071D /* RedButtonDownAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */; };
 		CDE10D7E12EE2A50002F071D /* RedButtonUpAlpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */; };
@@ -101,6 +102,7 @@
 		CD85071C12EBAB910037EFDA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CDC21F9E12EE4A19005D648A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sf2_blanka_theme_mono_qlow_22k.caf; sourceTree = "<group>"; };
+		CDD0B21112F4DFDF00412982 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
 		CDD2640612EBDB9D000BF04E /* RyuStance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RyuStance.png; sourceTree = "<group>"; };
 		CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButtonDownAlpha.png; sourceTree = "<group>"; };
 		CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedButtonUpAlpha.png; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CDD0B21112F4DFDF00412982 /* License.txt */,
 				32CA4F630368D1EE00C91783 /* StreetFighter_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -301,6 +304,7 @@
 				CD1BB25A12EEA60C00A237B7 /* RyuStrongPunch.mov in Resources */,
 				CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */,
 				CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */,
+				CDD0B21212F4DFDF00412982 /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
