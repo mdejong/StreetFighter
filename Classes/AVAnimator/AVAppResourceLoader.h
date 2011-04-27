@@ -4,10 +4,18 @@
 //  Created by Moses DeJong on 7/13/10.
 //
 //  License terms defined in License.txt.
+//
+// The AVAppResourceLoader class implements loading of animation
+// data from the compiled in app resources of an iOS project.
+// An app resource file does not need to be copied into the tmp
+// dir, it can be opened and read like and other file, so no
+// intermediate tmp files are needed.
 
 #import <Foundation/Foundation.h>
 
 #import "AVResourceLoader.h"
+
+#import "AVAppResourceLoader.h"
 
 @interface AVAppResourceLoader : AVResourceLoader {
 	NSString *m_movieFilename;
@@ -27,5 +35,11 @@
 // exist when the next request comes in.
 
 - (void) load;
+
+// Non-Public methods
+
+- (NSString*) _getMoviePath;
+
+- (NSString*) _getAudioPath:(NSString*)audioFilename;
 
 @end

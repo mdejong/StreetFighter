@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-// A resource loader works with the AVAnimatorViewController class
+// A resource loader is created by the the AVAnimatorView class
 // to support loading of a resource from a URL or memory. The
-// AVAnimatorViewController class creates a view widget and then
+// AVAnimatorView class creates a view widget and then
 // prepares to load the resources for a specific instance of
 // a AVResourceLoader. The resource might exist already, or it
 // may need to be generated which could take some time.
@@ -26,9 +26,10 @@
 
 // Invoked to load resources, this call assumes that
 // isReady has been invoked to check if the resources
-// actually need to be loaded. This calls will
-// return right away, it does not wait until the
-// resources are fully loaded.
+// actually need to be loaded. This call must be
+// non-blocking and return right away. If a loading
+// operation will take time to execute, it should be
+// implemented as a secondary thread.
 
 - (void) load;
 

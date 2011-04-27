@@ -7,6 +7,8 @@
 
 #import "AVAppResourceLoader.h"
 
+#import "AVFileUtil.h"
+
 @implementation AVAppResourceLoader
 
 @synthesize movieFilename = m_movieFilename;
@@ -24,50 +26,61 @@
   return [[[AVAppResourceLoader alloc] init] autorelease];
 }
 
-- (BOOL) _fileExists:(NSString*)path
+- (NSString*) _getMoviePath
 {
-	return [[NSFileManager defaultManager] fileExistsAtPath:path];
-}
-
-- (NSString*) _getMoviePath:(NSString*)movieFilename
-{
-	NSBundle* appBundle = [NSBundle mainBundle];
-	NSString* movieFilePath = [appBundle pathForResource:movieFilename ofType:nil];
-  NSAssert(movieFilePath, @"movieFilePath is nil");
-	return movieFilePath;
+  return [AVFileUtil getResourcePath:self.movieFilename];
 }
 
 - (NSString*) _getAudioPath:(NSString*)audioFilename
 {
-  return [self _getMoviePath:audioFilename];
+  return [AVFileUtil getResourcePath:audioFilename];
 }
 
-- (BOOL) isReady
+- (BOOL) isMovieReady
 {
   BOOL isMovieReady = FALSE;
-  BOOL isAudioReady = FALSE;
   
   NSAssert(self.movieFilename, @"movieFilename is nil");
   
-  // Check for movie file in tmp dir
-  NSString *tmpAnimationsPath = [self _getMoviePath:self.movieFilename];
+  // Return TRUE if the mov file exists in the app resources
+
+  NSString *tmpMoviePath = [self _getMoviePath];
   
-  if ([self _fileExists:tmpAnimationsPath]) {
+  if ([AVFileUtil fileExists:tmpMoviePath]) {
     isMovieReady = TRUE;
   }
+  
+  return isMovieReady;
+}
+
+- (BOOL) isAudioReady
+{
+  BOOL isAudioReady = FALSE;
   
   if (self.audioFilename != nil) {
     // Check for audio file in tmp dir
     NSString *tmpTracksPath = [self _getAudioPath:self.audioFilename];
     NSAssert(tmpTracksPath, @"tmpTracksPath is nil");
     
-    if ([self _fileExists:tmpTracksPath]) {
+    if ([AVFileUtil fileExists:tmpTracksPath]) {
       isAudioReady = TRUE;
     }    
   } else {
     isAudioReady = TRUE;
   }
   
+  return isAudioReady;
+}
+
+
+- (BOOL) isReady
+{
+  BOOL isMovieReady = FALSE;
+  BOOL isAudioReady = FALSE;
+  
+  isMovieReady = [self isMovieReady];
+  isAudioReady = [self isAudioReady];
+    
   if (isMovieReady && isAudioReady) {
     m_isReady = TRUE;
     return TRUE;
@@ -82,7 +95,7 @@
 		NSAssert(FALSE, @"resources not ready");
   }
   NSMutableArray *mArr = [NSMutableArray array];
-  NSString *tmpAnimationsPath = [self _getMoviePath:self.movieFilename];
+  NSString *tmpAnimationsPath = [self _getMoviePath];
   [mArr addObject:tmpAnimationsPath];  
   if (self.audioFilename != nil) {
     NSString *tmpTracksPath = [self _getAudioPath:self.audioFilename];
@@ -94,7 +107,9 @@
 - (void) load
 {
   NSAssert(self.movieFilename, @"movieFilename is nil");
-  NSAssert(self.audioFilename, @"audioFilename is nil");
+
+  // audioFilename can be nil
+  //NSAssert(self.audioFilename, @"audioFilename is nil");
   
   // No-op since the movie must exist as a resource
 

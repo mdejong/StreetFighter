@@ -14,9 +14,13 @@
 
 #import "AVAnimatorMedia.h"
 
-#import "AVQTAnimationFrameDecoder.h"
+#import "AVMvidFrameDecoder.h"
 
 #import "AVAppResourceLoader.h"
+
+#import "AV7zAppResourceLoader.h"
+
+#import "AVFileUtil.h"
 
 #import <AVFoundation/AVAudioPlayer.h>
 
@@ -40,7 +44,7 @@
   float ratio = 137.0 / 106.0; // ryu stance height at screen size of 320
   //  float ratio = 1.0;
   
-  NSString *resourceName;
+  NSString *movieResourceFilename;
   int movieWidth;
   int movieHeight;
   // Distance from left edge of movie to center of Ryu's belt
@@ -51,25 +55,25 @@
     movieWidth = 50;
     movieHeight = 106;
     movieCenterX = 23;
-    resourceName = @"RyuStance.mov";
+    movieResourceFilename = @"RyuStance.mvid";
   } else if (index == 1) {
     // punch
     movieWidth = 126;
     movieHeight = 115;
     movieCenterX = 25;
-    resourceName = @"RyuStrongPunch.mov";    
+    movieResourceFilename = @"RyuStrongPunch.mvid";    
   } else if (index == 2) {
     // kick
     movieWidth = 116;
     movieHeight = 115;
     movieCenterX = 50;
-    resourceName = @"RyuHighKick.mov";
+    movieResourceFilename = @"RyuHighKick.mvid";
   } else if (index == 3) {
     // Fireball
     movieWidth = 194;
     movieHeight = 119;
     movieCenterX = 28;
-    resourceName = @"RyuFireball.mov";    
+    movieResourceFilename = @"RyuFireball.mvid";    
   } else {
     assert(0);
   }
@@ -88,9 +92,15 @@
   
   AVAnimatorMedia *media = [AVAnimatorMedia aVAnimatorMedia];
   
-  AVAppResourceLoader *resLoader = [AVAppResourceLoader aVAppResourceLoader];
-  resLoader.movieFilename = resourceName;
+  // Load animation videos from iOS optimized .mvid files in RyuMvids.7z archive
+  
+  AV7zAppResourceLoader *resLoader = [AV7zAppResourceLoader aV7zAppResourceLoader];
+  resLoader.archiveFilename = @"RyuMvids.7z";
+  resLoader.movieFilename = movieResourceFilename;
+  resLoader.outPath = [AVFileUtil getTmpDirPath:movieResourceFilename];
 
+  // Audio tracks are loaded directly from attached resource .wav files
+  
   if (index == 0) {
     self->stanceFrame = frame;
     self.stanceMedia = media;
@@ -118,7 +128,7 @@
 
   // Create decoder that will generate frames from Quicktime Animation encoded data
   
-  AVQTAnimationFrameDecoder *frameDecoder = [AVQTAnimationFrameDecoder aVQTAnimationFrameDecoder];
+  AVMvidFrameDecoder *frameDecoder = [AVMvidFrameDecoder aVMvidFrameDecoder];
 	media.frameDecoder = frameDecoder;
   
   //	media.animatorFrameDuration = 1.0;

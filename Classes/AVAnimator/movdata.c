@@ -21,6 +21,23 @@
 
 #include "movdata.h"
 
+// Generate a compile time error if compiled in Thumb mode. This module executes
+// significantly faster in ARM mode because conditional instructions can be generated.
+// The whole project need not be compiled in ARM mode, just this module.
+
+#if defined(__arm__)
+# define COMPILE_ARM 1
+# if defined(__thumb__)
+#  define COMPILE_ARM_THUMB_ASM 1
+# else
+#  define COMPILE_ARM_ASM 1
+# endif
+#endif
+
+#if defined(COMPILE_ARM_THUMB_ASM)
+#error "Module should not be compiled in Thumb mode, enable ARM mode by adding -mno-thumb to file specific target flags"
+#endif
+
 // Chunks of data contain 1 to N samples and are stored in mdat.
 // The chunk contains an array of sample pointers and the
 // offset in the file where the chunk begins.
@@ -95,18 +112,18 @@ typedef struct DataRefTableEntry
 } DataRefTableEntry;
 
 static inline char *
-moviedata_fcc_tostring(MovData *movData, int i)
+moviedata_fcc_tostring(MovData *movData, uint32_t num)
 {
-  movData->fccbuffer[0] = ((char) (i & 0xFF)),
-  movData->fccbuffer[1] = ((char) ((i >> 8) & 0xFF)),
-  movData->fccbuffer[2] = ((char) ((i >> 16) & 0xFF)),
-  movData->fccbuffer[3] = ((char) ((i >> 24) & 0xFF)),
+  movData->fccbuffer[0] = ((char) (num & 0xFF)),
+  movData->fccbuffer[1] = ((char) ((num >> 8) & 0xFF)),
+  movData->fccbuffer[2] = ((char) ((num >> 16) & 0xFF)),
+  movData->fccbuffer[3] = ((char) ((num >> 24) & 0xFF)),
   movData->fccbuffer[4] = '\0';
   return movData->fccbuffer;  
 }
 
 static inline int
-fcc_toint(char a, char b, char c, char d)
+fcc_toint(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
   return ((a) | ((b) << 8) | ((c) << 16) | ((d) << 24));
 }
@@ -125,6 +142,19 @@ read_be_uint32(FILE *fp, uint32_t *ptr)
 }
 
 // read an unsigned 16 bit number in big endian format, returns 0 on success.
+
+static inline int
+read_be_uint16(FILE *fp, uint16_t *ptr)
+{
+  uint16_t lv;
+  if (fread(&lv, sizeof(lv), 1, fp) != 1) {
+    return 1;
+  }
+  *ptr = ntohs(lv);
+  return 0;
+}
+
+// read a signed 16 bit number in big endian format, returns 0 on success.
 
 static inline int
 read_be_int16(FILE *fp, int16_t *ptr)
@@ -185,7 +215,7 @@ void init_alphaTables();
 // recurse into atoms and process them. Return 0 on success
 // otherwise non-zero to indicate an error.
 
-int
+uint32_t
 process_atoms(FILE *movFile, MovData *movData, uint32_t maxOffset)
 {
   init_alphaTables();
@@ -669,7 +699,7 @@ process_atoms(FILE *movFile, MovData *movData, uint32_t maxOffset)
 
       uint16_t graphics_mode;
       
-      if (read_be_int16(movFile, (int16_t*)&graphics_mode) != 0) {
+      if (read_be_uint16(movFile, &graphics_mode) != 0) {
         movData->errCode = ERR_READ;
         snprintf(movData->errMsg, sizeof(movData->errMsg), "read error for vmhd graphics mode");
         return 1;
@@ -842,9 +872,9 @@ process_atoms(FILE *movFile, MovData *movData, uint32_t maxOffset)
         return 1;        
       }      
       
-      int16_t data_ref_index;
+      uint16_t data_ref_index;
       
-      if (read_be_int16(movFile, &data_ref_index) != 0) {
+      if (read_be_uint16(movFile, &data_ref_index) != 0) {
         movData->errCode = ERR_READ;
         snprintf(movData->errMsg, sizeof(movData->errMsg), "read error for stsd sample data ref index");
         return 1;
@@ -902,9 +932,9 @@ process_atoms(FILE *movFile, MovData *movData, uint32_t maxOffset)
       
       // Verify that movie format stores only 1 frame in each sample.
       
-      int16_t frame_count;
+      uint16_t frame_count;
       
-      if (read_be_int16(movFile, &frame_count) != 0) {
+      if (read_be_uint16(movFile, &frame_count) != 0) {
         movData->errCode = ERR_READ;
         snprintf(movData->errMsg, sizeof(movData->errMsg), "read error for stsd frame count");
         return 1;
@@ -941,9 +971,9 @@ process_atoms(FILE *movFile, MovData *movData, uint32_t maxOffset)
       
       // depth == 16 | 24 | 32
       
-      int16_t depth;
+      uint16_t depth;
       
-      if (read_be_int16(movFile, &depth) != 0) {
+      if (read_be_uint16(movFile, &depth) != 0) {
         movData->errCode = ERR_READ;
         snprintf(movData->errMsg, sizeof(movData->errMsg), "read error for stsd depth");
         return 1;
@@ -1205,7 +1235,7 @@ int SampleToChunkTableEntry_read(FILE *movFile, MovData *movData, SampleToChunkT
 // This method is invoked after all the atoms have been read
 // successfully.
 
-int
+uint32_t
 process_sample_tables(FILE *movFile, MovData *movData) {
   // All atoms except sync are required at this point
   
@@ -1929,6 +1959,16 @@ read_ARGB_and_premultiply(const char *ptr) {
  
 */
 
+// bitwise AND version of (ptr % pot)
+
+#if defined(_LP64)
+// CPU uses 64 bit pointers, need additional cast to avoid compiler warning
+#define UINTMOD(ptr, pot) (((uint32_t)(uint64_t)ptr) & (pot - 1))
+#else
+// Regular 32 bit system
+#define UINTMOD(ptr, pot) (((uint32_t)ptr) & (pot - 1))
+#endif
+
 // 16 bit rgb555 pixels with no alpha channel
 // Works for (RBG555, RGB5551, or RGB565) though only XRRRRRGGGGGBBBBB is supported.
 
@@ -1936,11 +1976,11 @@ static inline
 void
 decode_rle_sample16(
                   const void* restrict sampleBuffer,
-                  int sampleBufferSize,
-                  int isKeyFrame,
+                  uint32_t sampleBufferSize,
+                  uint32_t isKeyFrame,
                   uint16_t* restrict frameBuffer,
-                  int frameBufferWidth,
-                  int frameBufferHeight)
+                  uint32_t frameBufferWidth,
+                  uint32_t frameBufferHeight)
 {
   assert(sampleBuffer);
   assert(sampleBufferSize > 0);
@@ -2023,13 +2063,13 @@ decode_rle_sample16(
     bytesRemaining -= 4;
     
     assert(bytesRemaining >= 2);
-    uint16_t header;
+    uint32_t header;
     READ_UINT16(header, samplePtr);
     bytesRemaining -= 2;
     
     assert(header == 0x0 || header == 0x0008);
     
-    int16_t starting_line, lines_to_update;
+    uint32_t starting_line, lines_to_update;
     
     if (header != 0) {
       // Frame delta
@@ -2128,7 +2168,7 @@ decode_rle_sample16(
         // Advance the row ptr by skip pixels checking that it does
         // not skip past the end of the row.
         
-        assert((rowPtr + num_to_skip) < rowPtrMax);          
+        assert((rowPtr + num_to_skip - 1) < rowPtrMax);          
         rowPtr += num_to_skip;
       }
       
@@ -2159,46 +2199,64 @@ decode_rle_sample16(
         } else if (rle_code < -1) {
           // Read pixel value and repeat it -rle_code times in the frame buffer
           
-          uint32_t numTimesToRepeat = -rle_code;
+          uint32_t numPixels = -rle_code;
           
           // 16 bit pixels : rgb555 or rgb565
             
           assert(bytesRemaining >= 2);
-          uint16_t pixel;
+          uint32_t pixel;
           READ_UINT16(pixel, samplePtr);
           bytesRemaining -= 2;
           
 #ifdef DUMP_WHILE_DECODING
-          fprintf(stdout, "repeat 16 bit pixel 0x%X %d times\n", pixel, numTimesToRepeat);
+          fprintf(stdout, "repeat 16 bit pixel 0x%X %d times\n", pixel, numPixels);
 #endif // DUMP_WHILE_DECODING
           
-          assert((rowPtr + numTimesToRepeat - 1) < rowPtrMax);
+          assert((rowPtr + numPixels - 1) < rowPtrMax);
           
-          if (pixel == 0x0) {
-            bzero(rowPtr, numTimesToRepeat * sizeof(uint16_t));
-            rowPtr += numTimesToRepeat;
-          } else {
-            for (int i = 0; i < numTimesToRepeat; i++) {
+          if (numPixels <= 12) {
+            do {
               *rowPtr++ = pixel;
-            }
+            } while (--numPixels != 0);
+          } else {
+            if (pixel == 0x0) {
+              bzero(rowPtr, numPixels << 1);
+              rowPtr += numPixels;
+            } else {
+              // Use memset_pattern4() to fill whole words after making sure that the
+              // framebuffer is word aligned. A single pixel might need to be written
+              // to align the framebuffer, then a trailing pixel might be needed after
+              // a whole number of words has been written.
+              pixel |= (pixel << 16);
+              if (UINTMOD(rowPtr, sizeof(uint32_t)) != 0) {
+                // Framebuffer is half word aligned, write 16 bit pixel in the low half word
+                *rowPtr++ = pixel;
+                numPixels--;
+              }
+              const uint32_t numWords = numPixels >> 1;
+              memset_pattern4(rowPtr, &pixel, numWords << 2);
+              rowPtr += numWords << 1;
+              if (numPixels & 0x1) {
+                *rowPtr++ = pixel;
+              }
+            }            
           }
-          
         } else {
           // Greater than 0, copy pixels from input to output stream
-          assert(rle_code > 0);
           
           // 16 bit pixels
           
-          uint32_t numBytesToCopy = sizeof(uint16_t) * rle_code;
-            
+          uint32_t numBytesToCopy = rle_code << 1;
+          
           assert(bytesRemaining >= numBytesToCopy);
           
           bytesRemaining -= numBytesToCopy;
           
           assert((rowPtr + rle_code - 1) < rowPtrMax);
-            
-          for (int i = 0; i < rle_code; i++) {
-            uint16_t pixel;
+          
+          uint32_t numPixels = rle_code;
+          do {
+            uint32_t pixel;
             READ_UINT16(pixel, samplePtr);
             
 #ifdef DUMP_WHILE_DECODING
@@ -2206,8 +2264,7 @@ decode_rle_sample16(
 #endif // DUMP_WHILE_DECODING
             
             *rowPtr++ = pixel;
-          }
-
+          } while (--numPixels != 0);
         }        
       }
     }
@@ -2222,11 +2279,11 @@ static inline
 void
 decode_rle_sample24(
                     const void* restrict sampleBuffer,
-                    int sampleBufferSize,
-                    int isKeyFrame,
+                    uint32_t sampleBufferSize,
+                    uint32_t isKeyFrame,
                     uint32_t* restrict frameBuffer,
-                    int frameBufferWidth,
-                    int frameBufferHeight)
+                    uint32_t frameBufferWidth,
+                    uint32_t frameBufferHeight)
 {
   assert(sampleBuffer);
   assert(sampleBufferSize > 0);
@@ -2309,13 +2366,13 @@ decode_rle_sample24(
     bytesRemaining -= 4;
     
     assert(bytesRemaining >= 2);
-    uint16_t header;
+    uint32_t header;
     READ_UINT16(header, samplePtr);
     bytesRemaining -= 2;
     
     assert(header == 0x0 || header == 0x0008);
     
-    int16_t starting_line, lines_to_update;
+    uint32_t starting_line, lines_to_update;
     
     if (header != 0) {
       // Frame delta
@@ -2414,7 +2471,7 @@ decode_rle_sample24(
         // Advance the row ptr by skip pixels checking that it does
         // not skip past the end of the row.
         
-        assert((rowPtr + num_to_skip) < rowPtrMax);          
+        assert((rowPtr + num_to_skip - 1) < rowPtrMax);          
         rowPtr += num_to_skip;
       }
       
@@ -2445,7 +2502,7 @@ decode_rle_sample24(
         } else if (rle_code < -1) {
           // Read pixel value and repeat it -rle_code times in the frame buffer
           
-          uint32_t numTimesToRepeat = -rle_code;
+          uint32_t numPixels = -rle_code;
           
           // 24 bit pixels : RGB
           // write 32 bit pixels : ARGB
@@ -2456,23 +2513,27 @@ decode_rle_sample24(
           bytesRemaining -= 3;
           
 #ifdef DUMP_WHILE_DECODING
-          fprintf(stdout, "repeat 24 bit pixel 0x%X %d times\n", pixel, numTimesToRepeat);
+          fprintf(stdout, "repeat 24 bit pixel 0x%X %d times\n", pixel, numPixels);
 #endif // DUMP_WHILE_DECODING
           
-          assert((rowPtr + numTimesToRepeat - 1) < rowPtrMax);
+          assert((rowPtr + numPixels - 1) < rowPtrMax);
           
-          if (pixel == 0x0) {
-            bzero(rowPtr, numTimesToRepeat * sizeof(uint32_t));
-            rowPtr += numTimesToRepeat;
-          } else {
-            for (int i = 0; i < numTimesToRepeat; i++) {
+          if (numPixels <= 6) {
+            do {
               *rowPtr++ = pixel;
+            } while (--numPixels != 0);
+          } else {
+            const uint32_t numBytes = numPixels << 2;
+            if (pixel == 0x0) {
+              bzero(rowPtr, numBytes);
+            } else {
+              memset_pattern4(rowPtr, &pixel, numBytes);
             }
+            rowPtr += numPixels;
           }
           
         } else {
           // Greater than 0, copy pixels from input to output stream
-          assert(rle_code > 0);
           
           // 24 bit pixels : RGB
           // write 32 bit pixels : ARGB
@@ -2485,7 +2546,8 @@ decode_rle_sample24(
           
           assert((rowPtr + rle_code - 1) < rowPtrMax);
           
-          for (int i = 0; i < rle_code; i++) {
+          uint32_t numPixels = rle_code;
+          do {
             uint32_t pixel;
             READ_UINT24(pixel, samplePtr);
             
@@ -2494,7 +2556,7 @@ decode_rle_sample24(
 #endif // DUMP_WHILE_DECODING
             
             *rowPtr++ = pixel;
-          }
+          } while (--numPixels != 0);
           
         }        
       }
@@ -2510,11 +2572,11 @@ static inline
 void
 decode_rle_sample32(
                     const void* restrict sampleBuffer,
-                    int sampleBufferSize,
-                    int isKeyFrame,
+                    uint32_t sampleBufferSize,
+                    uint32_t isKeyFrame,
                     uint32_t* restrict frameBuffer,
-                    int frameBufferWidth,
-                    int frameBufferHeight)
+                    uint32_t frameBufferWidth,
+                    uint32_t frameBufferHeight)
 {
   assert(sampleBuffer);
   assert(sampleBufferSize > 0);
@@ -2597,13 +2659,13 @@ decode_rle_sample32(
     bytesRemaining -= 4;
     
     assert(bytesRemaining >= 2);
-    uint16_t header;
+    uint32_t header;
     READ_UINT16(header, samplePtr);
     bytesRemaining -= 2;
     
     assert(header == 0x0 || header == 0x0008);
     
-    int16_t starting_line, lines_to_update;
+    uint32_t starting_line, lines_to_update;
     
     if (header != 0) {
       // Frame delta
@@ -2702,7 +2764,7 @@ decode_rle_sample32(
         // Advance the row ptr by skip pixels checking that it does
         // not skip past the end of the row.
         
-        assert((rowPtr + num_to_skip) < rowPtrMax);          
+        assert((rowPtr + num_to_skip - 1) < rowPtrMax);          
         rowPtr += num_to_skip;
       }
       
@@ -2733,7 +2795,7 @@ decode_rle_sample32(
         } else if (rle_code < -1) {
           // Read pixel value and repeat it -rle_code times in the frame buffer
           
-          uint32_t numTimesToRepeat = -rle_code;
+          uint32_t numPixels = -rle_code;
           
           // 32 bit pixels : ARGB
           
@@ -2743,27 +2805,31 @@ decode_rle_sample32(
           bytesRemaining -= 4;
           
 #ifdef DUMP_WHILE_DECODING
-          fprintf(stdout, "repeat 32 bit pixel 0x%X %d times\n", pixel, numTimesToRepeat);
+          fprintf(stdout, "repeat 32 bit pixel 0x%X %d times\n", pixel, numPixels);
 #endif // DUMP_WHILE_DECODING          
           
-          assert((rowPtr + numTimesToRepeat - 1) < rowPtrMax);
+          assert((rowPtr + numPixels - 1) < rowPtrMax);
           
-          if (pixel == 0x0) {
-            bzero(rowPtr, numTimesToRepeat * sizeof(uint32_t));
-            rowPtr += numTimesToRepeat;
-          } else {
-            for (int i = 0; i < numTimesToRepeat; i++) {
+          if (numPixels <= 6) {
+            do {
               *rowPtr++ = pixel;
+            } while (--numPixels != 0);
+          } else {
+            const uint32_t numBytes = numPixels << 2;
+            if (pixel == 0x0) {
+              bzero(rowPtr, numBytes);
+            } else {
+              memset_pattern4(rowPtr, &pixel, numBytes);
             }
-          }
+            rowPtr += numPixels;
+          }          
           
         } else {
           // Greater than 0, copy pixels from input to output stream
-          assert(rle_code > 0);
           
           // 32 bit pixels : ARGB
           
-          uint32_t numBytesToCopy = 4 * rle_code;
+          uint32_t numBytesToCopy = rle_code << 2;
           
           assert(bytesRemaining >= numBytesToCopy);
           
@@ -2771,7 +2837,8 @@ decode_rle_sample32(
           
           assert((rowPtr + rle_code - 1) < rowPtrMax);
           
-          for (int i = 0; i < rle_code; i++) {
+          uint32_t numPixels = rle_code;
+          do {
             uint32_t pixel;
             READ_AND_PREMULTIPLY(pixel, samplePtr);
             
@@ -2780,7 +2847,7 @@ decode_rle_sample32(
 #endif // DUMP_WHILE_DECODING
             
             *rowPtr++ = pixel;
-          }
+          } while (--numPixels != 0);
           
         }        
       }
@@ -2798,7 +2865,7 @@ decode_rle_sample32(
 // on the bit depth of the mov. If NULL is passed as frameBuffer, then a phony
 // framebuffer will be allocated and then released.
 
-int
+uint32_t
 read_process_rle_sample(FILE *movFile, MovData *movData, MovSample *sample, void *frameBuffer, const void *sampleBuffer, uint32_t sampleBufferSize)
 {
   void* frameBufferPtr = NULL;
@@ -2888,7 +2955,7 @@ retstatus:
 // Note that the type of frameBuffer you pass in (uint16_t* or uint32_t*) depends
 // on the bit depth of the mov.
 
-int
+uint32_t
 process_rle_sample(void *mappedFilePtr, MovData *movData, MovSample *sample, void *frameBuffer)
 {
   const char *samplePtr = NULL;
@@ -2922,17 +2989,44 @@ process_rle_sample(void *mappedFilePtr, MovData *movData, MovSample *sample, voi
   return status;
 }
 
-// Decode just 1 sample contained in a buffer
+// Decode just 1 frame contained in a buffer
 
 void
 exported_decode_rle_sample16(
-                  void *sampleBuffer,
-                  int sampleBufferSize,
-                  int isKeyFrame,
-                  void *frameBuffer,
-                  int frameBufferWidth,
-                  int frameBufferHeight)
+                             void *sampleBuffer,
+                             uint32_t sampleBufferSize,
+                             uint32_t isKeyFrame,
+                             void *frameBuffer,
+                             uint32_t frameBufferWidth,
+                             uint32_t frameBufferHeight)
 {
   decode_rle_sample16(sampleBuffer, sampleBufferSize, isKeyFrame,
-                           frameBuffer, frameBufferWidth, frameBufferHeight);
+                      frameBuffer, frameBufferWidth, frameBufferHeight);
+}
+
+void
+exported_decode_rle_sample24(
+                             void *sampleBuffer,
+                             uint32_t sampleBufferSize,
+                             uint32_t isKeyFrame,
+                             void *frameBuffer,
+                             uint32_t frameBufferWidth,
+                             uint32_t frameBufferHeight)
+{
+  decode_rle_sample24(sampleBuffer, sampleBufferSize, isKeyFrame,
+                      frameBuffer, frameBufferWidth, frameBufferHeight);
+}
+
+void
+exported_decode_rle_sample32(
+                             void *sampleBuffer,
+                             uint32_t sampleBufferSize,
+                             uint32_t isKeyFrame,
+                             void *frameBuffer,
+                             uint32_t frameBufferWidth,
+                             uint32_t frameBufferHeight)
+{
+  init_alphaTables();
+  decode_rle_sample32(sampleBuffer, sampleBufferSize, isKeyFrame,
+                      frameBuffer, frameBufferWidth, frameBufferHeight);
 }

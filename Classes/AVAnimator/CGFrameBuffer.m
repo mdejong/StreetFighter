@@ -30,6 +30,8 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 @implementation CGFrameBuffer
 
 @synthesize pixels = m_pixels;
+@synthesize zeroCopyPixels = m_zeroCopyPixels;
+@synthesize zeroCopyMappedData = m_zeroCopyMappedData;
 @synthesize numBytes = m_numBytes;
 @synthesize width = m_width;
 @synthesize height = m_height;
@@ -82,7 +84,7 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
   // test out both modes!
 
 	char* buffer;
-  size_t allocNumBytes = inNumBytes;
+  size_t allocNumBytes;
   
 #if defined(USE_MACH_VM_ALLOCATE)
   int pagesize = getpagesize();
@@ -117,6 +119,7 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
     bzero(buffer, allocNumBytes);
   }  
 # else
+  allocNumBytes = inNumBytes;
   buffer = (char*) malloc(allocNumBytes);
   if (buffer) {
     bzero(buffer, allocNumBytes);
@@ -144,6 +147,8 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 
 - (BOOL) renderView:(UIView*)view
 {
+  [self doneZeroCopyPixels];
+  
 	// Capture the pixel content of the View that contains the
 	// UIImageView. A view that displays at the full width and
 	// height of the screen will be captured in a 320x480
@@ -162,13 +167,13 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 //		return FALSE;
 //	}
 
-	BOOL isRotated;
+//	BOOL isRotated;
 
 	if ((self.width == w) && (self.height == h)) {
-		isRotated = FALSE;
+//		isRotated = FALSE;
 	} else if ((self.width == h) || (self.height != w)) {
 		// view must have created a rotation transformation
-		isRotated = TRUE;
+//		isRotated = TRUE;
 	} else {
 		return FALSE;
 	}
@@ -180,7 +185,7 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
   
   if (self.bitsPerPixel == 16) {
     bitsPerComponent = 5;
-    numComponents = 3;
+//    numComponents = 3;
     bitsPerPixel = 16;
     bytesPerRow = self.width * (bitsPerPixel / 8);    
   } else if (self.bitsPerPixel == 24 || self.bitsPerPixel == 32) {
@@ -223,6 +228,8 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 
 - (BOOL) renderCGImage:(CGImageRef)cgImageRef
 {
+  [self doneZeroCopyPixels];
+  
 	// Render the contents of an image to pixels.
 
 	size_t w = CGImageGetWidth(cgImageRef);
@@ -246,7 +253,7 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
   
   if (self.bitsPerPixel == 16) {
     bitsPerComponent = 5;
-    numComponents = 3;
+//    numComponents = 3;
     bitsPerPixel = 16;
     bytesPerRow = self.width * (bitsPerPixel / 8);    
   } else if (self.bitsPerPixel == 24 || self.bitsPerPixel == 32) {
@@ -304,7 +311,7 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
   
   if (self.bitsPerPixel == 16) {
     bitsPerComponent = 5;
-    numComponents = 3;
+//    numComponents = 3;
     bitsPerPixel = 16;
     bytesPerRow = self.width * (bitsPerPixel / 8);    
   } else if (self.bitsPerPixel == 24 || self.bitsPerPixel == 32) {
@@ -320,8 +327,13 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 
 	CGDataProviderReleaseDataCallback releaseData = CGFrameBufferProviderReleaseData;
 
+  void *pixelsPtr = self.pixels;
+  if (self.zeroCopyPixels) {
+    pixelsPtr = self.zeroCopyPixels;
+  }
+  
 	CGDataProviderRef dataProviderRef = CGDataProviderCreateWithData(self,
-																	 self.pixels,
+																	 pixelsPtr,
 																	 self.width * self.height * (bitsPerPixel / 8),
 																	 releaseData);
 
@@ -420,16 +432,31 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 - (void) copyPixels:(CGFrameBuffer *)anotherFrameBuffer
 {
   assert(self.numBytes == anotherFrameBuffer.numBytes);
+
+  [self doneZeroCopyPixels];
+  void *anotherFrameBufferPixelsPtr = anotherFrameBuffer.zeroCopyPixels;
+
+  if (anotherFrameBufferPixelsPtr) {
+    // other framebuffer has a zero copy pixel buffer, this happes when a keyframe
+    // is followed by a delta frame. Use the original zero copy pointer as the
+    // source for a OS level page copy operation, but don't modify the state of
+    // the other frame buffer in any way since it could be used by the graphics
+    // subsystem currently.
+  } else {
+    // copy bytes from other framebuffer
+    anotherFrameBufferPixelsPtr = anotherFrameBuffer.pixels;
+  }
+  
 #if defined(USE_MACH_VM_ALLOCATE)
   kern_return_t ret;
-  vm_address_t src = (vm_address_t) anotherFrameBuffer.pixels;
+  vm_address_t src = (vm_address_t) anotherFrameBufferPixelsPtr;
   vm_address_t dst = (vm_address_t) self.pixels;
   ret = vm_copy((vm_map_t) mach_task_self(), src, (vm_size_t) self.numBytes, dst);
   if (ret != KERN_SUCCESS) {
     assert(0);
   }
 #else
-  memcpy(self.pixels, anotherFrameBuffer.pixels, anotherFrameBuffer.numBytes);
+  memcpy(self.pixels, anotherFrameBufferPixelsPtr, anotherFrameBuffer.numBytes);
 #endif
 }
 
@@ -454,7 +481,23 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 	NSLog(@"deallocate CGFrameBuffer");
 #endif
 
-    [super dealloc];
+  self.zeroCopyMappedData = nil;
+  
+  [super dealloc];
+}
+
+- (void) zeroCopyPixels:(void*)zeroCopyPtr
+             mappedData:(NSData*)mappedData
+{
+  self->m_zeroCopyPixels = zeroCopyPtr;
+  self.zeroCopyMappedData = mappedData;
+}
+
+- (void) doneZeroCopyPixels
+{
+  NSAssert(self.isLockedByDataProvider == FALSE, @"isLockedByDataProvider");
+  self->m_zeroCopyPixels = NULL;
+  self.zeroCopyMappedData = nil;
 }
 
 @end
@@ -472,5 +515,5 @@ void CGFrameBufferProviderReleaseData (void *info, const void *data, size_t size
 	cgBuffer.isLockedByDataProvider = FALSE;
 
 	// Note that the cgBuffer just deallocated itself, so the
-	// pointer no longer points to a valid memory.
+	// pointer no longer points to valid memory.
 }

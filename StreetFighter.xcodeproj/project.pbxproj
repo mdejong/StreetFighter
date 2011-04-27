@@ -17,21 +17,44 @@
 		28D7ACF80DDB3853001CB0EB /* StreetFighterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* StreetFighterViewController.m */; };
 		CD1BB22E12EEA02600A237B7 /* Hadoken.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB22D12EEA02600A237B7 /* Hadoken.wav */; };
 		CD1BB23012EEA03400A237B7 /* Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB22F12EEA03400A237B7 /* Kick.wav */; };
-		CD1BB25A12EEA60C00A237B7 /* RyuStrongPunch.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */; };
 		CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */; };
 		CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB29312EEA88100A237B7 /* Fight.wav */; };
+		CD6B5E0C13680AF1005D779E /* AV7zAppResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5DFB13680AF1005D779E /* AV7zAppResourceLoader.m */; };
+		CD6B5E0D13680AF1005D779E /* AV7zQT2MvidResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5DFD13680AF1005D779E /* AV7zQT2MvidResourceLoader.m */; };
+		CD6B5E0E13680AF1005D779E /* AVFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5DFF13680AF1005D779E /* AVFileUtil.m */; };
+		CD6B5E0F13680AF1005D779E /* AVImageFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E0113680AF1005D779E /* AVImageFrameDecoder.m */; };
+		CD6B5E1013680AF1005D779E /* AVMvidFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E0313680AF1005D779E /* AVMvidFrameDecoder.m */; };
+		CD6B5E1113680AF1005D779E /* maxvid_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E0413680AF1005D779E /* maxvid_decode.c */; settings = {COMPILER_FLAGS = "-mno-thumb"; }; };
+		CD6B5E1213680AF1005D779E /* maxvid_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E0613680AF1005D779E /* maxvid_encode.c */; };
+		CD6B5E1313680AF1005D779E /* maxvid_file.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E0813680AF1005D779E /* maxvid_file.c */; };
+		CD6B5E1413680AF1005D779E /* movdata_convert_maxvid.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E0A13680AF1005D779E /* movdata_convert_maxvid.c */; };
+		CD6B5E3B13680CAF005D779E /* 7zBuf.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E1713680CAF005D779E /* 7zBuf.c */; };
+		CD6B5E3C13680CAF005D779E /* 7zBuf2.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E1913680CAF005D779E /* 7zBuf2.c */; };
+		CD6B5E3D13680CAF005D779E /* 7zDec.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E1A13680CAF005D779E /* 7zDec.c */; };
+		CD6B5E3E13680CAF005D779E /* 7zFile.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E1B13680CAF005D779E /* 7zFile.c */; };
+		CD6B5E3F13680CAF005D779E /* 7zIn.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E1D13680CAF005D779E /* 7zIn.c */; };
+		CD6B5E4013680CAF005D779E /* 7zStream.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E1E13680CAF005D779E /* 7zStream.c */; };
+		CD6B5E4113680CAF005D779E /* Alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2013680CAF005D779E /* Alloc.c */; };
+		CD6B5E4213680CAF005D779E /* CpuArch.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2213680CAF005D779E /* CpuArch.c */; };
+		CD6B5E4313680CAF005D779E /* Delta.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2413680CAF005D779E /* Delta.c */; };
+		CD6B5E4413680CAF005D779E /* Lzma2Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2713680CAF005D779E /* Lzma2Dec.c */; };
+		CD6B5E4513680CAF005D779E /* LzmaDec.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2913680CAF005D779E /* LzmaDec.c */; };
+		CD6B5E4613680CAF005D779E /* LZMAExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2C13680CAF005D779E /* LZMAExtractor.m */; };
+		CD6B5E4713680CAF005D779E /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E2E13680CAF005D779E /* Ppmd7.c */; };
+		CD6B5E4813680CAF005D779E /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E3013680CAF005D779E /* Ppmd7Dec.c */; };
+		CD6B5E4913680CAF005D779E /* Ppmd8.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E3113680CAF005D779E /* Ppmd8.c */; };
+		CD6B5E4A13680CAF005D779E /* Ppmd8Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E3313680CAF005D779E /* Ppmd8Dec.c */; };
+		CD6B5E4B13680CAF005D779E /* 7zAlloc.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E3813680CAF005D779E /* 7zAlloc.c */; };
+		CD6B5E4C13680CAF005D779E /* 7zMain.c in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5E3A13680CAF005D779E /* 7zMain.c */; };
 		CD6EF42912F0EDF20045659F /* AVAnimatorMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */; };
+		CD7659FF1368A75900020FEB /* RyuMvids.7z in Resources */ = {isa = PBXBuildFile; fileRef = CD7659FE1368A75900020FEB /* RyuMvids.7z */; };
 		CD83054012F20F990070F85B /* AVAnimatorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD83053C12F20F990070F85B /* AVAnimatorLayer.m */; };
-		CD83054112F20F990070F85B /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = CD83053E12F20F990070F85B /* movdata.c */; };
+		CD83054112F20F990070F85B /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = CD83053E12F20F990070F85B /* movdata.c */; settings = {COMPILER_FLAGS = "-mno-thumb"; }; };
 		CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */; };
-		CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066A12EBA91D0037EFDA /* RyuFireball.mov */; };
-		CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */; };
-		CD85066F12EBA91D0037EFDA /* RyuStance.mov in Resources */ = {isa = PBXBuildFile; fileRef = CD85066C12EBA91D0037EFDA /* RyuStance.mov */; };
 		CD85069912EBA9810037EFDA /* AutoPropertyRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */; };
 		CD85069A12EBA9810037EFDA /* AVAnimatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85067D12EBA9810037EFDA /* AVAnimatorView.m */; };
 		CD85069B12EBA9810037EFDA /* AVAppResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */; };
 		CD85069C12EBA9810037EFDA /* AVFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068212EBA9810037EFDA /* AVFrameDecoder.m */; };
-		CD85069D12EBA9810037EFDA /* AVPNGFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */; };
 		CD85069E12EBA9810037EFDA /* AVQTAnimationFrameDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */; };
 		CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068812EBA9810037EFDA /* AVResourceLoader.m */; };
 		CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */; };
@@ -63,22 +86,72 @@
 		8D1107310486CEB800E47090 /* StreetFighter-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StreetFighter-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CD1BB22D12EEA02600A237B7 /* Hadoken.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hadoken.wav; sourceTree = "<group>"; };
 		CD1BB22F12EEA03400A237B7 /* Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Kick.wav; sourceTree = "<group>"; };
-		CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuStrongPunch.mov; sourceTree = "<group>"; };
 		CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Punch-fierce.wav"; sourceTree = "<group>"; };
 		CD1BB29312EEA88100A237B7 /* Fight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fight.wav; sourceTree = "<group>"; };
+		CD6B5DFA13680AF1005D779E /* AV7zAppResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AV7zAppResourceLoader.h; sourceTree = "<group>"; };
+		CD6B5DFB13680AF1005D779E /* AV7zAppResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AV7zAppResourceLoader.m; sourceTree = "<group>"; };
+		CD6B5DFC13680AF1005D779E /* AV7zQT2MvidResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AV7zQT2MvidResourceLoader.h; sourceTree = "<group>"; };
+		CD6B5DFD13680AF1005D779E /* AV7zQT2MvidResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AV7zQT2MvidResourceLoader.m; sourceTree = "<group>"; };
+		CD6B5DFE13680AF1005D779E /* AVFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVFileUtil.h; sourceTree = "<group>"; };
+		CD6B5DFF13680AF1005D779E /* AVFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVFileUtil.m; sourceTree = "<group>"; };
+		CD6B5E0013680AF1005D779E /* AVImageFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVImageFrameDecoder.h; sourceTree = "<group>"; };
+		CD6B5E0113680AF1005D779E /* AVImageFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVImageFrameDecoder.m; sourceTree = "<group>"; };
+		CD6B5E0213680AF1005D779E /* AVMvidFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVMvidFrameDecoder.h; sourceTree = "<group>"; };
+		CD6B5E0313680AF1005D779E /* AVMvidFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVMvidFrameDecoder.m; sourceTree = "<group>"; };
+		CD6B5E0413680AF1005D779E /* maxvid_decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maxvid_decode.c; sourceTree = "<group>"; };
+		CD6B5E0513680AF1005D779E /* maxvid_decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxvid_decode.h; sourceTree = "<group>"; };
+		CD6B5E0613680AF1005D779E /* maxvid_encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maxvid_encode.c; sourceTree = "<group>"; };
+		CD6B5E0713680AF1005D779E /* maxvid_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxvid_encode.h; sourceTree = "<group>"; };
+		CD6B5E0813680AF1005D779E /* maxvid_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maxvid_file.c; sourceTree = "<group>"; };
+		CD6B5E0913680AF1005D779E /* maxvid_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxvid_file.h; sourceTree = "<group>"; };
+		CD6B5E0A13680AF1005D779E /* movdata_convert_maxvid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = movdata_convert_maxvid.c; sourceTree = "<group>"; };
+		CD6B5E0B13680AF1005D779E /* movdata_convert_maxvid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movdata_convert_maxvid.h; sourceTree = "<group>"; };
+		CD6B5E1613680CAF005D779E /* 7z.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 7z.h; sourceTree = "<group>"; };
+		CD6B5E1713680CAF005D779E /* 7zBuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zBuf.c; sourceTree = "<group>"; };
+		CD6B5E1813680CAF005D779E /* 7zBuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 7zBuf.h; sourceTree = "<group>"; };
+		CD6B5E1913680CAF005D779E /* 7zBuf2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zBuf2.c; sourceTree = "<group>"; };
+		CD6B5E1A13680CAF005D779E /* 7zDec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zDec.c; sourceTree = "<group>"; };
+		CD6B5E1B13680CAF005D779E /* 7zFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zFile.c; sourceTree = "<group>"; };
+		CD6B5E1C13680CAF005D779E /* 7zFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 7zFile.h; sourceTree = "<group>"; };
+		CD6B5E1D13680CAF005D779E /* 7zIn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zIn.c; sourceTree = "<group>"; };
+		CD6B5E1E13680CAF005D779E /* 7zStream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zStream.c; sourceTree = "<group>"; };
+		CD6B5E1F13680CAF005D779E /* 7zVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 7zVersion.h; sourceTree = "<group>"; };
+		CD6B5E2013680CAF005D779E /* Alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Alloc.c; sourceTree = "<group>"; };
+		CD6B5E2113680CAF005D779E /* Alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alloc.h; sourceTree = "<group>"; };
+		CD6B5E2213680CAF005D779E /* CpuArch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CpuArch.c; sourceTree = "<group>"; };
+		CD6B5E2313680CAF005D779E /* CpuArch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CpuArch.h; sourceTree = "<group>"; };
+		CD6B5E2413680CAF005D779E /* Delta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Delta.c; sourceTree = "<group>"; };
+		CD6B5E2513680CAF005D779E /* Delta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delta.h; sourceTree = "<group>"; };
+		CD6B5E2613680CAF005D779E /* LzHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LzHash.h; sourceTree = "<group>"; };
+		CD6B5E2713680CAF005D779E /* Lzma2Dec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Lzma2Dec.c; sourceTree = "<group>"; };
+		CD6B5E2813680CAF005D779E /* Lzma2Dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lzma2Dec.h; sourceTree = "<group>"; };
+		CD6B5E2913680CAF005D779E /* LzmaDec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LzmaDec.c; sourceTree = "<group>"; };
+		CD6B5E2A13680CAF005D779E /* LzmaDec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LzmaDec.h; sourceTree = "<group>"; };
+		CD6B5E2B13680CAF005D779E /* LZMAExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZMAExtractor.h; sourceTree = "<group>"; };
+		CD6B5E2C13680CAF005D779E /* LZMAExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZMAExtractor.m; sourceTree = "<group>"; };
+		CD6B5E2D13680CAF005D779E /* Ppmd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ppmd.h; sourceTree = "<group>"; };
+		CD6B5E2E13680CAF005D779E /* Ppmd7.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Ppmd7.c; sourceTree = "<group>"; };
+		CD6B5E2F13680CAF005D779E /* Ppmd7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ppmd7.h; sourceTree = "<group>"; };
+		CD6B5E3013680CAF005D779E /* Ppmd7Dec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Ppmd7Dec.c; sourceTree = "<group>"; };
+		CD6B5E3113680CAF005D779E /* Ppmd8.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Ppmd8.c; sourceTree = "<group>"; };
+		CD6B5E3213680CAF005D779E /* Ppmd8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ppmd8.h; sourceTree = "<group>"; };
+		CD6B5E3313680CAF005D779E /* Ppmd8Dec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Ppmd8Dec.c; sourceTree = "<group>"; };
+		CD6B5E3413680CAF005D779E /* RotateDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotateDefs.h; sourceTree = "<group>"; };
+		CD6B5E3513680CAF005D779E /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		CD6B5E3813680CAF005D779E /* 7zAlloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zAlloc.c; sourceTree = "<group>"; };
+		CD6B5E3913680CAF005D779E /* 7zAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 7zAlloc.h; sourceTree = "<group>"; };
+		CD6B5E3A13680CAF005D779E /* 7zMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = 7zMain.c; sourceTree = "<group>"; };
 		CD6EF42512F0EDF20045659F /* AVAnimatorMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMedia.h; sourceTree = "<group>"; };
 		CD6EF42612F0EDF20045659F /* AVAnimatorMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAnimatorMedia.m; sourceTree = "<group>"; };
 		CD6EF42712F0EDF20045659F /* AVAnimatorMediaPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMediaPrivate.h; sourceTree = "<group>"; };
 		CD6EF42812F0EDF20045659F /* AVAnimatorMediaRendererProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorMediaRendererProtocol.h; sourceTree = "<group>"; };
+		CD7659FE1368A75900020FEB /* RyuMvids.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = RyuMvids.7z; sourceTree = "<group>"; };
 		CD83053B12F20F990070F85B /* AVAnimatorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorLayer.h; sourceTree = "<group>"; };
 		CD83053C12F20F990070F85B /* AVAnimatorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAnimatorLayer.m; sourceTree = "<group>"; };
 		CD83053D12F20F990070F85B /* AVAnimatorLayerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorLayerPrivate.h; sourceTree = "<group>"; };
 		CD83053E12F20F990070F85B /* movdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = movdata.c; sourceTree = "<group>"; };
 		CD83053F12F20F990070F85B /* movdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movdata.h; sourceTree = "<group>"; };
 		CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SF2BlankaBackground.gif; sourceTree = "<group>"; };
-		CD85066A12EBA91D0037EFDA /* RyuFireball.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuFireball.mov; sourceTree = "<group>"; };
-		CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuHighKick.mov; sourceTree = "<group>"; };
-		CD85066C12EBA91D0037EFDA /* RyuStance.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = RyuStance.mov; sourceTree = "<group>"; };
 		CD85067912EBA9810037EFDA /* AutoPropertyRelease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoPropertyRelease.h; sourceTree = "<group>"; };
 		CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoPropertyRelease.m; sourceTree = "<group>"; };
 		CD85067C12EBA9810037EFDA /* AVAnimatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAnimatorView.h; sourceTree = "<group>"; };
@@ -88,8 +161,6 @@
 		CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAppResourceLoader.m; sourceTree = "<group>"; };
 		CD85068112EBA9810037EFDA /* AVFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVFrameDecoder.h; sourceTree = "<group>"; };
 		CD85068212EBA9810037EFDA /* AVFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVFrameDecoder.m; sourceTree = "<group>"; };
-		CD85068312EBA9810037EFDA /* AVPNGFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPNGFrameDecoder.h; sourceTree = "<group>"; };
-		CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPNGFrameDecoder.m; sourceTree = "<group>"; };
 		CD85068512EBA9810037EFDA /* AVQTAnimationFrameDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVQTAnimationFrameDecoder.h; sourceTree = "<group>"; };
 		CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVQTAnimationFrameDecoder.m; sourceTree = "<group>"; };
 		CD85068712EBA9810037EFDA /* AVResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVResourceLoader.h; sourceTree = "<group>"; };
@@ -129,9 +200,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CD6B5E1513680CAF005D779E /* LZMASDK */,
+				CD85067B12EBA9810037EFDA /* AVAnimator */,
 				CD85067912EBA9810037EFDA /* AutoPropertyRelease.h */,
 				CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */,
-				CD85067B12EBA9810037EFDA /* AVAnimator */,
 				1D3623240D0F684500981E51 /* StreetFighterAppDelegate.h */,
 				1D3623250D0F684500981E51 /* StreetFighterAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */,
@@ -173,18 +245,15 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD7659FE1368A75900020FEB /* RyuMvids.7z */,
 				CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */,
 				CDC21F9E12EE4A19005D648A /* Icon.png */,
 				CDE10D7B12EE2A50002F071D /* RedButtonDownAlpha.png */,
 				CDE10D7C12EE2A50002F071D /* RedButtonUpAlpha.png */,
 				CDD2640612EBDB9D000BF04E /* RyuStance.png */,
-				CD85066A12EBA91D0037EFDA /* RyuFireball.mov */,
 				CD1BB22D12EEA02600A237B7 /* Hadoken.wav */,
-				CD1BB25912EEA60C00A237B7 /* RyuStrongPunch.mov */,
 				CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */,
-				CD85066B12EBA91D0037EFDA /* RyuHighKick.mov */,
 				CD1BB22F12EEA03400A237B7 /* Kick.wav */,
-				CD85066C12EBA91D0037EFDA /* RyuStance.mov */,
 				CD85066512EBA7610037EFDA /* SF2BlankaBackground.gif */,
 				CD1BB29312EEA88100A237B7 /* Fight.wav */,
 				2899E5210DE3E06400AC0155 /* StreetFighterViewController.xib */,
@@ -208,9 +277,81 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD6B5E1513680CAF005D779E /* LZMASDK */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B5E1613680CAF005D779E /* 7z.h */,
+				CD6B5E1713680CAF005D779E /* 7zBuf.c */,
+				CD6B5E1813680CAF005D779E /* 7zBuf.h */,
+				CD6B5E1913680CAF005D779E /* 7zBuf2.c */,
+				CD6B5E1A13680CAF005D779E /* 7zDec.c */,
+				CD6B5E1B13680CAF005D779E /* 7zFile.c */,
+				CD6B5E1C13680CAF005D779E /* 7zFile.h */,
+				CD6B5E1D13680CAF005D779E /* 7zIn.c */,
+				CD6B5E1E13680CAF005D779E /* 7zStream.c */,
+				CD6B5E1F13680CAF005D779E /* 7zVersion.h */,
+				CD6B5E2013680CAF005D779E /* Alloc.c */,
+				CD6B5E2113680CAF005D779E /* Alloc.h */,
+				CD6B5E2213680CAF005D779E /* CpuArch.c */,
+				CD6B5E2313680CAF005D779E /* CpuArch.h */,
+				CD6B5E2413680CAF005D779E /* Delta.c */,
+				CD6B5E2513680CAF005D779E /* Delta.h */,
+				CD6B5E2613680CAF005D779E /* LzHash.h */,
+				CD6B5E2713680CAF005D779E /* Lzma2Dec.c */,
+				CD6B5E2813680CAF005D779E /* Lzma2Dec.h */,
+				CD6B5E2913680CAF005D779E /* LzmaDec.c */,
+				CD6B5E2A13680CAF005D779E /* LzmaDec.h */,
+				CD6B5E2B13680CAF005D779E /* LZMAExtractor.h */,
+				CD6B5E2C13680CAF005D779E /* LZMAExtractor.m */,
+				CD6B5E2D13680CAF005D779E /* Ppmd.h */,
+				CD6B5E2E13680CAF005D779E /* Ppmd7.c */,
+				CD6B5E2F13680CAF005D779E /* Ppmd7.h */,
+				CD6B5E3013680CAF005D779E /* Ppmd7Dec.c */,
+				CD6B5E3113680CAF005D779E /* Ppmd8.c */,
+				CD6B5E3213680CAF005D779E /* Ppmd8.h */,
+				CD6B5E3313680CAF005D779E /* Ppmd8Dec.c */,
+				CD6B5E3413680CAF005D779E /* RotateDefs.h */,
+				CD6B5E3513680CAF005D779E /* Types.h */,
+				CD6B5E3613680CAF005D779E /* Util */,
+			);
+			path = LZMASDK;
+			sourceTree = "<group>";
+		};
+		CD6B5E3613680CAF005D779E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B5E3713680CAF005D779E /* 7z */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		CD6B5E3713680CAF005D779E /* 7z */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B5E3813680CAF005D779E /* 7zAlloc.c */,
+				CD6B5E3913680CAF005D779E /* 7zAlloc.h */,
+				CD6B5E3A13680CAF005D779E /* 7zMain.c */,
+			);
+			path = 7z;
+			sourceTree = "<group>";
+		};
 		CD85067B12EBA9810037EFDA /* AVAnimator */ = {
 			isa = PBXGroup;
 			children = (
+				CD6B5DFE13680AF1005D779E /* AVFileUtil.h */,
+				CD6B5DFF13680AF1005D779E /* AVFileUtil.m */,
+				CD83053F12F20F990070F85B /* movdata.h */,
+				CD83053E12F20F990070F85B /* movdata.c */,
+				CD6B5E0B13680AF1005D779E /* movdata_convert_maxvid.h */,
+				CD6B5E0A13680AF1005D779E /* movdata_convert_maxvid.c */,
+				CD6B5E0913680AF1005D779E /* maxvid_file.h */,
+				CD6B5E0813680AF1005D779E /* maxvid_file.c */,
+				CD6B5E0513680AF1005D779E /* maxvid_decode.h */,
+				CD6B5E0413680AF1005D779E /* maxvid_decode.c */,
+				CD6B5E0713680AF1005D779E /* maxvid_encode.h */,
+				CD6B5E0613680AF1005D779E /* maxvid_encode.c */,
+				CD85068912EBA9810037EFDA /* CGFrameBuffer.h */,
+				CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */,
 				CD85067C12EBA9810037EFDA /* AVAnimatorView.h */,
 				CD85067E12EBA9810037EFDA /* AVAnimatorViewPrivate.h */,
 				CD85067D12EBA9810037EFDA /* AVAnimatorView.m */,
@@ -223,18 +364,20 @@
 				CD6EF42812F0EDF20045659F /* AVAnimatorMediaRendererProtocol.h */,
 				CD85068112EBA9810037EFDA /* AVFrameDecoder.h */,
 				CD85068212EBA9810037EFDA /* AVFrameDecoder.m */,
-				CD85068312EBA9810037EFDA /* AVPNGFrameDecoder.h */,
-				CD85068412EBA9810037EFDA /* AVPNGFrameDecoder.m */,
+				CD6B5E0013680AF1005D779E /* AVImageFrameDecoder.h */,
+				CD6B5E0113680AF1005D779E /* AVImageFrameDecoder.m */,
+				CD6B5E0213680AF1005D779E /* AVMvidFrameDecoder.h */,
+				CD6B5E0313680AF1005D779E /* AVMvidFrameDecoder.m */,
 				CD85068512EBA9810037EFDA /* AVQTAnimationFrameDecoder.h */,
 				CD85068612EBA9810037EFDA /* AVQTAnimationFrameDecoder.m */,
-				CD83053F12F20F990070F85B /* movdata.h */,
-				CD83053E12F20F990070F85B /* movdata.c */,
 				CD85068712EBA9810037EFDA /* AVResourceLoader.h */,
 				CD85068812EBA9810037EFDA /* AVResourceLoader.m */,
 				CD85067F12EBA9810037EFDA /* AVAppResourceLoader.h */,
 				CD85068012EBA9810037EFDA /* AVAppResourceLoader.m */,
-				CD85068912EBA9810037EFDA /* CGFrameBuffer.h */,
-				CD85068A12EBA9810037EFDA /* CGFrameBuffer.m */,
+				CD6B5DFA13680AF1005D779E /* AV7zAppResourceLoader.h */,
+				CD6B5DFB13680AF1005D779E /* AV7zAppResourceLoader.m */,
+				CD6B5DFC13680AF1005D779E /* AV7zQT2MvidResourceLoader.h */,
+				CD6B5DFD13680AF1005D779E /* AV7zQT2MvidResourceLoader.m */,
 			);
 			path = AVAnimator;
 			sourceTree = "<group>";
@@ -291,9 +434,6 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* StreetFighterViewController.xib in Resources */,
 				CD85066612EBA7610037EFDA /* SF2BlankaBackground.gif in Resources */,
-				CD85066D12EBA91D0037EFDA /* RyuFireball.mov in Resources */,
-				CD85066E12EBA91D0037EFDA /* RyuHighKick.mov in Resources */,
-				CD85066F12EBA91D0037EFDA /* RyuStance.mov in Resources */,
 				CDD2640712EBDB9D000BF04E /* RyuStance.png in Resources */,
 				CDE10D7D12EE2A50002F071D /* RedButtonDownAlpha.png in Resources */,
 				CDE10D7E12EE2A50002F071D /* RedButtonUpAlpha.png in Resources */,
@@ -301,10 +441,10 @@
 				CDC21FA112EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf in Resources */,
 				CD1BB22E12EEA02600A237B7 /* Hadoken.wav in Resources */,
 				CD1BB23012EEA03400A237B7 /* Kick.wav in Resources */,
-				CD1BB25A12EEA60C00A237B7 /* RyuStrongPunch.mov in Resources */,
 				CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */,
 				CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */,
 				CDD0B21212F4DFDF00412982 /* License.txt in Resources */,
+				CD7659FF1368A75900020FEB /* RyuMvids.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,13 +462,39 @@
 				CD85069A12EBA9810037EFDA /* AVAnimatorView.m in Sources */,
 				CD85069B12EBA9810037EFDA /* AVAppResourceLoader.m in Sources */,
 				CD85069C12EBA9810037EFDA /* AVFrameDecoder.m in Sources */,
-				CD85069D12EBA9810037EFDA /* AVPNGFrameDecoder.m in Sources */,
 				CD85069E12EBA9810037EFDA /* AVQTAnimationFrameDecoder.m in Sources */,
 				CD85069F12EBA9810037EFDA /* AVResourceLoader.m in Sources */,
 				CD8506A012EBA9810037EFDA /* CGFrameBuffer.m in Sources */,
 				CD6EF42912F0EDF20045659F /* AVAnimatorMedia.m in Sources */,
 				CD83054012F20F990070F85B /* AVAnimatorLayer.m in Sources */,
 				CD83054112F20F990070F85B /* movdata.c in Sources */,
+				CD6B5E0C13680AF1005D779E /* AV7zAppResourceLoader.m in Sources */,
+				CD6B5E0D13680AF1005D779E /* AV7zQT2MvidResourceLoader.m in Sources */,
+				CD6B5E0E13680AF1005D779E /* AVFileUtil.m in Sources */,
+				CD6B5E0F13680AF1005D779E /* AVImageFrameDecoder.m in Sources */,
+				CD6B5E1013680AF1005D779E /* AVMvidFrameDecoder.m in Sources */,
+				CD6B5E1113680AF1005D779E /* maxvid_decode.c in Sources */,
+				CD6B5E1213680AF1005D779E /* maxvid_encode.c in Sources */,
+				CD6B5E1313680AF1005D779E /* maxvid_file.c in Sources */,
+				CD6B5E1413680AF1005D779E /* movdata_convert_maxvid.c in Sources */,
+				CD6B5E3B13680CAF005D779E /* 7zBuf.c in Sources */,
+				CD6B5E3C13680CAF005D779E /* 7zBuf2.c in Sources */,
+				CD6B5E3D13680CAF005D779E /* 7zDec.c in Sources */,
+				CD6B5E3E13680CAF005D779E /* 7zFile.c in Sources */,
+				CD6B5E3F13680CAF005D779E /* 7zIn.c in Sources */,
+				CD6B5E4013680CAF005D779E /* 7zStream.c in Sources */,
+				CD6B5E4113680CAF005D779E /* Alloc.c in Sources */,
+				CD6B5E4213680CAF005D779E /* CpuArch.c in Sources */,
+				CD6B5E4313680CAF005D779E /* Delta.c in Sources */,
+				CD6B5E4413680CAF005D779E /* Lzma2Dec.c in Sources */,
+				CD6B5E4513680CAF005D779E /* LzmaDec.c in Sources */,
+				CD6B5E4613680CAF005D779E /* LZMAExtractor.m in Sources */,
+				CD6B5E4713680CAF005D779E /* Ppmd7.c in Sources */,
+				CD6B5E4813680CAF005D779E /* Ppmd7Dec.c in Sources */,
+				CD6B5E4913680CAF005D779E /* Ppmd8.c in Sources */,
+				CD6B5E4A13680CAF005D779E /* Ppmd8Dec.c in Sources */,
+				CD6B5E4B13680CAF005D779E /* 7zAlloc.c in Sources */,
+				CD6B5E4C13680CAF005D779E /* 7zMain.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
