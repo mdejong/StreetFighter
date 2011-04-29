@@ -3,9 +3,12 @@ not include the Classes/LZMASDK files which are in the public domain. The
 video and audio resources were downloaded off the internet, no claim of
 ownership or license is made on these files.
 
-One could simply attach the MOVS/*.mov files as resource, but the 7zip library can
-be used to significantly reduce the final download size by compressing movie data.
+A developer could simply include the MOVS/*.mov files as iOS project resources,
+but it is a lot better to use the 7zip library to compress the video data.  
 The 7zip library compresses video data much better than gzip, libz, or bzip2.
+In addition, runtime performance can be improved by converting the .mov files
+to .mvid video optimized for iOS. These instructions shows how to use the
+qtaniframes executable from the QTFileParser example.
 
 Commands to create RyuMvids.7z Archive:
 

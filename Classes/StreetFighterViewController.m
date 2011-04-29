@@ -24,7 +24,11 @@
 
 #import <AVFoundation/AVAudioPlayer.h>
 
-#define ENABLE_SOUND
+//#define ENABLE_SOUND
+
+static int stanceCount = 0;
+
+#import "StreetFighterAppDelegate.h"
 
 @implementation StreetFighterViewController
 
@@ -244,6 +248,18 @@
     [self.renderView attachMedia:self.stanceMedia];
     self.stanceMedia.animatorRepeatCount = 5;    
     [self.stanceMedia startAnimator];
+    
+    if (stanceCount++ > 30) {
+      // Done looping, stop playback and cleanup all windows
+      [self.stanceMedia stopAnimator];
+//      UIWindow *window = self.view.window;
+      [self.view removeFromSuperview];
+      
+      StreetFighterAppDelegate *appDelegate =
+        (StreetFighterAppDelegate *) [[UIApplication sharedApplication] delegate];
+      
+      appDelegate.viewController = nil;
+    }
   } else if (action == 1) {
     // Run punch animation
     self.renderView.frame = punchFrame;

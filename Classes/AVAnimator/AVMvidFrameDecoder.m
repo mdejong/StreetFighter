@@ -12,6 +12,13 @@
 
 #import "maxvid_file.h"
 
+#ifndef __OPTIMIZE__
+// Automatically define EXTRA_CHECKS when not optimizing (in debug mode)
+# define EXTRA_CHECKS
+#endif // DEBUG
+
+//#define ALWAYS_CHECK_ADLER
+
 @implementation AVMvidFrameDecoder
 
 @synthesize filePath = m_filePath;
@@ -163,9 +170,6 @@
   
   [self _mapFile];
   
-  // FIXME: might want to map, then copy header, then unmap ?
-  // Basically, we want the header info without the whole file being mapped.
-  
 	self->m_isOpen = TRUE;
 	return TRUE;
 }
@@ -199,7 +203,7 @@
   // Get from queue of frame buffers!
   
   CGFrameBuffer *nextFrameBuffer = [self _getNextFramebuffer];
-    
+  
   // Double check that the current frame is not the exact same object as the one we pass as
   // the next frame buffer. This should not happen, and we can't copy the buffer into itself.
   
@@ -238,8 +242,13 @@
   
   void *frameBuffer = (void*)nextFrameBuffer.pixels;
   uint32_t frameBufferSize = self->m_mvFile->header.width * self->m_mvFile->header.height;
-  
   uint32_t bpp = self->m_mvFile->header.bpp;
+  uint32_t frameBufferNumBytes;
+  if (bpp == 16) {
+    frameBufferNumBytes = frameBufferSize * sizeof(uint16_t);
+  } else {
+    frameBufferNumBytes = frameBufferSize * sizeof(uint32_t);
+  }
   
   // Check for the case where multiple frames need to be processed,
   // if one of the frames between the current frame and the target
@@ -265,6 +274,12 @@
     // Don't set frameIndex for the first frame (frameIndex == -1)
     if (lastKeyframeIndex > -1) {
       frameIndex = lastKeyframeIndex;
+      
+#ifdef EXTRA_CHECKS
+      int actualFrameIndex = frameIndex + 1;
+      MVFrame *frame = maxvid_file_frame(self->m_mvFile, actualFrameIndex);
+      NSAssert(maxvid_frame_iskeyframe(frame) == 1, @"frame must be a keyframe");
+#endif // EXTRA_CHECKS      
     }
   }
   
@@ -273,6 +288,13 @@
 	for ( ; frameIndex < newFrameIndexSigned; frameIndex++) {
     int actualFrameIndex = frameIndex + 1;
     MVFrame *frame = maxvid_file_frame(self->m_mvFile, actualFrameIndex);
+
+#ifdef EXTRA_CHECKS
+    if (actualFrameIndex == 0) {
+      // First frame must be a keyframe
+      NSAssert(maxvid_frame_iskeyframe(frame) == 1, @"initial frame must be a keyframe");
+    }
+#endif // EXTRA_CHECKS
     
     if (maxvid_frame_isnopframe(frame)) {
       // This frame is a no-op, since it duplicates data from the previous frame.
@@ -288,6 +310,12 @@
           [nextFrameBuffer copyPixels:self.currentFrameBuffer];
         }
         self.currentFrameBuffer = nextFrameBuffer;
+      } else {
+        // In the case where the current cgframebuffer contains is a zero copy pointer, need to
+        // explicitly copy the data from the zero copy buffer to the framebuffer.
+        if (self.currentFrameBuffer.zeroCopyPixels != NULL) {
+          [self.currentFrameBuffer zeroCopyToPixels];
+        }
       }
       
       uint32_t status;
@@ -296,6 +324,7 @@
       uint32_t inputBuffer32NumBytes = maxvid_frame_length(frame);
 
       if (maxvid_frame_iskeyframe(frame)) {
+#ifdef EXTRA_CHECKS
         // FIXME: use zero copy of pointer into mapped file, impl OS page copy in util class
         if (bpp == 16) {
           NSAssert(inputBuffer32NumBytes == (frameBufferSize * sizeof(uint16_t)), @"framebuffer num bytes");
@@ -303,17 +332,38 @@
           NSAssert(inputBuffer32NumBytes == (frameBufferSize * sizeof(uint32_t)), @"framebuffer num bytes");
         }
         NSAssert(((uint32_t)inputBuffer32 % MV_PAGESIZE) == 0, @"framebuffer num bytes");
+#endif // EXTRA_CHECKS
+    
+#if defined(EXTRA_CHECKS) || defined(ALWAYS_CHECK_ADLER)
+        // If mvid file has adler checksum for frame, verify that it matches
         
-//        memcpy(frameBuffer, inputBuffer32, inputBuffer32NumBytes);
+        if (frame->adler != 0) {
+          uint32_t frameAdler = maxvid_adler32(0, (unsigned char*)inputBuffer32, inputBuffer32NumBytes);
+          NSAssert(frame->adler == frameAdler, @"frameAdler");
+        }        
+#endif // EXTRA_CHECKS
   
         [nextFrameBuffer zeroCopyPixels:inputBuffer32 mappedData:self.mappedData];
       } else {
+#ifdef EXTRA_CHECKS
+        NSAssert(((uint32_t)inputBuffer32 % sizeof(uint32_t)) == 0, @"inputBuffer32 alignment");
+        NSAssert((inputBuffer32NumBytes % sizeof(uint32_t)) == 0, @"inputBuffer32NumBytes");
+#endif // EXTRA_CHECKS        
         uint32_t inputBuffer32NumWords = inputBuffer32NumBytes >> 2;
         if (bpp == 16) {
           status = maxvid_decode_c4_sample16(frameBuffer, inputBuffer32, inputBuffer32NumWords, frameBufferSize);
         } else {
           status = maxvid_decode_c4_sample32(frameBuffer, inputBuffer32, inputBuffer32NumWords, frameBufferSize);
+        }
+        NSAssert(status == 0, @"status");
+        
+#if defined(EXTRA_CHECKS) || defined(ALWAYS_CHECK_ADLER)
+        // If mvid file has adler checksum for frame, verify that it matches the decoded framebuffer contents    
+        if (frame->adler != 0) {
+          uint32_t frameAdler = maxvid_adler32(0, (unsigned char*)frameBuffer, frameBufferNumBytes);
+          NSAssert(frame->adler == frameAdler, @"frameAdler");
         }        
+#endif // EXTRA_CHECKS
       }
     }
 	}
