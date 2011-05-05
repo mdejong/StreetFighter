@@ -19,6 +19,11 @@
 		CD1BB23012EEA03400A237B7 /* Kick.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB22F12EEA03400A237B7 /* Kick.wav */; };
 		CD1BB26D12EEA66600A237B7 /* Punch-fierce.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */; };
 		CD1BB29412EEA88100A237B7 /* Fight.wav in Resources */ = {isa = PBXBuildFile; fileRef = CD1BB29312EEA88100A237B7 /* Fight.wav */; };
+		CD44A21A1373658100DB9E9F /* apng_convert_maxvid.c in Sources */ = {isa = PBXBuildFile; fileRef = CD44A2121373658100DB9E9F /* apng_convert_maxvid.c */; };
+		CD44A21B1373658100DB9E9F /* AV7zApng2MvidResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD44A2151373658100DB9E9F /* AV7zApng2MvidResourceLoader.m */; };
+		CD44A21C1373658100DB9E9F /* AVApng2MvidResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD44A2171373658100DB9E9F /* AVApng2MvidResourceLoader.m */; };
+		CD44A21D1373658100DB9E9F /* libapng.c in Sources */ = {isa = PBXBuildFile; fileRef = CD44A2181373658100DB9E9F /* libapng.c */; };
+		CD44A23D137365F500DB9E9F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD44A23C137365F500DB9E9F /* libz.dylib */; };
 		CD6B5E0C13680AF1005D779E /* AV7zAppResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5DFB13680AF1005D779E /* AV7zAppResourceLoader.m */; };
 		CD6B5E0D13680AF1005D779E /* AV7zQT2MvidResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5DFD13680AF1005D779E /* AV7zQT2MvidResourceLoader.m */; };
 		CD6B5E0E13680AF1005D779E /* AVFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B5DFF13680AF1005D779E /* AVFileUtil.m */; };
@@ -88,6 +93,15 @@
 		CD1BB22F12EEA03400A237B7 /* Kick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Kick.wav; sourceTree = "<group>"; };
 		CD1BB26C12EEA66600A237B7 /* Punch-fierce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Punch-fierce.wav"; sourceTree = "<group>"; };
 		CD1BB29312EEA88100A237B7 /* Fight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fight.wav; sourceTree = "<group>"; };
+		CD44A2121373658100DB9E9F /* apng_convert_maxvid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = apng_convert_maxvid.c; sourceTree = "<group>"; };
+		CD44A2131373658100DB9E9F /* apng_convert_maxvid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apng_convert_maxvid.h; sourceTree = "<group>"; };
+		CD44A2141373658100DB9E9F /* AV7zApng2MvidResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AV7zApng2MvidResourceLoader.h; sourceTree = "<group>"; };
+		CD44A2151373658100DB9E9F /* AV7zApng2MvidResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AV7zApng2MvidResourceLoader.m; sourceTree = "<group>"; };
+		CD44A2161373658100DB9E9F /* AVApng2MvidResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVApng2MvidResourceLoader.h; sourceTree = "<group>"; };
+		CD44A2171373658100DB9E9F /* AVApng2MvidResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVApng2MvidResourceLoader.m; sourceTree = "<group>"; };
+		CD44A2181373658100DB9E9F /* libapng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libapng.c; sourceTree = "<group>"; };
+		CD44A2191373658100DB9E9F /* libapng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libapng.h; sourceTree = "<group>"; };
+		CD44A23C137365F500DB9E9F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CD6B5DFA13680AF1005D779E /* AV7zAppResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AV7zAppResourceLoader.h; sourceTree = "<group>"; };
 		CD6B5DFB13680AF1005D779E /* AV7zAppResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AV7zAppResourceLoader.m; sourceTree = "<group>"; };
 		CD6B5DFC13680AF1005D779E /* AV7zQT2MvidResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AV7zQT2MvidResourceLoader.h; sourceTree = "<group>"; };
@@ -191,6 +205,7 @@
 				CD8506F712EBAB820037EFDA /* AudioToolbox.framework in Frameworks */,
 				CD85070512EBAB890037EFDA /* QuartzCore.framework in Frameworks */,
 				CD85071D12EBAB910037EFDA /* MediaPlayer.framework in Frameworks */,
+				CD44A23D137365F500DB9E9F /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +243,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				CD44A23C137365F500DB9E9F /* libz.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -338,8 +354,10 @@
 		CD85067B12EBA9810037EFDA /* AVAnimator */ = {
 			isa = PBXGroup;
 			children = (
-				CD6B5DFE13680AF1005D779E /* AVFileUtil.h */,
-				CD6B5DFF13680AF1005D779E /* AVFileUtil.m */,
+				CD44A2121373658100DB9E9F /* apng_convert_maxvid.c */,
+				CD44A2131373658100DB9E9F /* apng_convert_maxvid.h */,
+				CD44A2181373658100DB9E9F /* libapng.c */,
+				CD44A2191373658100DB9E9F /* libapng.h */,
 				CD83053F12F20F990070F85B /* movdata.h */,
 				CD83053E12F20F990070F85B /* movdata.c */,
 				CD6B5E0B13680AF1005D779E /* movdata_convert_maxvid.h */,
@@ -378,6 +396,12 @@
 				CD6B5DFB13680AF1005D779E /* AV7zAppResourceLoader.m */,
 				CD6B5DFC13680AF1005D779E /* AV7zQT2MvidResourceLoader.h */,
 				CD6B5DFD13680AF1005D779E /* AV7zQT2MvidResourceLoader.m */,
+				CD44A2141373658100DB9E9F /* AV7zApng2MvidResourceLoader.h */,
+				CD44A2151373658100DB9E9F /* AV7zApng2MvidResourceLoader.m */,
+				CD44A2161373658100DB9E9F /* AVApng2MvidResourceLoader.h */,
+				CD44A2171373658100DB9E9F /* AVApng2MvidResourceLoader.m */,
+				CD6B5DFE13680AF1005D779E /* AVFileUtil.h */,
+				CD6B5DFF13680AF1005D779E /* AVFileUtil.m */,
 			);
 			path = AVAnimator;
 			sourceTree = "<group>";
@@ -495,6 +519,10 @@
 				CD6B5E4A13680CAF005D779E /* Ppmd8Dec.c in Sources */,
 				CD6B5E4B13680CAF005D779E /* 7zAlloc.c in Sources */,
 				CD6B5E4C13680CAF005D779E /* 7zMain.c in Sources */,
+				CD44A21A1373658100DB9E9F /* apng_convert_maxvid.c in Sources */,
+				CD44A21B1373658100DB9E9F /* AV7zApng2MvidResourceLoader.m in Sources */,
+				CD44A21C1373658100DB9E9F /* AVApng2MvidResourceLoader.m in Sources */,
+				CD44A21D1373658100DB9E9F /* libapng.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
