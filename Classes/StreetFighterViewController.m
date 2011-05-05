@@ -24,7 +24,7 @@
 
 #import <AVFoundation/AVAudioPlayer.h>
 
-//#define ENABLE_SOUND
+#define ENABLE_SOUND
 
 static int stanceCount = 0;
 
@@ -249,10 +249,9 @@ static int stanceCount = 0;
     self.stanceMedia.animatorRepeatCount = 5;    
     [self.stanceMedia startAnimator];
     
-    if (stanceCount++ > 30) {
+    if (0 && stanceCount++ > 30) {
       // Done looping, stop playback and cleanup all windows
       [self.stanceMedia stopAnimator];
-//      UIWindow *window = self.view.window;
       [self.view removeFromSuperview];
       
       StreetFighterAppDelegate *appDelegate =
