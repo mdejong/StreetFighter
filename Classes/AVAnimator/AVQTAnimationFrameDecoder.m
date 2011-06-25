@@ -285,20 +285,6 @@ int num_words(uint32_t numBytes)
   self.currentFrameBuffer = nil;
 }
 
-// Private utils to map the .mov file into memory
-
-- (void) _mapFile {
-  if (self.mappedData == nil) {
-    self.mappedData = [NSData dataWithContentsOfMappedFile:self.filePath];
-    NSAssert(self.mappedData, @"could not map movie file");
-    self->m_resourceUsageLimit = FALSE;
-  }  
-}
-
-- (void) _unmapFile {
-  self.mappedData = nil;
-}
- 
 - (UIImage*) advanceToFrame:(NSUInteger)newFrameIndex
 {
   // Get from queue of frame buffers!
@@ -348,7 +334,11 @@ int num_words(uint32_t numBytes)
   MovSample **frames = movData->frames;
   
 #ifdef USE_MMAP
-  [self _mapFile];
+  if (self.mappedData == nil) {
+    self.mappedData = [NSData dataWithContentsOfMappedFile:self.filePath];
+    NSAssert(self.mappedData, @"could not map movie file");
+    self->m_resourceUsageLimit = FALSE;
+  }
   char *mappedPtr = (char*) [self.mappedData bytes];
   NSAssert(mappedPtr, @"mappedPtr");
 #endif // USE_MMAP
@@ -444,7 +434,7 @@ int num_words(uint32_t numBytes)
   
 #ifdef USE_MMAP
   if (enabled) {
-    [self _unmapFile];
+    self.mappedData = nil;
   }
 #else
   if (enabled) {    
@@ -502,8 +492,6 @@ int num_words(uint32_t numBytes)
 
 - (BOOL) hasAlphaChannel
 {
-  // Ensure that media file is mapped, then query BPP
-  [self _unmapFile];
   NSAssert(movData, @"movData is NULL");
   if (movData->bitDepth == 16 || movData->bitDepth == 24) {
     return FALSE;
