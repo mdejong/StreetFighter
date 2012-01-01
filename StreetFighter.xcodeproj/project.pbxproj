@@ -67,6 +67,7 @@
 		CD8506F712EBAB820037EFDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8506F612EBAB820037EFDA /* AudioToolbox.framework */; };
 		CD85070512EBAB890037EFDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85070412EBAB890037EFDA /* QuartzCore.framework */; };
 		CD85071D12EBAB910037EFDA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD85071C12EBAB910037EFDA /* MediaPlayer.framework */; };
+		CD937C0E14B057DE00D903F0 /* AutoTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD937C0D14B057DE00D903F0 /* AutoTimer.m */; };
 		CDAF5D2D14ABA92D000F0407 /* maxvid_decode_arm.s in Sources */ = {isa = PBXBuildFile; fileRef = CDAF5D2C14ABA92D000F0407 /* maxvid_decode_arm.s */; };
 		CDC21F9F12EE4A19005D648A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDC21F9E12EE4A19005D648A /* Icon.png */; };
 		CDC21FA112EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf in Resources */ = {isa = PBXBuildFile; fileRef = CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */; };
@@ -186,6 +187,8 @@
 		CD8506F612EBAB820037EFDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CD85070412EBAB890037EFDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CD85071C12EBAB910037EFDA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CD937C0C14B057DE00D903F0 /* AutoTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoTimer.h; sourceTree = "<group>"; };
+		CD937C0D14B057DE00D903F0 /* AutoTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoTimer.m; sourceTree = "<group>"; };
 		CDAF5D2C14ABA92D000F0407 /* maxvid_decode_arm.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = maxvid_decode_arm.s; sourceTree = "<group>"; };
 		CDC21F9E12EE4A19005D648A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sf2_blanka_theme_mono_qlow_22k.caf; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				CD85067B12EBA9810037EFDA /* AVAnimator */,
 				CD85067912EBA9810037EFDA /* AutoPropertyRelease.h */,
 				CD85067A12EBA9810037EFDA /* AutoPropertyRelease.m */,
+				CD937C0C14B057DE00D903F0 /* AutoTimer.h */,
+				CD937C0D14B057DE00D903F0 /* AutoTimer.m */,
 				1D3623240D0F684500981E51 /* StreetFighterAppDelegate.h */,
 				1D3623250D0F684500981E51 /* StreetFighterAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* StreetFighterViewController.h */,
@@ -527,6 +532,7 @@
 				CD44A21C1373658100DB9E9F /* AVApng2MvidResourceLoader.m in Sources */,
 				CD44A21D1373658100DB9E9F /* libapng.c in Sources */,
 				CDAF5D2D14ABA92D000F0407 /* maxvid_decode_arm.s in Sources */,
+				CD937C0E14B057DE00D903F0 /* AutoTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,8 @@
 
 #import "AutoPropertyRelease.h"
 
+#import "AutoTimer.h"
+
 #import "AVAnimatorView.h"
 
 #import "AVAnimatorMedia.h"
@@ -39,6 +41,7 @@ static int stanceCount = 0;
 @synthesize fireballMedia = m_fireballMedia;
 @synthesize bgAudioPlayer = m_bgAudioPlayer;
 @synthesize fightPlayer = m_fightPlayer;
+@synthesize readyTimer = m_readyTimer;
 
 - (void)makeIndexedAnimationMedia:(int)index
 {
@@ -143,6 +146,12 @@ static int stanceCount = 0;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  // Create Media object for each of the audio/video clips. These media objects are not
+  // connected to a renderer initially. A media object does not allocate all resources
+  // until connected to a renderer, so it is perfectly fine to have many media objects
+  // allocated, only the one connected to the renderer will allocate frame buffers and
+  // shared memory.
   
   [self makeIndexedAnimationMedia:0];
 
@@ -207,13 +216,11 @@ static int stanceCount = 0;
   // to a view while it is under construction, so we
   // want to wait until this view is finished loading.
   
-  NSTimer *timer = [NSTimer timerWithTimeInterval: 0.1
-                                                      target: self
-                                                    selector: @selector(readyCallback:)
-                                                    userInfo: NULL
-                                                     repeats: FALSE];
-  
-  [[NSRunLoop currentRunLoop] addTimer:timer forMode: NSDefaultRunLoopMode];  
+  self.readyTimer = [AutoTimer autoTimerWithTimeInterval:0.1
+                                                  target:self
+                                                selector:@selector(readyCallback:)
+                                                userInfo:nil
+                                                 repeats:FALSE];
 }
 
 - (void) readyCallback:(NSTimer*)timer
@@ -223,6 +230,8 @@ static int stanceCount = 0;
 #endif
   
   [self animatorAction:0];
+  
+  return;
 }
 
 - (void)animatorAction:(int)action {
@@ -258,6 +267,7 @@ static int stanceCount = 0;
         (StreetFighterAppDelegate *) [[UIApplication sharedApplication] delegate];
       
       appDelegate.viewController = nil;
+      appDelegate.window = nil;
     }
   } else if (action == 1) {
     // Run punch animation
@@ -314,12 +324,20 @@ static int stanceCount = 0;
 }
 
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+  // Release any retained subviews of the main view.
+  self.renderView = nil;
 }
 
-
 - (void)dealloc {
+#ifdef ENABLE_SOUND
+  if (1)
+#else
+  if (0)
+#endif
+  {
+    [self.bgAudioPlayer stop];
+    [self.fightPlayer stop];
+  }
   [[NSNotificationCenter defaultCenter] removeObserver:self];
   [AutoPropertyRelease releaseProperties:self thisClass:StreetFighterViewController.class];
   [super dealloc];

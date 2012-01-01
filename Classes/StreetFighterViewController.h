@@ -11,6 +11,7 @@
 @class AVAnimatorView;
 @class AVAnimatorMedia;
 @class AVAudioPlayer;
+@class AutoTimer;
 
 @interface StreetFighterViewController : UIViewController {
   AVAnimatorView *m_renderView;
@@ -27,6 +28,8 @@
   
   AVAudioPlayer *m_bgAudioPlayer;
   AVAudioPlayer *m_fightPlayer;
+  
+  AutoTimer *m_readyTimer;
 }
 
 @property (nonatomic, retain) AVAnimatorView *renderView;
@@ -38,6 +41,8 @@
 
 @property (nonatomic, retain) AVAudioPlayer *bgAudioPlayer;
 @property (nonatomic, retain) AVAudioPlayer *fightPlayer;
+
+@property (nonatomic, retain) AutoTimer *readyTimer;
 
 - (void)animatorAction:(int)action;
 
