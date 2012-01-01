@@ -44,6 +44,8 @@
 
 @property (nonatomic, retain) AutoTimer *readyTimer;
 
++ (StreetFighterViewController*) streetFighterViewController;
+
 - (void)animatorAction:(int)action;
 
 - (IBAction) punchAction:(id)sender;

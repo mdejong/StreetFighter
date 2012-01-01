@@ -18,15 +18,28 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+// Override point for customization after application launch.
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  // Note that loading the view controller from MainWindow.xib means the StreetFighterViewController
+  // will not get released because an extra ref is held by the XIB load logic. Ensure that the
+  // view controller is explicitly allocated to avoid this issue.
+  
+  StreetFighterViewController *vc = self.viewController;
+  NSAssert(vc == nil, @"StreetFighterViewController should not be loaded in NIB");
     
-    // Override point for customization after application launch.
-
-    // Add the view controller's view to the window and display.
-    [self.window addSubview:viewController.view];
-    [self.window makeKeyAndVisible];
-
-    return YES;
+  // Add the view controller's view to the window and display.
+  
+  self.viewController = [StreetFighterViewController streetFighterViewController];
+  vc = self.viewController;
+  NSAssert(vc != nil, @"StreetFighterViewController should not be nil");
+  
+  UIView *view = vc.view;
+  [self.window addSubview:view];
+  [self.window makeKeyAndVisible];
+  
+  return YES;
 }
 
 

@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet StreetFighterViewController *viewController;
+@property (nonatomic, retain) StreetFighterViewController *viewController;
 
 @end
 

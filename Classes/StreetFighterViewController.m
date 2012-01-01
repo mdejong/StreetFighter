@@ -43,6 +43,12 @@ static int stanceCount = 0;
 @synthesize fightPlayer = m_fightPlayer;
 @synthesize readyTimer = m_readyTimer;
 
++ (StreetFighterViewController*) streetFighterViewController
+{
+  StreetFighterViewController *obj = [[StreetFighterViewController alloc] initWithNibName:@"StreetFighterViewController" bundle:nil];
+  return [obj autorelease];
+}
+
 - (void)makeIndexedAnimationMedia:(int)index
 {
   // The animator view is placed inside the containerView so that the
@@ -257,6 +263,11 @@ static int stanceCount = 0;
     [self.renderView attachMedia:self.stanceMedia];
     self.stanceMedia.animatorRepeatCount = 5;    
     [self.stanceMedia startAnimator];
+    
+    // Setting the 0 to 1 will mean that this view controller is cleaned up
+    // after some number of repeats of the stance animation. This logic is
+    // usedful to check that the dealloc method of this view controller is
+    // getting released and that there are no memory leaks.
     
     if (0 && stanceCount++ > 30) {
       // Done looping, stop playback and cleanup all windows
