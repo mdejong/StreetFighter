@@ -36,6 +36,8 @@
     [self.mediaObj detachFromRenderer:self copyFinalFrame:FALSE];
   }
   
+  self.layer.contents = nil;
+  
   [AutoPropertyRelease releaseProperties:self thisClass:AVAnimatorLayer.class];  
   [super dealloc];
 }
@@ -70,7 +72,7 @@
 
     self->mediaDidLoad = TRUE;
   } else {
-    self->m_mediaObj = nil;
+    self.mediaObj = nil;
     self->mediaDidLoad = FALSE;
   }
   

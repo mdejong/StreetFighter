@@ -13,6 +13,8 @@
 
 #import "AVAnimatorMedia.h"
 
+#import "AutoPropertyRelease.h"
+
 // private properties declaration for AVAnimatorView class
 #include "AVAnimatorViewPrivate.h"
 
@@ -43,6 +45,7 @@
     [self.mediaObj detachFromRenderer:self copyFinalFrame:FALSE];
   }
   
+  [AutoPropertyRelease releaseProperties:self thisClass:AVAnimatorView.class];
   [super dealloc];
 }
 
@@ -167,7 +170,7 @@
     self->mediaDidLoad = TRUE;
     [self _setOpaqueFromDecoder];
   } else {
-    self->m_mediaObj = nil;
+    self.mediaObj = nil;
     self->mediaDidLoad = FALSE;
   }
   
