@@ -269,7 +269,7 @@ static int stanceCount = 0;
     // usedful to check that the dealloc method of this view controller is
     // getting released and that there are no memory leaks.
     
-    if (0 && stanceCount++ > 30) {
+    if (0 && stanceCount++ > 100) {
       // Done looping, stop playback and cleanup all windows
       [self.stanceMedia stopAnimator];
       [self.view removeFromSuperview];
