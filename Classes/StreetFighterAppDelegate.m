@@ -35,8 +35,12 @@
   vc = self.viewController;
   NSAssert(vc != nil, @"StreetFighterViewController should not be nil");
   
+  // Force view to load fully
   UIView *view = vc.view;
-  [self.window addSubview:view];
+  NSAssert(view != nil, @"view");
+  
+  self.window.rootViewController = self.viewController;
+  
   [self.window makeKeyAndVisible];
   
   return YES;

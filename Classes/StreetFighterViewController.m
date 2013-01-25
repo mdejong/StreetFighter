@@ -105,7 +105,9 @@ static int stanceCount = 0;
   
   AVAnimatorMedia *media = [AVAnimatorMedia aVAnimatorMedia];
   
-  // Load animation videos from iOS optimized .mvid files in RyuMvids.7z archive
+  // Load animation videos from iOS optimized .mvid files in RyuMvids.7z archive.
+  // Note that if the .mvid file has already been decoded to disk, then this
+  // loader will use the already decompressed file sitting on disk.
   
   AV7zAppResourceLoader *resLoader = [AV7zAppResourceLoader aV7zAppResourceLoader];
   resLoader.archiveFilename = @"RyuMvids.7z";
