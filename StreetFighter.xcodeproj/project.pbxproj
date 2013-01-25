@@ -216,6 +216,7 @@
 		CD85071C12EBAB910037EFDA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CD937C0C14B057DE00D903F0 /* AutoTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoTimer.h; sourceTree = "<group>"; };
 		CD937C0D14B057DE00D903F0 /* AutoTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoTimer.m; sourceTree = "<group>"; };
+		CD9BC54F16B33ED900FFEB6F /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		CDC21F9E12EE4A19005D648A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sf2_blanka_theme_mono_qlow_22k.caf; sourceTree = "<group>"; };
 		CDD0B21112F4DFDF00412982 /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
@@ -285,7 +286,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CDD0B21112F4DFDF00412982 /* License.txt */,
 				32CA4F630368D1EE00C91783 /* StreetFighter_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -295,6 +295,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDD0B21112F4DFDF00412982 /* License.txt */,
+				CD9BC54F16B33ED900FFEB6F /* README.txt */,
 				CD7659FE1368A75900020FEB /* RyuMvids.7z */,
 				CDC21FA012EE4A26005D648A /* sf2_blanka_theme_mono_qlow_22k.caf */,
 				CDC21F9E12EE4A19005D648A /* Icon.png */,
