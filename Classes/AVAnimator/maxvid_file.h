@@ -6,6 +6,12 @@
 
 #include "maxvid_decode.h"
 
+// If this define is set to 1, then support for the experimental "deltas"
+// input format will be enabled. This deltas logic will generate a diff
+// of every frame, including the initial frame.
+
+#define MV_ENABLE_DELTAS 1
+
 #define MV_FILE_MAGIC 0xCAFEBABE
 
 // This flag is set for a .mvid file that contains no delta frames. It is possible
@@ -18,6 +24,17 @@
 // mind that already generated .mvids might have it set as it was used for sRGB flag.
 
 #define MV_FILE_ALL_KEYFRAMES 0x2
+
+// This flag is set for a .mvid file that contains all delta frames. Even the first
+// frame is a delta. This makes it possible to delta specific pixels in the frame
+// deltas.
+
+#if MV_ENABLE_DELTAS
+#define MV_FILE_DELTAS 0x4
+#endif // MV_ENABLE_DELTAS
+
+// These flags are set for a specific frame. A keyframe is not a delta. When
+// data does not change from one frame to the next, that is a nop frame.
 
 #define MV_FRAME_IS_KEYFRAME 0x1
 #define MV_FRAME_IS_NOPFRAME 0x2
@@ -72,6 +89,8 @@ void maxvid_frame_setnopframe(MVFrame *mvFrame) {
   mvFrame->lengthAndFlags |= MV_FRAME_IS_NOPFRAME;
 }
 
+// Set/Get frame offset and length, both in terms of bytes
+
 static inline
 void maxvid_frame_setoffset(MVFrame *mvFrame, uint32_t offset) {
   mvFrame->offset = offset;
@@ -102,6 +121,26 @@ uint32_t maxvid_frame_offset(MVFrame *mvFrame) {
 static inline
 uint32_t maxvid_frame_length(MVFrame *mvFrame) {
   return (mvFrame->lengthAndFlags >> 8);
+}
+
+// Return non-zero if the framebuffer is so large that it cannot be stored as a maxvid file.
+// This basically means that the number of bytes is so huge that a 24 bit value cannot hold it.
+
+static inline
+int maxvid_frame_check_max_size(uint32_t width, uint32_t height, int bpp) {
+  int numBytesInPixel;
+  if (bpp == 16) {
+    numBytesInPixel = 2;
+  } else {
+    // 24 or 32 BPP pixels are both stored in 32 bits
+    numBytesInPixel = 4;
+  }
+  int actualSize = numBytesInPixel * width * height;
+  if (actualSize > MV_MAX_24_BITS) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 // Emit a word that represents a nop frame, an empty delta.
@@ -147,7 +186,7 @@ static inline
 uint32_t maxvid_file_is_valid(FILE *inFile) {
   (void)fseek(inFile, 0L, SEEK_SET);
   uint32_t magic;
-  int numRead = fread(&magic, sizeof(uint32_t), 1, inFile);
+  int numRead = (int) fread(&magic, sizeof(uint32_t), 1, inFile);
   if (numRead != 1) {
     // Could not read magic number
     return 0;
@@ -197,6 +236,29 @@ static inline
 void maxvid_file_set_all_keyframes(MVFileHeader *fileHeaderPtr) {
   fileHeaderPtr->versionAndFlags |= (MV_FILE_ALL_KEYFRAMES << 8);
 }
+
+#if MV_ENABLE_DELTAS
+
+// Return TRUE if this file was encoded with frame and pixel deltas.
+// The -deltas option at the command line controls this special logic
+// that makes it possible to treat pixel values as deltas as opposed
+// to direct values.
+
+static inline
+uint32_t maxvid_file_is_deltas(MVFileHeader *fileHeaderPtr) {
+  uint32_t flags = fileHeaderPtr->versionAndFlags >> 8;
+  uint32_t isDeltas = flags & MV_FILE_DELTAS;
+  return isDeltas;
+}
+
+// Explicitly set the deltas flag.
+
+static inline
+void maxvid_file_set_deltas(MVFileHeader *fileHeaderPtr) {
+  fileHeaderPtr->versionAndFlags |= (MV_FILE_DELTAS << 8);
+}
+
+#endif // MV_ENABLE_DELTAS
 
 // adler32 calculation method
 
