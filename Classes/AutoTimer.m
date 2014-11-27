@@ -13,8 +13,13 @@
                                 userInfo:(id)userInfo
                                  repeats:(BOOL)repeats
 {
-  AutoTimer *obj = [[[AutoTimer alloc] init] autorelease];
-  
+  AutoTimer *obj = [[AutoTimer alloc] init];
+
+#if __has_feature(objc_arc)
+#else
+  obj = [obj autorelease];
+#endif // objc_arc
+
   obj.timer = [NSTimer timerWithTimeInterval:seconds
                                       target:target
                                     selector:aSelector
@@ -30,7 +35,11 @@
 {
   [self.timer invalidate];
   self.timer = nil;
+    
+#if __has_feature(objc_arc)
+#else
   [super dealloc];
+#endif // objc_arc
 }
 
 @end

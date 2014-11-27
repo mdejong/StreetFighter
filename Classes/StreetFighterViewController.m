@@ -46,7 +46,12 @@ static int stanceCount = 0;
 + (StreetFighterViewController*) streetFighterViewController
 {
   StreetFighterViewController *obj = [[StreetFighterViewController alloc] initWithNibName:@"StreetFighterViewController" bundle:nil];
+    
+#if __has_feature(objc_arc)
+  return obj;
+#else
   return [obj autorelease];
+#endif // objc_arc
 }
 
 - (void)makeIndexedAnimationMedia:(int)index
@@ -194,7 +199,15 @@ static int stanceCount = 0;
 	NSString* resPath = [[NSBundle mainBundle] pathForResource:resFilename ofType:nil];
   NSAssert(resPath, @"resPath is nil");
   NSURL *url = [NSURL fileURLWithPath:resPath];
-  self.bgAudioPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil] autorelease];
+
+  AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+
+#if __has_feature(objc_arc)
+  self.bgAudioPlayer = player;
+#else
+  self.bgAudioPlayer = [player autorelease];
+#endif // objc_arc
+      
   [self.bgAudioPlayer prepareToPlay];
   self.bgAudioPlayer.numberOfLoops = 1000;
   [self.bgAudioPlayer play];
@@ -214,7 +227,15 @@ static int stanceCount = 0;
 	NSString* resPath = [[NSBundle mainBundle] pathForResource:resFilename ofType:nil];
   NSAssert(resPath, @"resPath is nil");
   NSURL *url = [NSURL fileURLWithPath:resPath];
-  self.fightPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil] autorelease];
+      
+  AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+
+#if __has_feature(objc_arc)
+  self.fightPlayer = player;
+#else
+  self.fightPlayer = [player autorelease];
+#endif // objc_arc
+
   [self.fightPlayer prepareToPlay];
   
   }
@@ -352,8 +373,12 @@ static int stanceCount = 0;
     [self.fightPlayer stop];
   }
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+#if __has_feature(objc_arc)
+#else
   [AutoPropertyRelease releaseProperties:self thisClass:StreetFighterViewController.class];
   [super dealloc];
+#endif // objc_arc
 }
 
 @end
