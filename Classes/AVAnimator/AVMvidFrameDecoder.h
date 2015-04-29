@@ -17,12 +17,7 @@
 
 #if TARGET_OS_IPHONE
 
-#if __LP64__
-// Do not enable USE_SEGMENTED_MMAP in ARM64 build since the virtual memory page
-// size is 4x larger and the logic assumes that 1 page is 4kb
-#else
 # define USE_SEGMENTED_MMAP
-#endif // __LP64__
 
 #endif // TARGET_OS_IPHONE
 
@@ -60,6 +55,8 @@
 #if defined(REGRESSION_TESTS)
   BOOL m_simulateMemoryMapFailure;
 #endif // REGRESSION_TESTS
+  
+  BOOL m_upgradeFromV1;
 }
 
 @property (nonatomic, copy) NSString *filePath;
@@ -75,6 +72,14 @@
 #if defined(REGRESSION_TESTS)
 @property (nonatomic, assign) BOOL simulateMemoryMapFailure;
 #endif // REGRESSION_TESTS
+
+// This property must be explicitly set to enable reading
+// older version 0 and 1 format .mvid files. Only the
+// "mvidmoviemaker -upgrade ..." should do this. Any new code
+// must import version 2 and newer files only so that the
+// movies can be read with either 32 or 64 bit hardware.
+
+@property (nonatomic, assign) BOOL upgradeFromV1;
 
 + (AVMvidFrameDecoder*) aVMvidFrameDecoder;
 
