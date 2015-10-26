@@ -1,1 +1,1 @@
-git archive -o StreetFighter201.zip --prefix=StreetFighter/ HEAD
+git archive -o StreetFighter300.zip --prefix=StreetFighter/ HEAD
