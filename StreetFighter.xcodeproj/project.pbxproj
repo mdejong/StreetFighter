@@ -48,6 +48,7 @@
 		3C47DF2D1A26ADFA00D6A145 /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 3C47DF091A26ADFA00D6A145 /* movdata.c */; };
 		3C47DF2E1A26ADFA00D6A145 /* MutableAttrString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C47DF0C1A26ADFA00D6A145 /* MutableAttrString.m */; };
 		3C47DF2F1A26ADFA00D6A145 /* SegmentedMappedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C47DF0E1A26ADFA00D6A145 /* SegmentedMappedData.m */; };
+		3C7A64121C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A64111C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m */; };
 		3C9381C41A26B00E00C515CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9381C31A26B00E00C515CF /* MobileCoreServices.framework */; };
 		3C9381C61A26B02900C515CF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9381C51A26B02900C515CF /* OpenGLES.framework */; };
 		3C9381C81A26B03600C515CF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9381C71A26B03600C515CF /* GLKit.framework */; };
@@ -178,6 +179,8 @@
 		3C47DF0C1A26ADFA00D6A145 /* MutableAttrString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableAttrString.m; sourceTree = "<group>"; };
 		3C47DF0D1A26ADFA00D6A145 /* SegmentedMappedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedMappedData.h; sourceTree = "<group>"; };
 		3C47DF0E1A26ADFA00D6A145 /* SegmentedMappedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedMappedData.m; sourceTree = "<group>"; };
+		3C7A64101C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAssetMixAlphaResourceLoader.h; sourceTree = "<group>"; };
+		3C7A64111C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAssetMixAlphaResourceLoader.m; sourceTree = "<group>"; };
 		3C9381C31A26B00E00C515CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3C9381C51A26B02900C515CF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3C9381C71A26B03600C515CF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -395,6 +398,8 @@
 				3C47DEE31A26ADFA00D6A145 /* AVAssetFrameDecoder.m */,
 				3C47DEE41A26ADFA00D6A145 /* AVAssetJoinAlphaResourceLoader.h */,
 				3C47DEE51A26ADFA00D6A145 /* AVAssetJoinAlphaResourceLoader.m */,
+				3C7A64101C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.h */,
+				3C7A64111C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m */,
 				3C47DEE61A26ADFA00D6A145 /* AVAssetReaderConvertMaxvid.h */,
 				3C47DEE71A26ADFA00D6A145 /* AVAssetReaderConvertMaxvid.m */,
 				3C47DEE81A26ADFA00D6A145 /* AVAssetWriterConvertFromMaxvid.h */,
@@ -629,6 +634,7 @@
 				CD937C0E14B057DE00D903F0 /* AutoTimer.m in Sources */,
 				3C47DF231A26ADFA00D6A145 /* AVMvidFrameDecoder.m in Sources */,
 				3C47DF291A26ADFA00D6A145 /* maxvid_decode_arm.s in Sources */,
+				3C7A64121C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
