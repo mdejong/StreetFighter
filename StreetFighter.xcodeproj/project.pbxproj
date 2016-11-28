@@ -48,6 +48,7 @@
 		3C47DF2D1A26ADFA00D6A145 /* movdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 3C47DF091A26ADFA00D6A145 /* movdata.c */; };
 		3C47DF2E1A26ADFA00D6A145 /* MutableAttrString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C47DF0C1A26ADFA00D6A145 /* MutableAttrString.m */; };
 		3C47DF2F1A26ADFA00D6A145 /* SegmentedMappedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C47DF0E1A26ADFA00D6A145 /* SegmentedMappedData.m */; };
+		3C5DC57F1DECE2760029A61F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5DC57E1DECE2760029A61F /* CoreImage.framework */; };
 		3C7A64121C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7A64111C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m */; };
 		3C9381C41A26B00E00C515CF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9381C31A26B00E00C515CF /* MobileCoreServices.framework */; };
 		3C9381C61A26B02900C515CF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9381C51A26B02900C515CF /* OpenGLES.framework */; };
@@ -179,6 +180,7 @@
 		3C47DF0C1A26ADFA00D6A145 /* MutableAttrString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableAttrString.m; sourceTree = "<group>"; };
 		3C47DF0D1A26ADFA00D6A145 /* SegmentedMappedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedMappedData.h; sourceTree = "<group>"; };
 		3C47DF0E1A26ADFA00D6A145 /* SegmentedMappedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedMappedData.m; sourceTree = "<group>"; };
+		3C5DC57E1DECE2760029A61F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		3C7A64101C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAssetMixAlphaResourceLoader.h; sourceTree = "<group>"; };
 		3C7A64111C6D66100097CA92 /* AVAssetMixAlphaResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAssetMixAlphaResourceLoader.m; sourceTree = "<group>"; };
 		3C9381C31A26B00E00C515CF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -253,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5DC57F1DECE2760029A61F /* CoreImage.framework in Frameworks */,
 				3C9381CC1A26B04A00C515CF /* ImageIO.framework in Frameworks */,
 				3C9381CA1A26B04100C515CF /* CoreText.framework in Frameworks */,
 				3C9381C81A26B03600C515CF /* GLKit.framework in Frameworks */,
@@ -346,6 +349,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C5DC57E1DECE2760029A61F /* CoreImage.framework */,
 				3C9381CB1A26B04A00C515CF /* ImageIO.framework */,
 				3C9381C91A26B04100C515CF /* CoreText.framework */,
 				3C9381C71A26B03600C515CF /* GLKit.framework */,
@@ -648,12 +652,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 9F74CLHA49;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StreetFighter_Prefix.pch;
 				INFOPLIST_FILE = "StreetFighter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = StreetFighter;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -667,10 +673,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 9F74CLHA49;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StreetFighter_Prefix.pch;
 				INFOPLIST_FILE = "StreetFighter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = StreetFighter;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
